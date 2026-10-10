@@ -25,6 +25,8 @@ export function Loader() {
       gsap.to(ref.current, { autoAlpha: 0, duration: 0.4, onComplete: () => { gsap.set(ref.current, { display: "none" }); } });
       return;
     }
+    // JS owns the loader from here: cancel the CSS failsafe (globals.css) so it can't cut the intro short.
+    if (ref.current) ref.current.style.animation = "none";
     const tl = gsap.timeline({ onComplete: () => { gsap.set(ref.current, { display: "none" }); } });
     tl.from("[data-loader-tile]", { scale: 0.6, autoAlpha: 0, duration: 0.6, ease: HOUSE_EASE })
       .to("[data-loader-tile]", { width: "calc(var(--u) * 9)", duration: 0.8, ease: HOUSE_EASE })

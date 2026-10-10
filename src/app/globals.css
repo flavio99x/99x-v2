@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Hover-driven reveals only where hover is real (mouse/trackpad), never on touch tablets. */
+@custom-variant hover-fine (@media (hover: hover) and (pointer: fine));
+
 /* ---------- Fluid scale (Osmo-style): 1u = 16px at the design width ---------- */
 :root {
   --size-unit: 16;
@@ -118,6 +121,11 @@
   [data-theme="dark"] :focus-visible { outline-color: var(--color-accent); }
   img, video { display: block; max-width: 100%; }
 }
+
+/* Failsafe: if JS never takes over the loader (slow or failed bundles), get it out of the way.
+   The intro timeline cancels this on start (Loader.tsx), so a slow-but-working intro is never cut off. */
+[data-loader] { animation: loader-failsafe 0.4s 3.5s forwards; }
+@keyframes loader-failsafe { to { opacity: 0; visibility: hidden; } }
 
 @utility site-x { padding-inline: var(--site-margin); }
 @utility grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--u); }

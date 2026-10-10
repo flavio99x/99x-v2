@@ -8,3 +8,11 @@ test("loader shows on first visit only", async ({ page }) => {
   const visible = await page.locator("[data-loader]").isVisible();
   expect(visible).toBe(false);
 });
+
+test("loader gets out of the way even if the JS bundles never load", async ({ page }) => {
+  // Abort the JS chunks only; the stylesheet (also under /chunks/) must still load.
+  await page.route((url) => url.pathname.startsWith("/_next/static/chunks/") && url.pathname.endsWith(".js"), (route) => route.abort());
+  await page.goto("/");
+  await expect(page.locator("[data-loader]")).toBeHidden({ timeout: 5000 });
+  await expect(page.locator("h1")).toBeVisible();
+});
