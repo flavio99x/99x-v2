@@ -56,3 +56,10 @@ describe("home", () => {
 describe("about", () => {
   it("is registered at /about-us", () => expect(getPage("about").path).toBe("/about-us"));
 });
+
+describe("services", () => {
+  it("has anchors for every division", () => {
+    const ids = getPage("services").sections.map((s) => s.id);
+    expect(ids).toEqual(expect.arrayContaining(["nearshore-usa", "nearshore-europe", "product-engineering", "web-solutions"]));
+  });
+});
