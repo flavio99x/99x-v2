@@ -24,6 +24,19 @@ describe("parseContact", () => {
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.errors.message).toBe("Keep it under 5,000 characters.");
   });
+  it("gives friendly messages for over-long optional fields", () => {
+    const r = parseContact({ ...valid, company: "x".repeat(121), phone: "1".repeat(41), source: "s".repeat(41) });
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.errors.company).toBe("That company name is too long.");
+      expect(r.errors.phone).toBe("That phone number is too long.");
+      expect(r.errors.source).toBe("Please check this field.");
+      for (const m of Object.values(r.errors)) expect(m).not.toMatch(/too big|too_big|expected/i);
+    }
+  });
+  it("accepts empty optional fields", () => {
+    expect(parseContact({ ...valid, company: "", phone: "" }).ok).toBe(true);
+  });
   it("rejects non-object input", () => {
     expect(parseContact(null).ok).toBe(false);
     expect(parseContact("hello").ok).toBe(false);

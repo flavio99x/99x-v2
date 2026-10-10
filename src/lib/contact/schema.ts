@@ -5,15 +5,15 @@ const truthy = z.union([z.literal(true), z.literal("true"), z.literal("on")]);
 export const ContactSchema = z.object({
   name: z.string().trim().min(1, "Please tell us your name.").max(120, "That name is too long."),
   email: z.string().trim().email("Enter a valid email address.").max(200, "That email is too long."),
-  company: z.string().trim().max(120).optional().or(z.literal("")),
-  phone: z.string().trim().max(40).optional().or(z.literal("")),
+  company: z.string().trim().max(120, "That company name is too long.").optional(),
+  phone: z.string().trim().max(40, "That phone number is too long.").optional(),
   message: z
     .string()
     .trim()
     .min(10, "Tell us a bit more (at least 10 characters).")
     .max(5000, "Keep it under 5,000 characters."),
   consent: truthy,
-  source: z.string().trim().max(40).default("contact"),
+  source: z.string().trim().max(40, "Please check this field.").default("contact"),
   website: z.string().optional(),
 });
 export type ContactInput = z.infer<typeof ContactSchema>;
