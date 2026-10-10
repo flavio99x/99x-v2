@@ -28,7 +28,7 @@ export function Toggle({ items, value, onChange, label, idPrefix, tone = "ink" }
   };
 
   return (
-    <div role="tablist" aria-label={label} className={cn("relative inline-flex rounded-md p-1", t.bg)}>
+    <div role="tablist" aria-label={label} className={cn("relative inline-flex w-fit rounded-md p-1", t.bg)}>
       <span
         aria-hidden="true"
         className={cn("absolute top-1 left-1 size-[calc(var(--u)*2.125)] rounded-sm transition-transform duration-500 ease-house", t.ind)}

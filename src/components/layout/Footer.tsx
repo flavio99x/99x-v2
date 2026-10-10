@@ -3,7 +3,7 @@ import { SmartLink } from "@/components/ui/SmartLink";
 import { Icon } from "@/components/ui/Icon";
 
 function Tag({ children }: { children: string }) {
-  return <span className="inline-block rounded-sm border border-ink px-1.5 py-1 font-mono text-eyebrow-s font-light uppercase">{children}</span>;
+  return <span className="inline-block w-fit rounded-sm border border-ink px-1.5 py-1 font-mono text-eyebrow-s font-light uppercase">{children}</span>;
 }
 
 export function Footer({ site }: { site: Site }) {

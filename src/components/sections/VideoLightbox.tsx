@@ -10,7 +10,7 @@ export function VideoLightbox({ youtubeId, label }: { youtubeId: string; label: 
       <button
         type="button"
         onClick={() => { setOpen(true); dialog.current?.showModal(); }}
-        className="group/play flex items-center gap-3 rounded-md bg-ink p-1 pr-4 text-paper"
+        className="group/play inline-flex w-fit items-center gap-3 rounded-md bg-ink p-1 pr-4 text-paper"
       >
         <span className="grid size-8 place-items-center rounded-sm bg-accent text-ink transition-transform duration-500 ease-house group-hover/play:scale-110">
           <Icon name="play" className="size-4 fill-current" />
