@@ -55,7 +55,10 @@ export function NamesCylinder({ section: s }: { section: T }) {
       <div ref={stage} className="relative h-svh">
         <div className="absolute inset-y-[15%] left-0 text-ink"><TickRuler count={40} /></div>
         <div className="absolute inset-y-[15%] right-0 flex text-ink [&>div]:items-end"><TickRuler count={40} /></div>
-        <ul className="absolute inset-0 grid place-items-center [perspective:calc(var(--u)*60)] [transform-style:preserve-3d]">
+        <ul className="sr-only">
+          {s.names.map((n) => <li key={n}>{n}</li>)}
+        </ul>
+        <ul aria-hidden="true" className="absolute inset-0 grid place-items-center [perspective:calc(var(--u)*60)] [transform-style:preserve-3d]">
           {s.names.map((n) => (
             <li key={n} data-name className="absolute text-center text-[calc(var(--u)*5)] leading-none tracking-[-0.025em] will-change-transform max-md:text-[calc(var(--u)*3)]">
               {n}
