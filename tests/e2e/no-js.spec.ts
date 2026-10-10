@@ -19,5 +19,20 @@ test("contact form posts natively and redirects", async ({ page }) => {
   await page.getByLabel(/^Message/).fill("Native form submission without JavaScript.");
   await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: /send/i }).click();
-  await expect(page).toHaveURL(/\/contact\?sent=1/);
+  await expect(page).toHaveURL(/\/contact\/sent$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/we've got your message/i);
+});
+
+test("native validation blocks an empty submission without JS", async ({ page }) => {
+  await page.goto("/contact");
+  await expect(page.locator("form[action='/api/contact']")).not.toHaveAttribute("novalidate");
+  await page.getByRole("button", { name: /send/i }).click();
+  await expect(page).toHaveURL(/\/contact$/);
+  expect(await page.getByLabel(/^Name/).evaluate((el) => (el as HTMLInputElement).validity.valueMissing)).toBe(true);
+});
+
+test("the no-JS error page offers a way forward", async ({ page }) => {
+  await page.goto("/contact/error");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.locator("main").getByRole("link", { name: /hello\.norway@99x\.io/ })).toHaveAttribute("href", "mailto:hello.norway@99x.io");
 });

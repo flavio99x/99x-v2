@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 import userEvent from "@testing-library/user-event";
 import { ContactForm } from "@/components/forms/ContactForm";
 
@@ -49,10 +50,40 @@ describe("ContactForm", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent(/hello.norway@99x.io/);
   });
 
-  it("shows success after a no-JS redirect with ?sent=1", () => {
-    window.history.replaceState({}, "", "/contact?sent=1");
+  it("keeps native validation in server HTML and disables it once hydrated", () => {
+    const html = renderToString(<ContactForm source="contact" />);
+    expect(html).not.toMatch(/novalidate/i);
+    const { container } = render(<ContactForm source="contact" />);
+    expect(container.querySelector("form")).toHaveAttribute("novalidate");
+  });
+
+  it("moves focus to the first invalid field and announces a singular count", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({ ok: false, errors: { email: "Enter a valid email address." } }), { status: 400 }));
+    const user = userEvent.setup();
     render(<ContactForm source="contact" />);
-    expect(screen.getByRole("status")).toHaveTextContent(/thanks/i);
-    window.history.replaceState({}, "", "/");
+    await fill(user);
+    await user.click(screen.getByRole("button", { name: /send/i }));
+    await screen.findByText("Enter a valid email address.");
+    expect(screen.getByLabelText(/^Email/)).toHaveFocus();
+    expect(screen.getByText("1 field needs attention.")).toBeInTheDocument();
+  });
+
+  it("counts only rendered fields in the live region", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({ ok: false, errors: { name: "Please tell us your name.", company: "That company name is too long.", message: "Tell us a bit more (at least 10 characters)." } }), { status: 400 }));
+    const user = userEvent.setup();
+    render(<ContactForm source="contact" compact />);
+    await fill(user);
+    await user.click(screen.getByRole("button", { name: /send/i }));
+    expect(await screen.findByText("2 fields need attention.")).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Name/)).toHaveFocus();
+  });
+
+  it("shows a distinct message when rate limited", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({ ok: false, error: "rate_limited" }), { status: 429 }));
+    const user = userEvent.setup();
+    render(<ContactForm source="contact" />);
+    await fill(user);
+    await user.click(screen.getByRole("button", { name: /send/i }));
+    expect(await screen.findByRole("alert")).toHaveTextContent(/too many messages/i);
   });
 });

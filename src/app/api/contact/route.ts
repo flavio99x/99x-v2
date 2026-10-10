@@ -14,11 +14,9 @@ async function readBody(req: Request): Promise<unknown> {
 
 export async function POST(req: Request) {
   const wantsJson = (req.headers.get("accept") ?? "").includes("application/json");
-  const back = (q: string) => NextResponse.redirect(new URL(`/contact?${q}`, req.url), 303);
+  // Native (no-JS) posts land on static result pages, so /contact itself stays static.
+  const back = (result: "sent" | "error") => NextResponse.redirect(new URL(`/contact/${result}`, req.url), 303);
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
-
-  if (!limiter.hit(ip))
-    return wantsJson ? NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 }) : back("error=rate");
 
   let data: unknown;
   try {
@@ -26,14 +24,18 @@ export async function POST(req: Request) {
   } catch {
     return wantsJson
       ? NextResponse.json({ ok: false, errors: { form: "Invalid submission." } }, { status: 400 })
-      : back("error=1");
+      : back("error");
   }
 
   const parsed = parseContact(data);
   if (!parsed.ok)
-    return wantsJson ? NextResponse.json({ ok: false, errors: parsed.errors }, { status: 400 }) : back("error=1");
+    return wantsJson ? NextResponse.json({ ok: false, errors: parsed.errors }, { status: 400 }) : back("error");
 
-  if (parsed.value.website) return wantsJson ? NextResponse.json({ ok: true }) : back("sent=1"); // honeypot
+  // Only well-formed submissions count, so someone fixing validation errors isn't locked out.
+  if (!limiter.hit(ip))
+    return wantsJson ? NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 }) : back("error");
+
+  if (parsed.value.website) return wantsJson ? NextResponse.json({ ok: true }) : back("sent"); // honeypot
 
   try {
     const { website: _hp, ...msg } = parsed.value;
@@ -41,7 +43,7 @@ export async function POST(req: Request) {
     await getProvider().send({ ...msg, receivedAt: new Date().toISOString() });
   } catch (err) {
     console.error("[contact] provider failed", err);
-    return wantsJson ? NextResponse.json({ ok: false, error: "server" }, { status: 502 }) : back("error=1");
+    return wantsJson ? NextResponse.json({ ok: false, error: "server" }, { status: 502 }) : back("error");
   }
-  return wantsJson ? NextResponse.json({ ok: true }) : back("sent=1");
+  return wantsJson ? NextResponse.json({ ok: true }) : back("sent");
 }
