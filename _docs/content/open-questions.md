@@ -35,3 +35,32 @@ Facts the current 99x.io contradicts or leaves unclear. None block the build: pl
 ## Copy
 
 All copy is being rewritten. New wording that implies a new factual claim will be listed here for approval before launch.
+
+## New claims for approval (added in rewritten copy)
+
+- Contact form success: "The right team will get back to you within two working days." (new response-time promise)
+- Home talent stat: "Top 1% of engineering talent, selected across three continents." (see item 2 above: continents vs countries)
+- Home S.04 AI: "We integrate AI into every stage of the product lifecycle."
+- Nearshore USA S.03: "A software company first — we use AI deliberately, not by default."
+- About S.07: "Product engineering, tech talent and web solutions — each built for the market it serves."
+
+## Group companies
+
+The list is still to be confirmed with 99x, including whether "LeanOn" and "Digital Solutions" are current group companies and how they should be named on the site.
+
+## Image notes
+
+- `about/management.jpg` and `about/tab-culture.jpg` are each reused twice on About.
+- `nearshore-usa/hero.jpg` shows banding.
+- The webinar thumbnail is letterboxed (source aspect differs).
+- A header wordmark asset is needed (currently the logo pill uses the existing mark).
+
+## Launch checklist
+
+- Remove the "Current 99x.io" link on the 404 page.
+- Vercel project, domain and DNS.
+- Wire `CONTACT_PROVIDER` (Resend or HubSpot).
+- The contact rate limiter keys on `x-forwarded-for`: deploy only behind Vercel's proxy.
+- Analytics and consent banner.
+- Font licences (Helvetica Now Display + PP Supply Mono) if the exact cominvi look is wanted.
+- Field-data check of mobile LCP on `/about-us`.

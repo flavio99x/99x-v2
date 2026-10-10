@@ -365,3 +365,18 @@ WCAG 2.2 AA: landmarks (`header`, `nav`, `main`, `footer`), one `h1` per page, l
 ## 16. Out of scope (phase 1)
 
 Remaining ~300 pages (case studies, insights, careers, events, other service pages, AI page, legal), Norwegian locale, CMS, email/CRM provider wiring, analytics/consent banner (add with first tracking tool), search, reCAPTCHA.
+
+---
+
+## 17. Deviations (as built)
+
+- Insights own Home section S.07 (Trusted by moves to S.08); About divisions own S.07 (Leadership moves to S.08).
+- No mono kicker on heroes.
+- The 3D fallback is an inline exploded SVG, not a pre-rendered raster.
+- The permanent redirect returns 308.
+- Names-cylinder neighbour opacity is .55 and LogoStory inactive is .5, for contrast.
+- NumberedList reveals once.
+- Below-the-fold motion setup is deferred via `whenNear` (`src/lib/near.ts`) for performance.
+- `cacheComponents` is disabled.
+- Logo pieces keep their original per-path colours.
+- About LCP was measured with Lighthouse `--preset=perf`.
