@@ -16,6 +16,8 @@ import { FadeUp } from "@/components/motion/FadeUp";
 import { ProofToggle } from "@/components/sections/ProofToggle";
 import { NamesCylinder } from "@/components/sections/NamesCylinder";
 import { Timeline } from "@/components/sections/Timeline";
+import { LogoStorySection } from "@/components/sections/LogoStorySection";
+import { getSite } from "@/content";
 
 const NAMES = ["Atlas", "Borealis", "Cadence", "Delta", "Ember", "Fjord", "Garnet", "Helix", "Ivory", "Juniper", "Kestrel", "Lumen"];
 const TL = [2000, 2012, 2025].map((y) => ({ year: String(y), title: `Milestone ${y}`, image: { src: `/images/about/t-${y}.jpg`, alt: `Milestone photo ${y}`, width: 1600, height: 900 } }));
@@ -49,6 +51,7 @@ export default function KitchenSink() {
       <ProofToggle section={{ type: "proofToggle", theme: "paper", head: { index: "S.06", label: "Why 99x" }, subline: "Why work with us", items: [{ value: "90%", text: "of clients say we met or exceeded expectations" }, { value: "100+", text: "companies transformed" }] }} />
       <NamesCylinder section={{ type: "namesCylinder", theme: "paper", head: { index: "S.07", label: "Names" }, names: NAMES }} />
       <Timeline section={{ type: "timeline", theme: "dark", head: { index: "S.03", label: "Timeline" }, items: TL }} />
+      <LogoStorySection section={{ type: "logoStory", theme: "paper", head: { index: "S.03", label: "Locations", statement: "One company, five countries." } }} offices={getSite().offices} />
       <div className="h-[50vh]" />
     </>
   );

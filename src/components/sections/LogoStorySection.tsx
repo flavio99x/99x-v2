@@ -1,7 +1,11 @@
-import type { LogoStorySection, Office } from "@/content/schema";
+import type { LogoStorySection as T, Office } from "@/content/schema";
+import { SectionShell } from "./SectionShell";
+import { LogoStory } from "@/components/three/LogoStory";
 
-// Stub — replaced in a later task.
-/* eslint-disable @typescript-eslint/no-unused-vars */
-export function LogoStorySection(_props: { section: LogoStorySection; offices: Office[] }) {
-  return null;
+export function LogoStorySection({ section: s, offices }: { section: T; offices: Office[] }) {
+  return (
+    <SectionShell theme={s.theme} head={s.head} id={s.id} bottom="md">
+      <LogoStory offices={offices} />
+    </SectionShell>
+  );
 }
