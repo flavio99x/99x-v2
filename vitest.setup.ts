@@ -14,3 +14,8 @@ if (!window.matchMedia) {
       dispatchEvent: () => false,
     }) as MediaQueryList;
 }
+
+// vitest globals are off, so RTL's automatic cleanup is not registered
+import { afterEach } from "vitest";
+import { cleanup } from "@testing-library/react";
+afterEach(() => cleanup());
