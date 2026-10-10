@@ -20,7 +20,7 @@ export function Parallax({ children, className, amount = 10 }: { children: React
     { scope: ref },
   );
   return (
-    <div ref={ref} className={cn("relative overflow-hidden", className)}>
+    <div ref={ref} className={cn("overflow-hidden", className ?? "relative")}>
       <div className="absolute inset-[-10%] h-[120%] w-[120%] will-change-transform">{children}</div>
     </div>
   );

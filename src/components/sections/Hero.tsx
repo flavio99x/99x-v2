@@ -11,7 +11,7 @@ export function Hero({ hero }: { hero: HeroT }) {
       <Parallax className="absolute inset-0" amount={8}>
         <Image src={hero.image.src} alt={hero.image.alt} fill priority sizes="100vw" className="object-cover" />
       </Parallax>
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/30" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/40" />
       <div className="relative grid-12 items-end gap-y-10">
         <div className="col-span-12 flex flex-col gap-6 lg:col-span-8">
           <Eyebrow className="text-paper/70">{hero.eyebrow}</Eyebrow>
