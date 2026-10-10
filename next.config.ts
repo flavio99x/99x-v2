@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: { formats: ["image/avif", "image/webp"] },
+  async redirects() {
+    return [{ source: "/about-us/contact-us", destination: "/contact", permanent: true }];
+  },
   reactCompiler: true,
   turbopack: {
     rules: {

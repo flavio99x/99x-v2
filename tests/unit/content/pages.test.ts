@@ -70,3 +70,9 @@ describe("nearshore-usa", () => {
     expect(s?.id).toBe("talk");
   });
 });
+
+describe("registry", () => {
+  it("registers all five pages", () => {
+    expect(getAllPages().map((p) => p.slug).sort()).toEqual(["about", "contact", "home", "nearshore-usa", "services"]);
+  });
+});

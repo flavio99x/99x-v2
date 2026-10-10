@@ -20,8 +20,7 @@ test.describe("menu", () => {
     await expect(button).toBeFocused();
   });
 
-  // /contact is built in Task 17 — un-fixme in Task 17 Step 6.
-  test.fixme("menu link navigates and closes the menu", async ({ page }) => {
+  test("menu link navigates and closes the menu", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("button", { name: /menu/i }).click();
     await page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Contact" }).click();
