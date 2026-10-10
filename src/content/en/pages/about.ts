@@ -17,7 +17,7 @@ export const about: Page = {
     eyebrow: "About us",
     lines: ["Advisors, builders,", "innovators."],
     image: img("about/hero.jpg", "The 99x team gathered together"),
-    metric: { label: "Founded", value: "2000, Colombo" },
+    metric: { label: "Founded", value: "2000, Sri Lanka" },
   },
   sections: [
     {
@@ -43,7 +43,7 @@ export const about: Page = {
       theme: "dark",
       head: { index: "S.03", label: "Our journey" },
       items: [
-        { year: "2000", title: "Eurocenter DDC is founded in Sri Lanka", image: img("about/t-2000.jpg", "Early days of Eurocenter in Colombo") },
+        { year: "2000", title: "Eurocenter DDC is founded in Sri Lanka", image: img("about/t-2000.jpg", "Early days of Eurocenter in Sri Lanka") },
         { year: "2006", title: "Seeds Consulting is founded in Norway", image: img("about/t-2006.jpg", "Seeds Consulting founders") },
         { year: "2012", title: "Eurocenter becomes 99x Technology", image: img("about/t-2012.jpg", "The 99x Technology office") },
         { year: "2021", title: "Seeds and 99x merge", image: img("about/management.jpg", "99x group leaders seated together around a table") },
