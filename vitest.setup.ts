@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 
 // jsdom lacks matchMedia; default to "no reduced motion"
-if (!window.matchMedia) {
+if (typeof window !== "undefined" && !window.matchMedia) {
   window.matchMedia = (query: string) =>
     ({
       matches: false,
@@ -18,4 +18,6 @@ if (!window.matchMedia) {
 // vitest globals are off, so RTL's automatic cleanup is not registered
 import { afterEach } from "vitest";
 import { cleanup } from "@testing-library/react";
-afterEach(() => cleanup());
+afterEach(() => {
+  if (typeof document !== "undefined") cleanup();
+});
