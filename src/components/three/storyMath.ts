@@ -1,7 +1,11 @@
 export const STEP_START = 0.1;
 export const STEP_END = 0.9;
 /** Depth the active piece is brought forward to. */
-export const FOCUS_Z = 0.6;
+export const FOCUS_Z = 0.15;
+/** Radius (logo units, before the scene scale) inactive pieces park at during the steps — just outside the dial ring. */
+export const RING_R = 0.92;
+/** Opacity inactive pieces fade to while another piece is in focus. */
+export const DIM = 0.85;
 
 type Vec3 = [number, number, number];
 
@@ -23,22 +27,35 @@ export function storyStep(progress: number, count: number) {
   return { active, local: f - active, phase: "steps" as const };
 }
 
-export function pieceTarget(i: number, progress: number, count: number): { pos: Vec3; rot: Vec3; dim: number } {
-  if (progress <= 0 || progress >= 1) return { pos: [0, 0, 0], rot: [0, 0, 0], dim: 0 };
+/**
+ * Story target for piece `i`. `center` is the piece's assembled position; `pos` is the offset from it.
+ * `focus` (0–1) is how far the piece is centred and scaled up as the active piece.
+ */
+export function pieceTarget(
+  i: number,
+  progress: number,
+  count: number,
+  center: readonly [number, number] = [0, 0],
+): { pos: Vec3; rot: Vec3; dim: number; focus: number } {
+  if (progress <= 0 || progress >= 1) return { pos: [0, 0, 0], rot: [0, 0, 0], dim: 0, focus: 0 };
   // Explode amount ramps in during intro and out during outro.
   const explode =
     progress < STEP_START ? ease(progress / STEP_START) : progress >= STEP_END ? 1 - ease((progress - STEP_END) / (1 - STEP_END)) : 1;
   const { active, local, phase } = storyStep(progress, count);
-  const [dx, dy] = OUTWARD[i % OUTWARD.length];
+  const [cx, cy] = center;
   if (phase === "steps" && i === active) {
-    // Ease forward during the first 20% of the step, hold, ease back during the last 20%;
+    // Ease to the dial centre during the first 20% of the step, hold, ease back during the last 20%;
     // a gentle y swing (max ~35°) that returns to 0 so the piece is never seen edge-on.
     const focus = smoothstep(0, 0.2, local) * (1 - smoothstep(0.8, 1, local));
-    return { pos: [0, 0, FOCUS_Z * focus], rot: [0, Math.sin(local * Math.PI) * 0.6, 0], dim: 0 };
+    return { pos: [-cx * focus, -cy * focus, FOCUS_Z * focus], rot: [0, Math.sin(local * Math.PI) * 0.6, 0], dim: 0, focus };
   }
+  // Inactive pieces park on a ring just outside the dial, in their own direction.
+  const [dx, dy] = OUTWARD[i % OUTWARD.length];
+  const len = Math.hypot(dx, dy);
   return {
-    pos: [dx * 0.45 * explode, dy * 0.45 * explode, -0.1 * explode],
+    pos: [((dx / len) * RING_R - cx) * explode, ((dy / len) * RING_R - cy) * explode, -0.1 * explode],
     rot: [0.15 * explode * dy, 0.25 * explode * dx, 0],
-    dim: phase === "steps" ? 0.6 : 0.6 * explode,
+    dim: phase === "steps" ? DIM : DIM * explode,
+    focus: 0,
   };
 }

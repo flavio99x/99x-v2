@@ -4,9 +4,14 @@ import { Environment, Lightformer } from "@react-three/drei";
 import { memo, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { buildPieces } from "./logoGeometry";
-import { FOCUS_Z, pieceTarget } from "./storyMath";
+import { pieceTarget } from "./storyMath";
 
-type Props = { svgText: string; progress: React.RefObject<number>; pointer: boolean };
+type Props = { svgText: string; progress: React.RefObject<number>; pointer: boolean; eventSource?: React.RefObject<HTMLElement | null> };
+
+/** Scene scale: the assembled logo sits comfortably inside the dial. */
+const SCENE_SCALE = 0.85;
+/** Longest side of the focused piece, in logo units (~45% of the dial diameter). */
+const ACTIVE_SIZE = 0.64;
 
 const target = new THREE.Vector3();
 const before = new THREE.Vector3();
@@ -18,7 +23,13 @@ function Pieces({ svgText, progress, pointer }: Props) {
     () =>
       buildPieces(svgText).map((p) => {
         p.parts.forEach((pt) => pt.geometry.translate(-p.center.x, -p.center.y, -p.center.z));
-        return p;
+        const box = new THREE.Box3();
+        p.parts.forEach((pt) => {
+          pt.geometry.computeBoundingBox();
+          if (pt.geometry.boundingBox) box.union(pt.geometry.boundingBox);
+        });
+        const size = box.getSize(new THREE.Vector3());
+        return { ...p, focusScale: ACTIVE_SIZE / Math.max(size.x, size.y, 1e-3) };
       }),
     [svgText],
   );
@@ -41,12 +52,13 @@ function Pieces({ svgText, progress, pointer }: Props) {
     pieces.forEach((piece, i) => {
       const g = refs.current[i];
       if (!g) return;
-      const t = pieceTarget(i, p, pieces.length);
-      // Assembled place + story offset; the focused piece is also pulled to the frame centre.
-      const pull = 1 - Math.max(0, t.pos[2]) / FOCUS_Z;
       const c = piece.center;
+      const t = pieceTarget(i, p, pieces.length, [c.x, c.y]);
+      // Assembled place + story offset; the focused piece is centred on the dial and scaled up.
       before.copy(g.position);
-      g.position.lerp(target.set(c.x * pull + t.pos[0], c.y * pull + t.pos[1], c.z + t.pos[2]), k);
+      g.position.lerp(target.set(c.x + t.pos[0], c.y + t.pos[1], c.z + t.pos[2]), k);
+      const ds = (1 + (piece.focusScale - 1) * t.focus - g.scale.x) * k;
+      g.scale.setScalar(g.scale.x + ds);
       const drx = (t.rot[0] - g.rotation.x) * k;
       const dry = (t.rot[1] - g.rotation.y) * k;
       g.rotation.x += drx;
@@ -57,7 +69,7 @@ function Pieces({ svgText, progress, pointer }: Props) {
         dOpacity = (1 - t.dim - mat.opacity) * k;
         mat.opacity += dOpacity;
       }
-      if (before.distanceToSquared(g.position) > 1e-8 || Math.abs(drx) > EPS || Math.abs(dry) > EPS || Math.abs(dOpacity) > EPS) moving = true;
+      if (before.distanceToSquared(g.position) > 1e-8 || Math.abs(drx) > EPS || Math.abs(dry) > EPS || Math.abs(ds) > EPS || Math.abs(dOpacity) > EPS) moving = true;
     });
     if (pointer && group.current) {
       const g = group.current;
@@ -71,7 +83,7 @@ function Pieces({ svgText, progress, pointer }: Props) {
   });
 
   return (
-    <group ref={group} scale={0.95}>
+    <group ref={group} scale={SCENE_SCALE}>
       {pieces.map((piece, i) => (
         <group
           key={piece.id}
@@ -94,6 +106,8 @@ function Pieces({ svgText, progress, pointer }: Props) {
 function Invalidator({ progress, pointer }: { progress: React.RefObject<number>; pointer: boolean }) {
   const invalidate = useThree((s) => s.invalidate);
   const canvas = useThree((s) => s.gl.domElement);
+  const connected: unknown = useThree((s) => s.events.connected);
+  const source = connected instanceof HTMLElement ? connected : canvas;
   useEffect(() => {
     let last = -1;
     let raf = 0;
@@ -107,13 +121,13 @@ function Invalidator({ progress, pointer }: { progress: React.RefObject<number>;
     };
     raf = requestAnimationFrame(loop);
     const onMove = () => invalidate();
-    // Only the canvas' own pointer moves wake the scene (R3F tracks the pointer on the canvas too).
-    if (pointer) canvas.addEventListener("pointermove", onMove, { passive: true });
+    // Only pointer moves over the event source (the pinned stage) wake the scene; R3F tracks the pointer there too.
+    if (pointer) source.addEventListener("pointermove", onMove, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
-      canvas.removeEventListener("pointermove", onMove);
+      source.removeEventListener("pointermove", onMove);
     };
-  }, [invalidate, progress, pointer, canvas]);
+  }, [invalidate, progress, pointer, source]);
   return null;
 }
 
@@ -126,6 +140,7 @@ function LogoSceneImpl(props: Props) {
       camera={{ position: [0, 0, 3.6], fov: 35 }}
       gl={{ antialias: true, alpha: true }}
       aria-hidden="true"
+      eventSource={props.eventSource}
     >
       <Environment resolution={256}>
         <Lightformer intensity={2} position={[0, 2, 3]} scale={[6, 2, 1]} />

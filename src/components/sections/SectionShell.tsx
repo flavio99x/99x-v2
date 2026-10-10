@@ -15,10 +15,12 @@ type Props = {
   id?: string;
   className?: string;
   bottom?: "lg" | "md" | "none";
+  /** false: the section renders its own tag (e.g. inside a pinned stage so it stays visible). */
+  tag?: boolean;
   children?: React.ReactNode;
 };
 
-export function SectionShell({ theme, head, id, className, bottom = "lg", children }: Props) {
+export function SectionShell({ theme, head, id, className, bottom = "lg", tag = true, children }: Props) {
   return (
     <section
       id={id}
@@ -35,9 +37,11 @@ export function SectionShell({ theme, head, id, className, bottom = "lg", childr
       {head && (
         <div className="grid-12 mb-24 lg:mb-40">
           <div className="col-span-12 lg:col-span-8">
-            <span className="float-left">
-              <SectionTag index={head.index} label={head.label} tone={theme === "dark" ? "light" : "dark"} />
-            </span>
+            {tag && (
+              <span className="float-left">
+                <SectionTag index={head.index} label={head.label} tone={theme === "dark" ? "light" : "dark"} />
+              </span>
+            )}
             {head.statement && <ScrubText as="h2" className="text-statement" text={head.statement} />}
             {!head.statement && <h2 className="sr-only">{head.label}</h2>}
           </div>

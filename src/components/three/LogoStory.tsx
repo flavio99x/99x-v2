@@ -5,6 +5,7 @@ import type { Office } from "@/content/schema";
 import { ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { useReducedMotion } from "@/lib/motion";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SectionTag } from "@/components/ui/SectionTag";
 import { StaticLogoFallback } from "./StaticLogoFallback";
 import { storyStep } from "./storyMath";
 import { cn } from "@/lib/cn";
@@ -32,7 +33,7 @@ const TICK_LINES = Array.from({ length: TICKS }, (_, i) => {
 
 type Scene = { svg: string; pointer: boolean };
 
-export function LogoStory({ offices }: { offices: Office[] }) {
+export function LogoStory({ offices, tag }: { offices: Office[]; tag?: { index: string; label: string } }) {
   const reduced = useReducedMotion();
   const stage = useRef<HTMLDivElement>(null);
   const progress = useRef(0);
@@ -99,9 +100,12 @@ export function LogoStory({ offices }: { offices: Office[] }) {
       <div
         ref={stage}
         data-pinned={reduced ? undefined : ""}
-        className={cn("relative grid-12 items-center", reduced ? "gap-y-12" : "h-svh")}
+        className={cn("relative grid-12 items-center", reduced ? "gap-y-12" : "h-svh max-md:content-center max-md:gap-y-6 max-md:pt-20")}
       >
-        <ol className="col-span-12 flex flex-col gap-2 md:col-span-3">
+        <div className="col-span-12 flex flex-col gap-6 md:col-span-3">
+          {tag && <span className="-mb-2"><SectionTag index={tag.index} label={tag.label} /></span>}
+          <Eyebrow as="h3">Offices</Eyebrow>
+        <ol className="flex flex-col gap-2">
           {offices.map((o, i) => (
             <li
               key={o.id}
@@ -112,13 +116,15 @@ export function LogoStory({ offices }: { offices: Office[] }) {
             </li>
           ))}
         </ol>
-        <div className="relative col-span-12 aspect-square md:col-span-6">
+        </div>
+        <div className="relative col-span-12 mx-auto aspect-square w-[80%] md:col-span-6 md:w-full">
           <div className="absolute inset-[6%] rounded-full">
             <Dial on={reduced ? TICKS : ticksOn} />
           </div>
-          <div className={cn("absolute", show3d ? "inset-0" : "inset-[14%]")}>
+          {/* The canvas overhangs the dial so inactive pieces can park outside the ring; the stage receives pointer events. */}
+          <div className={cn("absolute", show3d ? "pointer-events-none inset-[-30%]" : "inset-[14%]")}>
             {show3d ? (
-              <LogoScene svgText={scene.svg} progress={progress} pointer={scene.pointer} />
+              <LogoScene svgText={scene.svg} progress={progress} pointer={scene.pointer} eventSource={stage} />
             ) : (
               <StaticLogoFallback active={active} />
             )}
