@@ -27,7 +27,7 @@ for (const [latStr, spans] of Object.entries(LAND)) {
 
 export function WorldDotMap({ offices, active }: { offices: Office[]; active?: string }) {
   return (
-    <figure className="relative">
+    <figure className="relative w-full">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full text-ink" role="img" aria-label={`Map of 99x offices: ${offices.map((o) => `${o.city}, ${o.country}`).join("; ")}`}>
         {DOTS.map((d, i) => <circle key={i} cx={d.x} cy={d.y} r={0.7} className="fill-current opacity-20" />)}
         {offices.map((o) => {
