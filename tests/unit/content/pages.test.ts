@@ -63,3 +63,10 @@ describe("services", () => {
     expect(ids).toEqual(expect.arrayContaining(["nearshore-usa", "nearshore-europe", "product-engineering", "web-solutions"]));
   });
 });
+
+describe("nearshore-usa", () => {
+  it("has the contact block anchored at #talk", () => {
+    const s = getPage("nearshore-usa").sections.find((x) => x.type === "contactBlock");
+    expect(s?.id).toBe("talk");
+  });
+});
