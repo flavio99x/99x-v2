@@ -56,11 +56,14 @@ export function Header() {
       <TransitionLink
         href="/"
         aria-label="99x home"
-        className={cn("pointer-events-auto flex items-stretch transition-transform duration-500 ease-house", hidden && "-translate-x-[9em]")}
+        className={cn("pointer-events-auto flex h-12 items-stretch transition-transform duration-500 ease-house", hidden && "-translate-x-[14em]")}
       >
-        <span className={cn("grid size-12 place-items-center rounded-md", light ? "bg-paper" : "bg-ink")}>
-          {/* colour logo on paper tile / white logo on ink tile */}
-          <img src={light ? "/brand/99x-logo.svg" : "/brand/99x-logo-white.svg"} alt="" width={32} height={16} className="w-8" />
+        {/* Logo pill: colour logo on a contrasting tile + outlined wordmark box (cominvi header lockup). */}
+        <span className={cn("grid w-16 place-items-center rounded-md", light ? "bg-paper" : "bg-ink")}>
+          <img src="/brand/99x-logo.svg" alt="" width={74} height={38} className="w-11" />
+        </span>
+        <span className={cn("-ml-px grid place-items-center rounded-md border px-4 text-body-m tracking-[-0.02em]", light ? "border-paper" : "border-ink")}>
+          99x
         </span>
       </TransitionLink>
       <div className={cn("pointer-events-auto transition-transform duration-500 ease-house", hidden && "translate-x-[9em]")}>

@@ -38,9 +38,9 @@ export function Footer({ site }: { site: Site }) {
           </address>
         </div>
       </div>
-      <div className="mt-48 flex flex-col items-center gap-3 border-t border-ink/20 pt-6 text-center font-medium text-ink/60 md:flex-row md:justify-between">
+      <div className="mt-48 flex flex-col items-center gap-3 border-t border-ink/20 pt-6 text-center font-medium text-ink/60">
         <p>© {year} 99x. All rights reserved.</p>
-        <ul className="flex gap-6">
+        <ul className="flex flex-wrap justify-center gap-6">
           {site.legal.map((l) => <li key={l.href}><SmartLink link={l} className="hover:text-ink" /></li>)}
         </ul>
       </div>

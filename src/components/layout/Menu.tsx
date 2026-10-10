@@ -92,9 +92,9 @@ export function Menu({ site }: { site: Site }) {
           ))}
         </nav>
         <div className="flex flex-col justify-between gap-8 lg:col-span-3" data-menu-item>
-          <div className="flex gap-4 font-mono text-eyebrow-m font-light uppercase">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-menu">
             {site.languages.map((lang) => (
-              <SmartLink key={lang.code} link={{ label: lang.label, href: lang.href, external: lang.href.startsWith("https://") }} className={lang.active ? "text-accent" : "text-paper/60"} />
+              <SmartLink key={lang.code} link={{ label: lang.label, href: lang.href, external: lang.href.startsWith("https://") }} className={lang.active ? "text-accent" : "text-paper/60 hover:text-paper"} />
             ))}
           </div>
           <div className="flex gap-4">
