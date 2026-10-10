@@ -38,7 +38,7 @@ export function NamesCylinder({ section: s }: { section: T }) {
       onRefresh: () => { radius = probe.offsetWidth * 14; apply(focus); },
     });
     return () => probe.remove();
-  }, { dependencies: [reduced], scope: stage });
+  }, { dependencies: [reduced], scope: stage, revertOnUpdate: true });
 
   if (reduced) {
     return (
@@ -52,19 +52,23 @@ export function NamesCylinder({ section: s }: { section: T }) {
 
   return (
     <SectionShell theme={s.theme} head={s.head} id={s.id} bottom="md">
-      <div ref={stage} className="relative h-svh">
-        <div className="absolute inset-y-[15%] left-0 text-ink"><TickRuler count={40} /></div>
-        <div className="absolute inset-y-[15%] right-0 flex text-ink [&>div]:items-end"><TickRuler count={40} /></div>
-        <ul className="sr-only">
-          {s.names.map((n) => <li key={n}>{n}</li>)}
-        </ul>
-        <ul aria-hidden="true" className="absolute inset-0 grid place-items-center [perspective:calc(var(--u)*60)] [transform-style:preserve-3d]">
-          {s.names.map((n) => (
-            <li key={n} data-name className="absolute text-center text-[calc(var(--u)*5)] leading-none tracking-[-0.025em] will-change-transform max-md:text-[calc(var(--u)*3)]">
-              {n}
-            </li>
-          ))}
-        </ul>
+      {/* Stable React-owned wrapper: GSAP's pin-spacer only wraps the inner stage, so switching to the
+          reduced-motion branch removes this wrapper (parent untouched) instead of the re-parented stage. */}
+      <div>
+        <div ref={stage} className="relative h-svh">
+          <div className="absolute inset-y-[15%] left-0 text-ink"><TickRuler count={40} /></div>
+          <div className="absolute inset-y-[15%] right-0 flex text-ink [&>div]:items-end"><TickRuler count={40} /></div>
+          <ul className="sr-only">
+            {s.names.map((n) => <li key={n}>{n}</li>)}
+          </ul>
+          <ul aria-hidden="true" className="absolute inset-0 grid place-items-center [perspective:calc(var(--u)*60)] [transform-style:preserve-3d]">
+            {s.names.map((n) => (
+              <li key={n} data-name className="absolute text-center text-[calc(var(--u)*5)] leading-none tracking-[-0.025em] will-change-transform max-md:text-[calc(var(--u)*3)]">
+                {n}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </SectionShell>
   );

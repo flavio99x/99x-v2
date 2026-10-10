@@ -25,4 +25,10 @@ describe("pieceTarget", () => {
     expect(active.dim).toBe(0);
     expect(other.dim).toBeCloseTo(0.6);
   });
+  it("swings the active piece gently, never edge-on", () => {
+    for (let k = 0; k <= 50; k++) {
+      const prog = 0.1 + (0.8 / 5) * (2 + k / 50) - 1e-9;
+      expect(Math.abs(pieceTarget(2, prog, 5).rot[1])).toBeLessThan(Math.PI / 4);
+    }
+  });
 });

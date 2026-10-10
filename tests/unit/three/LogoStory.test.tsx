@@ -12,6 +12,7 @@ describe("LogoStory (reduced motion)", () => {
     for (const o of offices) expect(screen.getByText(o.city)).toBeInTheDocument();
     expect(container.querySelector("[data-pinned]")).toBeNull();
     expect(container.querySelector("canvas")).toBeNull();
-    expect(container.querySelectorAll('path[fill-rule="evenodd"]')).toHaveLength(5);
+    expect(container.querySelectorAll("[data-piece]")).toHaveLength(5);
+    expect([...container.querySelectorAll("path")].map((p) => p.getAttribute("fill"))).toEqual(["#A2B372", "#BC8E58", "#C49FD5", "#905B54", "#CCB189", "#B44B4B", "#7A6977"]);
   });
 });

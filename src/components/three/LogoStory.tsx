@@ -21,6 +21,15 @@ const hasWebGL = () => {
 };
 const fmt = (n: number, pos: string, neg: string) => `${Math.abs(n).toFixed(2)}°${n >= 0 ? pos : neg}`;
 
+// Tick coordinates are rounded so server and client render identical attribute strings.
+const TICKS = 120;
+const r3 = (n: number) => Math.round(n * 1000) / 1000;
+const TICK_LINES = Array.from({ length: TICKS }, (_, i) => {
+  const a = (i / TICKS) * Math.PI * 2 - Math.PI / 2;
+  const r2 = i % 10 === 0 ? 44 : 46;
+  return { x1: r3(Math.cos(a) * 48), y1: r3(Math.sin(a) * 48), x2: r3(Math.cos(a) * r2), y2: r3(Math.sin(a) * r2) };
+});
+
 type Scene = { svg: string; pointer: boolean };
 
 export function LogoStory({ offices }: { offices: Office[] }) {
@@ -28,7 +37,7 @@ export function LogoStory({ offices }: { offices: Office[] }) {
   const stage = useRef<HTMLDivElement>(null);
   const progress = useRef(0);
   const [storyActive, setActive] = useState(-1);
-  const [p, setP] = useState(0);
+  const [ticksOn, setTicksOn] = useState(0);
   const [scene, setScene] = useState<Scene | null>(null);
 
   // Load the 3D chunk (and the logo SVG) ~1.5 screens before the section.
@@ -69,7 +78,8 @@ export function LogoStory({ offices }: { offices: Office[] }) {
         scrub: true,
         onUpdate: (self) => {
           progress.current = self.progress;
-          setP(self.progress);
+          // Rounded so React bails out (no re-render) unless a dial tick or the active office changes.
+          setTicksOn(Math.round(self.progress * TICKS));
           setActive(storyStep(self.progress, offices.length).active);
         },
       });
@@ -82,63 +92,57 @@ export function LogoStory({ offices }: { offices: Office[] }) {
   const current = active >= 0 ? offices[active] : null;
   const show3d = scene !== null && !reduced;
 
+  // The stable outer wrapper is what React inserts/removes; GSAP's pin-spacer only ever wraps the inner stage,
+  // so a reduced-motion toggle can never make React remove a node GSAP has re-parented.
   return (
-    <div
-      ref={stage}
-      data-pinned={reduced ? undefined : ""}
-      className={cn("relative grid-12 items-center", reduced ? "gap-y-12" : "h-svh")}
-    >
-      <ol className="col-span-12 flex flex-col gap-2 md:col-span-3">
-        {offices.map((o, i) => (
-          <li
-            key={o.id}
-            className={cn("text-h2 transition-opacity duration-500", reduced || active === i ? "opacity-100" : "opacity-15")}
-            aria-current={active === i ? "true" : undefined}
-          >
-            {o.city}
-          </li>
-        ))}
-      </ol>
-      <div className="relative col-span-12 aspect-square md:col-span-6">
-        <div className="absolute inset-[6%] rounded-full">
-          <Dial progress={reduced ? 1 : p} />
+    <div>
+      <div
+        ref={stage}
+        data-pinned={reduced ? undefined : ""}
+        className={cn("relative grid-12 items-center", reduced ? "gap-y-12" : "h-svh")}
+      >
+        <ol className="col-span-12 flex flex-col gap-2 md:col-span-3">
+          {offices.map((o, i) => (
+            <li
+              key={o.id}
+              className={cn("text-h2 transition-opacity duration-500", reduced || active === i ? "opacity-100" : "opacity-15")}
+              aria-current={active === i ? "true" : undefined}
+            >
+              {o.city}
+            </li>
+          ))}
+        </ol>
+        <div className="relative col-span-12 aspect-square md:col-span-6">
+          <div className="absolute inset-[6%] rounded-full">
+            <Dial on={reduced ? TICKS : ticksOn} />
+          </div>
+          <div className={cn("absolute", show3d ? "inset-0" : "inset-[14%]")}>
+            {show3d ? (
+              <LogoScene svgText={scene.svg} progress={progress} pointer={scene.pointer} />
+            ) : (
+              <StaticLogoFallback active={active} />
+            )}
+          </div>
         </div>
-        <div className={cn("absolute", show3d ? "inset-0" : "inset-[14%]")}>
-          {show3d ? (
-            <LogoScene svgText={scene.svg} progress={progress} pointer={scene.pointer} />
+        <div className="col-span-12 flex flex-col gap-3 md:col-span-3 md:items-end md:text-right" aria-live="polite">
+          {current ? (
+            <>
+              <Eyebrow>{`${current.city} [${current.countryCode}]`}</Eyebrow>
+              <Eyebrow className="opacity-60">{`${fmt(current.lat, "N", "S")} ${fmt(current.lng, "E", "W")}`}</Eyebrow>
+              <a href={`mailto:${current.email}`} className="text-body-s underline-offset-4 hover:underline">
+                {current.email}
+              </a>
+            </>
           ) : (
-            <StaticLogoFallback active={active} />
+            <Eyebrow className="opacity-60">{reduced ? "Five offices, one team" : "Scroll to explore"}</Eyebrow>
           )}
         </div>
-      </div>
-      <div className="col-span-12 flex flex-col gap-3 md:col-span-3 md:items-end md:text-right" aria-live="polite">
-        {current ? (
-          <>
-            <Eyebrow>{`${current.city} [${current.countryCode}]`}</Eyebrow>
-            <Eyebrow className="opacity-60">{`${fmt(current.lat, "N", "S")} ${fmt(current.lng, "E", "W")}`}</Eyebrow>
-            <a href={`mailto:${current.email}`} className="text-body-s underline-offset-4 hover:underline">
-              {current.email}
-            </a>
-          </>
-        ) : (
-          <Eyebrow className="opacity-60">{reduced ? "Five offices, one team" : "Scroll to explore"}</Eyebrow>
-        )}
       </div>
     </div>
   );
 }
 
-// Tick coordinates are rounded so server and client render identical attribute strings.
-const TICKS = 120;
-const r3 = (n: number) => Math.round(n * 1000) / 1000;
-const TICK_LINES = Array.from({ length: TICKS }, (_, i) => {
-  const a = (i / TICKS) * Math.PI * 2 - Math.PI / 2;
-  const r2 = i % 10 === 0 ? 44 : 46;
-  return { x1: r3(Math.cos(a) * 48), y1: r3(Math.sin(a) * 48), x2: r3(Math.cos(a) * r2), y2: r3(Math.sin(a) * r2) };
-});
-
-function Dial({ progress }: { progress: number }) {
-  const on = Math.round(progress * TICKS);
+function Dial({ on }: { on: number }) {
   return (
     <svg viewBox="-50 -50 100 100" className="h-full w-full" aria-hidden="true">
       {TICK_LINES.map((l, i) => (

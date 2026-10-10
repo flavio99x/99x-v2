@@ -31,9 +31,10 @@ export function pieceTarget(i: number, progress: number, count: number): { pos: 
   const { active, local, phase } = storyStep(progress, count);
   const [dx, dy] = OUTWARD[i % OUTWARD.length];
   if (phase === "steps" && i === active) {
-    // Ease forward during the first 20% of the step, hold, ease back during the last 20%.
+    // Ease forward during the first 20% of the step, hold, ease back during the last 20%;
+    // a gentle y swing (max ~35°) that returns to 0 so the piece is never seen edge-on.
     const focus = smoothstep(0, 0.2, local) * (1 - smoothstep(0.8, 1, local));
-    return { pos: [0, 0, FOCUS_Z * focus], rot: [0, local * Math.PI * 2 * 0.25, 0], dim: 0 };
+    return { pos: [0, 0, FOCUS_Z * focus], rot: [0, Math.sin(local * Math.PI) * 0.6, 0], dim: 0 };
   }
   return {
     pos: [dx * 0.45 * explode, dy * 0.45 * explode, -0.1 * explode],

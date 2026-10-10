@@ -22,7 +22,7 @@ export function Timeline({ section: s }: { section: T }) {
       pin: true,
       onUpdate: (self) => setActive(timelineIndex(self.progress, s.items.length)),
     });
-  }, { dependencies: [reduced], scope: stage });
+  }, { dependencies: [reduced], scope: stage, revertOnUpdate: true });
 
   useGSAP(() => {
     if (!stage.current) return;
@@ -48,30 +48,34 @@ export function Timeline({ section: s }: { section: T }) {
 
   return (
     <SectionShell theme="dark" id={s.id} bottom="none" className="px-0! pt-0!">
-      <div ref={stage} className="relative h-svh overflow-hidden">
-        <h2 className="sr-only">{s.head.label}</h2>
-        <div className="absolute left-[var(--site-margin)] top-28 z-10"><SectionTag index={s.head.index} label={s.head.label} tone="light" /></div>
-        {s.items.map((it, i) => (
-          <Image key={it.image.src} src={it.image.src} alt={i === active ? it.image.alt : ""} fill sizes="100vw"
-            className="object-cover transition-opacity duration-700 ease-house" style={{ opacity: i === active ? 0.55 : 0 }} />
-        ))}
-        <div aria-hidden="true" className="absolute inset-0 grid grid-cols-4 items-center site-x text-[calc(var(--u)*14)] leading-none max-md:text-[calc(var(--u)*6)]">
-          {[0, 1, 2, 3].map((pos) => (
-            <div key={pos} className="h-[1em] overflow-hidden text-center">
-              <div data-digit-col>
-                {s.items.map((it) => <div key={it.year + pos + it.title} className="h-[1em]">{it.year[pos]}</div>)}
-              </div>
-            </div>
-          ))}
-        </div>
-        <ol className="absolute inset-x-0 bottom-16 flex flex-col items-center text-center site-x">
+      {/* Stable React-owned wrapper: GSAP's pin-spacer only wraps the inner stage, so switching to the
+          reduced-motion branch removes this wrapper (parent untouched) instead of the re-parented stage. */}
+      <div>
+        <div ref={stage} className="relative h-svh overflow-hidden">
+          <h2 className="sr-only">{s.head.label}</h2>
+          <div className="absolute left-[var(--site-margin)] top-28 z-10"><SectionTag index={s.head.index} label={s.head.label} tone="light" /></div>
           {s.items.map((it, i) => (
-            <li key={it.year + it.title} className={i === active ? "block" : "sr-only"}>
-              <span className="sr-only">{it.year}: </span>
-              <span className="text-body-m">{it.title}</span>
-            </li>
+            <Image key={it.image.src} src={it.image.src} alt={i === active ? it.image.alt : ""} fill sizes="100vw"
+              className="object-cover transition-opacity duration-700 ease-house" style={{ opacity: i === active ? 0.55 : 0 }} />
           ))}
-        </ol>
+          <div aria-hidden="true" className="absolute inset-0 grid grid-cols-4 items-center site-x text-[calc(var(--u)*14)] leading-none max-md:text-[calc(var(--u)*6)]">
+            {[0, 1, 2, 3].map((pos) => (
+              <div key={pos} className="h-[1em] overflow-hidden text-center">
+                <div data-digit-col>
+                  {s.items.map((it) => <div key={it.year + pos + it.title} className="h-[1em]">{it.year[pos]}</div>)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <ol className="absolute inset-x-0 bottom-16 flex flex-col items-center text-center site-x">
+            {s.items.map((it, i) => (
+              <li key={it.year + it.title} className={i === active ? "block" : "sr-only"}>
+                <span className="sr-only">{it.year}: </span>
+                <span className="text-body-m">{it.title}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </SectionShell>
   );
