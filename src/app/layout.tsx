@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { fontDisplay, fontMono } from "@/lib/fonts";
 import { getSite } from "@/content";
+import { organizationJsonLd } from "@/lib/seo";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { Header } from "@/components/layout/Header";
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <noscript><style>{`[data-loader]{display:none}`}</style></noscript>
       </head>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd(site)) }} />
         <SmoothScroll>
           <PageTransition>
             <SkipLink />
