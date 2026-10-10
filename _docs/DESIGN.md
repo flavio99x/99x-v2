@@ -206,7 +206,7 @@ All sizes are multiples of `--u` (16px at 1440 wide). Mobile (<=767px) steps sta
 - **Button** (300 uppercase mono, 0.813u = 13px; xl uses body-m 20px): button labels.
 
 ### Named Rules
-**The Heavy-Light Pairing Rule.** Weight is the hierarchy: 700 sans for reading, 300 mono uppercase for data. No third family, no italic, no mid-weight sans in the build (500 is loaded but unused in sampled components).
+**The Heavy-Light Pairing Rule.** Weight is the hierarchy: 700 sans for reading, 300 mono uppercase for data. No third family, no italic. Inter Tight 500 is used only for quiet utility text — footer links, office addresses, the footer legal line and the menu button label — never for hierarchy.
 
 **The Cap-Trim Rule.** Large numerals use `text-box: trim-both cap alphabetic` so they align to hairlines without leading gaps.
 
@@ -279,7 +279,7 @@ The logo is cut into five motion pieces: first "9" (ring Vector_2 + tail Vector_
 ### Don't:
 - **Don't** add box-shadows, glow or blur; depth is ground inversion and hairlines.
 - **Don't** use the non-lavender logo colours outside the logo.
-- **Don't** introduce a third typeface or a mid-weight sans for hierarchy.
+- **Don't** introduce a third typeface, or use 500 for anything beyond the footer/menu-button utility text (never for headings or hierarchy).
 - **Don't** scrub body or list text to a dim resting state; reveal it to full contrast (statements are the only scrubbed text).
 - **Don't** hard-code px for type; the stand-in fonts will change and the scale must stay in `--u`.
 

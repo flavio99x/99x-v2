@@ -64,3 +64,6 @@ The About "99x group" names cylinder (S.06) currently lists 11 companies, to be 
 - Analytics and consent banner.
 - Font licences (Helvetica Now Display + PP Supply Mono) if the exact cominvi look is wanted.
 - Field-data check of mobile LCP on `/about-us`.
+- Check every external nav/footer URL on 99x.io resolves (paths are case-sensitive, e.g. `/Insights`).
+- Replace the `LogProvider` contact provider: it writes submitted personal data to server logs.
+- Design sign-off on the contrast-driven values: names cylinder neighbours .55, LogoStory inactive offices .5, NumberedList one-time reveal.

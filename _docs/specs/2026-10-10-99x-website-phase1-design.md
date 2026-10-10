@@ -380,3 +380,6 @@ Remaining ~300 pages (case studies, insights, careers, events, other service pag
 - `cacheComponents` is disabled.
 - Logo pieces keep their original per-path colours.
 - About LCP was measured with Lighthouse `--preset=perf`.
+- OG images reuse each page's hero photo (no bespoke 1200×630 artwork yet).
+- Toggle tabs are ~33px tall at 375px (WCAG 2.2 AA 24px target size met; the spec's 44px target is deferred).
+- Contact posts without JavaScript redirect to static `/contact/sent` and `/contact/error` pages (noindex, not in the sitemap), so `/contact` stays static; with JS the form uses the JSON API and shows inline feedback.
