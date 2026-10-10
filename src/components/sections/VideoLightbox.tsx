@@ -21,7 +21,7 @@ export function VideoLightbox({ youtubeId, label }: { youtubeId: string; label: 
         ref={dialog}
         aria-label={label}
         onClose={() => setOpen(false)}
-        className="m-auto w-[min(92vw,calc(var(--u)*72))] bg-transparent p-0 backdrop:bg-ink/90"
+        className="m-auto w-[min(92vw,calc(var(--u)*72))] overflow-visible bg-transparent p-0 backdrop:bg-ink/90"
       >
         <button type="button" onClick={() => dialog.current?.close()} className="absolute -top-14 right-0 grid size-12 place-items-center rounded-full bg-accent text-ink">
           <Icon name="close" />
