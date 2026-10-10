@@ -5,16 +5,22 @@ describe("cylinderItem", () => {
   it("focused item faces the viewer at full opacity", () => {
     expect(cylinderItem(3, 3)).toEqual({ angle: 0, opacity: 1, visible: true });
   });
-  it("items beyond 90° are hidden", () => {
-    const r = cylinderItem(0, 10, 18);
+  it("direct neighbours sit at ~.15, two steps away at ~.05", () => {
+    expect(cylinderItem(4, 3).opacity).toBeCloseTo(0.15);
+    expect(cylinderItem(1, 3).opacity).toBeCloseTo(0.05);
+    expect(cylinderItem(3, 3.5).opacity).toBeCloseTo(0.575);
+  });
+  it("items more than 2.5 steps away are hidden (about five names visible)", () => {
+    const r = cylinderItem(0, 3);
     expect(r.visible).toBe(false);
     expect(r.opacity).toBe(0);
+    const shown = Array.from({ length: 12 }, (_, i) => cylinderItem(i, 5)).filter((x) => x.visible);
+    expect(shown).toHaveLength(5);
   });
-  it("visible items keep at least 3:1 contrast (opacity floor 0.55); depth fades via foreshortening", () => {
-    const r = cylinderItem(0, 5, 18); // 90°: edge-on, so the floor is not perceived
-    expect(r.visible).toBe(true);
-    expect(r.opacity).toBeCloseTo(0.55);
-    expect(cylinderItem(0, 1, 18).opacity).toBeCloseTo(Math.cos(Math.PI / 10)); // 18°: cosine falloff above the floor
+  it("clamps the rotation so names never shear into fake italics", () => {
+    expect(cylinderItem(0, 10, 16).angle).toBe(-40);
+    expect(cylinderItem(10, 0, 16).angle).toBe(40);
+    expect(cylinderItem(4, 3, 16).angle).toBe(16);
   });
 });
 

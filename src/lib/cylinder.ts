@@ -1,12 +1,23 @@
-// Visible names never drop below 3:1 contrast (WCAG large text) on paper/tint; near the cylinder's
-// edges the rotateX foreshortening, not opacity, is what makes them recede.
-const MIN_OPACITY = 0.55;
+// The visible list is decorative (aria-hidden; an sr-only list carries the names), so only the
+// focused name needs full contrast. Neighbours recede by opacity; the angle is clamped so the
+// perspective never shears names into fake italics.
+const STEP_OPACITY = [1, 0.15, 0.05] as const;
+const MAX_STEPS = 2.5;
 
-export function cylinderItem(i: number, focus: number, step = 18) {
-  const angle = (i - focus) * step;
-  const visible = Math.abs(angle) <= 90;
-  const opacity = visible ? Math.max(MIN_OPACITY, Math.cos((angle * Math.PI) / 180)) : 0;
-  return { angle: Object.is(angle, -0) ? 0 : angle, opacity: angle === 0 ? 1 : opacity, visible };
+export function cylinderItem(i: number, focus: number, step = 16) {
+  const d = i - focus;
+  const a = Math.abs(d);
+  const visible = a <= MAX_STEPS;
+  let opacity = 0;
+  if (visible) {
+    const lo = Math.min(2, Math.floor(a));
+    const hi = Math.min(2, lo + 1);
+    const t = Math.min(1, a - lo);
+    opacity = STEP_OPACITY[lo] + (STEP_OPACITY[hi] - STEP_OPACITY[lo]) * t;
+  }
+  const raw = Math.max(-MAX_STEPS, Math.min(MAX_STEPS, d)) * step;
+  const angle = Object.is(raw, -0) ? 0 : raw;
+  return { angle, opacity, visible };
 }
 
 export function timelineIndex(progress: number, count: number) {

@@ -18,7 +18,7 @@ export function NamesCylinder({ section: s }: { section: T }) {
     const probe = document.createElement("div");
     probe.style.cssText = "position:absolute;visibility:hidden;width:var(--u)";
     stage.current.appendChild(probe);
-    let radius = probe.offsetWidth * 14;
+    let radius = probe.offsetWidth * 22;
     let focus = 0;
     const apply = (f: number) => {
       focus = f;
@@ -35,7 +35,7 @@ export function NamesCylinder({ section: s }: { section: T }) {
       pin: true,
       scrub: true,
       onUpdate: (self) => apply(self.progress * (s.names.length - 1)),
-      onRefresh: () => { radius = probe.offsetWidth * 14; apply(focus); },
+      onRefresh: () => { radius = probe.offsetWidth * 22; apply(focus); },
     });
     return () => probe.remove();
   }, { dependencies: [reduced], scope: stage, revertOnUpdate: true });
@@ -61,9 +61,9 @@ export function NamesCylinder({ section: s }: { section: T }) {
           <ul className="sr-only">
             {s.names.map((n) => <li key={n}>{n}</li>)}
           </ul>
-          <ul aria-hidden="true" className="absolute inset-0 grid place-items-center [perspective:calc(var(--u)*60)] [transform-style:preserve-3d]">
+          <ul aria-hidden="true" className="absolute inset-0 grid place-items-center [perspective:calc(var(--u)*90)] [transform-style:preserve-3d]">
             {s.names.map((n) => (
-              <li key={n} data-name className="absolute text-center text-[calc(var(--u)*5)] leading-none tracking-[-0.025em] will-change-transform max-md:text-[calc(var(--u)*3)]">
+              <li key={n} data-name className="absolute whitespace-nowrap text-center text-[calc(var(--u)*2.5)] leading-none tracking-[-0.025em] will-change-transform max-md:text-[min(calc(var(--u)*1.75),6.5vw)]">
                 {n}
               </li>
             ))}
