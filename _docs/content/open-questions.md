@@ -28,6 +28,8 @@ Facts the current 99x.io contradicts or leaves unclear. None block the build: pl
 
 - Hero media for Home: is there 99x team/office video footage, or do we use a photo?
 - Photos with filename alt text / low quality (e.g. "ChatGPT Image Jun 25…", "IMG_0654", "image (3)") need replacement or confirmation.
+- Image review (Task 4): no swaps were needed; all 45 downloaded images fit their roles. Weak or caveated: `about/t-2021.jpg` is a logo lockup (99x + Seeds), not a photo; `home/insight-mcp.jpg` is a webinar poster with baked-in text; `home/case-boligmappa.jpg` and `nearshore-usa/case-cre.jpg` are generic stock; `services/product-engineering.jpg` is an event stage photo (source filename IMG_0654); `nearshore-usa/hero.jpg` shows horizontal banding (likely a screen photo); `people/thiers-santos.jpg` has a small watermark bottom right; `people/steinar-magnussen.jpg` and `people/guilherme-ramos-pereira.jpg` have busy backgrounds unlike the plain studio portraits. Request replacements from 99x if wanted.
+- Brief said 46 images; the manifest contains 45 entries (all fetched).
 - Fonts: if 99x wants the exact cominvi look, license Helvetica Now Display (Monotype) + PP Supply Mono (Pangram Pangram). Until then: Inter Tight + Geist Mono.
 
 ## Copy
