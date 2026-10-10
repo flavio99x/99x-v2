@@ -44,9 +44,18 @@ export function ProofToggle({ section: s }: { section: T }) {
             </button>
           )}
         </div>
-        <div ref={panel} role="tabpanel" id={`${prefix}-panel-${i}`} aria-labelledby={`${prefix}-tab-${i}`} aria-live={reduced || userPaused ? "polite" : "off"} className="flex min-h-[2.2em] max-w-[57em] flex-col items-center gap-4 text-statement">
-          <span className="mask-line"><span data-line-inner className="block text-xxl">{item.value}</span></span>
-          <span className="mask-line"><span data-line-inner className="block">{item.text}</span></span>
+        {/* Stage sized to the tallest statement (invisible sizers share the grid cell) so switching never jumps the layout. */}
+        <div className="-mt-4 grid w-full max-w-[57em] text-statement">
+          {s.items.map((it, n) => (
+            <div key={n} aria-hidden="true" className="invisible col-start-1 row-start-1 flex flex-col items-center gap-4">
+              <span className="block pb-[0.2em] text-xxl">{it.value}</span>
+              <span className="block pb-[0.2em]">{it.text}</span>
+            </div>
+          ))}
+          <div ref={panel} role="tabpanel" id={`${prefix}-panel-${i}`} aria-labelledby={`${prefix}-tab-${i}`} aria-live={reduced || userPaused ? "polite" : "off"} className="col-start-1 row-start-1 flex flex-col items-center gap-4">
+            <span className="mask-line"><span data-line-inner className="block pb-[0.2em] text-xxl">{item.value}</span></span>
+            <span className="mask-line"><span data-line-inner className="block pb-[0.2em]">{item.text}</span></span>
+          </div>
         </div>
       </div>
     </SectionShell>
