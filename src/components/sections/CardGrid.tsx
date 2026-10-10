@@ -18,7 +18,8 @@ export function CardGrid({ section: s }: { section: T }) {
               <Icon name={c.icon} className="size-12" />
               <div className="flex flex-col gap-4">
                 <h3 className="text-card">{c.title}</h3>
-                <p className="text-body-s text-ink/70 lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:ease-house lg:group-hover/card:max-h-40 lg:group-hover/card:opacity-100 lg:group-focus-within/card:max-h-40 lg:group-focus-within/card:opacity-100">
+                {/* Linked cards reveal their description on hover/focus where a fine pointer exists; otherwise it's always shown. */}
+                <p className={cn("text-body-s text-ink/70", c.link && "hover-fine:max-h-0 hover-fine:overflow-hidden hover-fine:opacity-0 hover-fine:transition-all hover-fine:duration-500 hover-fine:ease-house hover-fine:group-hover/card:max-h-40 hover-fine:group-hover/card:opacity-100 hover-fine:group-focus-within/card:max-h-40 hover-fine:group-focus-within/card:opacity-100")}>
                   {c.description}
                 </p>
               </div>
