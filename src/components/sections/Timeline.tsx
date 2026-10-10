@@ -73,7 +73,7 @@ export function Timeline({ section: s }: { section: T }) {
             <Image key={it.image.src} src={it.image.src} alt={i === active ? it.image.alt : ""} fill sizes="100vw"
               className="object-cover transition-opacity duration-700 ease-house" style={{ opacity: i === active ? 0.55 : 0 }} />
           ))}
-          <div aria-hidden="true" className="absolute inset-0 grid grid-cols-4 items-center site-x text-[calc(var(--u)*14)] leading-none max-md:text-[calc(var(--u)*6)]">
+          <div aria-hidden="true" className="absolute inset-0 flex items-center justify-between site-x text-[calc(var(--u)*7)] leading-none tabular-nums max-md:text-[calc(var(--u)*4)]">
             {[0, 1, 2, 3].map((pos) => (
               <div key={pos} className="h-[1em] overflow-hidden text-center">
                 <div data-digit-col>

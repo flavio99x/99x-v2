@@ -10,8 +10,10 @@ export function DisplayLine({ section: s }: { section: T }) {
         {s.fill === "pill" ? (
           <PillWipe text={s.text} />
         ) : (
+          // Photo-filled text: the clipped image is decorative, so the solid ink fallback colour stays the
+          // text colour for contrast tools and for browsers without background-clip:text.
           <p
-            className="text-xxl bg-cover bg-center bg-clip-text text-transparent"
+            className="text-xxl text-ink supports-[background-clip:text]:bg-cover supports-[background-clip:text]:bg-[center_55%] supports-[background-clip:text]:bg-clip-text supports-[background-clip:text]:text-transparent"
             style={{ backgroundImage: s.image ? `url(${s.image.src})` : undefined }}
           >
             {s.text}
