@@ -5,11 +5,13 @@ import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { SmartLink } from "@/components/ui/SmartLink";
 import { FadeUp } from "@/components/motion/FadeUp";
+import { cn } from "@/lib/cn";
 
 export function CardGrid({ section: s }: { section: T }) {
   return (
     <SectionShell theme={s.theme} head={s.head} id={s.id}>
-      <FadeUp className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {/* Four tiles read as one row on desktop (2×2 on tablet); five or six keep the 3-column grid. */}
+      <FadeUp className={cn("grid grid-cols-1 gap-4 md:grid-cols-2", s.cards.length + (s.photo ? 1 : 0) === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>
         {s.cards.map((c) => {
           const body = (
             <>

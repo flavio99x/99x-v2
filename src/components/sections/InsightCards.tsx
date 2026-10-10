@@ -5,6 +5,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { SmartLink } from "@/components/ui/SmartLink";
 import { FadeUp } from "@/components/motion/FadeUp";
+import { cn } from "@/lib/cn";
 
 export function InsightCards({ section: s }: { section: T }) {
   return (
@@ -17,7 +18,7 @@ export function InsightCards({ section: s }: { section: T }) {
               <h3 className="text-body-m">{c.title}</h3>
             </div>
             <div className="relative aspect-square w-full shrink-0 overflow-hidden rounded-sm md:w-[40%]">
-              <Image src={c.image.src} alt={c.image.alt} fill sizes="(min-width: 768px) 15vw, 100vw" className="object-cover transition-transform duration-700 ease-house group-hover/ins:scale-105" />
+              <Image src={c.image.src} alt={c.image.alt} fill sizes="(min-width: 768px) 15vw, 100vw" className={cn(c.imageFit === "contain" ? "object-contain" : "object-cover", "transition-transform duration-700 ease-house group-hover/ins:scale-105")} />
             </div>
           </SmartLink>
         ))}

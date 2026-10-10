@@ -94,7 +94,7 @@ export const home: Page = {
       head: { index: "S.07", label: "Insights" },
       cards: [
         { kind: "Blog", title: "What is data science and why is it critical for business growth?", image: img("home/insight-data-science.jpg", "Data visualisation on a screen"), link: { label: "Read", href: X("/Insights/blog/what-is-data-science-and-why-is-it-critical-for-business-growth"), external: true } },
-        { kind: "Webinar", title: "Adapting MCP for business applications", image: img("home/insight-mcp.jpg", "Webinar speakers discussing MCP"), link: { label: "Watch", href: X("/events/2025/adapting-mcp-for-business-applications"), external: true } },
+        { kind: "Webinar", title: "Adapting MCP for business applications", image: img("home/insight-mcp.jpg", "Webinar speakers discussing MCP"), imageFit: "contain", link: { label: "Watch", href: X("/events/2025/adapting-mcp-for-business-applications"), external: true } },
         { kind: "News", title: "99x reports breakthrough market traction for its agentic AI platform", image: img("home/insight-agentic.jpg", "99x team at a product launch"), link: { label: "Read", href: "https://www.ft.lk/it-telecom-tech/99x-reports-breakthrough-market-traction-for-new-Agentic-AI-platform/50-779890", external: true } },
       ],
       link: { label: "All insights", href: X("/Insights"), external: true },

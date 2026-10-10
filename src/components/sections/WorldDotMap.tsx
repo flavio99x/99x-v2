@@ -13,6 +13,8 @@ const LAND: Record<number, [number, number][]> = {
 } as Record<number, [number, number][]>;
 
 const W = 360, H = 170, STEP = 3;
+/** Rough width of a city label (5px mono caps) plus the gap to its dot. */
+const LABEL_W = 40;
 const MAP_H = H * (180 / 170);
 
 const DOTS: { x: number; y: number }[] = [];
@@ -31,11 +33,17 @@ export function WorldDotMap({ offices, active }: { offices: Office[]; active?: s
         {offices.map((o) => {
           const p = project(o.lat, o.lng, W, MAP_H);
           const on = active === o.id;
+          // Flip the label to the left when another office sits just to the right (e.g. Colombo → Kuala Lumpur).
+          const crowded = offices.some((q) => {
+            if (q.id === o.id) return false;
+            const r = project(q.lat, q.lng, W, MAP_H);
+            return r.x > p.x && r.x - p.x < LABEL_W && Math.abs(r.y - p.y) < 8;
+          });
           return (
             <g key={o.id}>
               <circle cx={p.x} cy={p.y} r={on ? 5 : 3.5} className="fill-accent/40" />
               <circle cx={p.x} cy={p.y} r={1.8} className="fill-accent-deep" />
-              <text x={p.x + 5} y={p.y + 1.5} className="fill-current font-mono text-[5px] uppercase">{o.city}</text>
+              <text x={crowded ? p.x - 5 : p.x + 5} y={p.y + 1.5} textAnchor={crowded ? "end" : "start"} className="fill-current font-mono text-[5px] uppercase">{o.city}</text>
             </g>
           );
         })}

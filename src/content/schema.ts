@@ -116,7 +116,8 @@ export const CaseCardsSectionSchema = z.object({
 export const InsightCardsSectionSchema = z.object({
   type: z.literal("insightCards"),
   ...base,
-  cards: z.array(z.object({ kind: z.string(), title: z.string(), image: ImgSchema, link: LinkSchema })).min(1).max(3),
+  // imageFit "contain": the thumbnail has text baked in, so it must not be cropped.
+  cards: z.array(z.object({ kind: z.string(), title: z.string(), image: ImgSchema, imageFit: z.enum(["cover", "contain"]).optional(), link: LinkSchema })).min(1).max(3),
   link: LinkSchema.optional(),
 });
 export const MediaStatementSectionSchema = z.object({
