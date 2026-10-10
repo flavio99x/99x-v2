@@ -1,4 +1,5 @@
-import NextLink from "next/link";
+"use client";
+import { TransitionLink } from "@/components/motion/TransitionLink";
 import type { Link } from "@/content/schema";
 
 type Props = { link: Link; className?: string; children?: React.ReactNode; onClick?: React.MouseEventHandler<HTMLAnchorElement> };
@@ -22,8 +23,8 @@ export function SmartLink({ link, className, children, onClick }: Props) {
     );
   }
   return (
-    <NextLink href={link.href} className={className} onClick={onClick}>
+    <TransitionLink href={link.href} className={className} onClick={onClick}>
       {content}
-    </NextLink>
+    </TransitionLink>
   );
 }
