@@ -1,7 +1,9 @@
-// The visible list is decorative (aria-hidden; an sr-only list carries the names), so only the
-// focused name needs full contrast. Neighbours recede by opacity; the angle is clamped so the
-// perspective never shears names into fake italics.
-const STEP_OPACITY = [1, 0.15, 0.05] as const;
+// The visible list is aria-hidden (an sr-only list carries the names), but axe still checks its
+// contrast, so every name at rest stays >= 3:1 (opacity .55 on paper/tint). Beyond two steps a name
+// fades out over the last half step and is then hidden; the angle is clamped so the perspective
+// never shears names into fake italics.
+const MIN_OPACITY = 0.55;
+const STEP_OPACITY = [1, MIN_OPACITY, MIN_OPACITY] as const;
 const MAX_STEPS = 2.5;
 
 export function cylinderItem(i: number, focus: number, step = 16) {
@@ -9,11 +11,12 @@ export function cylinderItem(i: number, focus: number, step = 16) {
   const a = Math.abs(d);
   const visible = a <= MAX_STEPS;
   let opacity = 0;
-  if (visible) {
-    const lo = Math.min(2, Math.floor(a));
+  if (visible && a > 2) {
+    opacity = MIN_OPACITY * (MAX_STEPS - a) / (MAX_STEPS - 2);
+  } else if (visible) {
+    const lo = Math.floor(a);
     const hi = Math.min(2, lo + 1);
-    const t = Math.min(1, a - lo);
-    opacity = STEP_OPACITY[lo] + (STEP_OPACITY[hi] - STEP_OPACITY[lo]) * t;
+    opacity = STEP_OPACITY[lo] + (STEP_OPACITY[hi] - STEP_OPACITY[lo]) * (a - lo);
   }
   const raw = Math.max(-MAX_STEPS, Math.min(MAX_STEPS, d)) * step;
   const angle = Object.is(raw, -0) ? 0 : raw;

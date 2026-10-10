@@ -5,10 +5,11 @@ describe("cylinderItem", () => {
   it("focused item faces the viewer at full opacity", () => {
     expect(cylinderItem(3, 3)).toEqual({ angle: 0, opacity: 1, visible: true });
   });
-  it("direct neighbours sit at ~.15, two steps away at ~.05", () => {
-    expect(cylinderItem(4, 3).opacity).toBeCloseTo(0.15);
-    expect(cylinderItem(1, 3).opacity).toBeCloseTo(0.05);
-    expect(cylinderItem(3, 3.5).opacity).toBeCloseTo(0.575);
+  it("names at rest keep >= 3:1 contrast (opacity .55) and fade out only past two steps", () => {
+    expect(cylinderItem(4, 3).opacity).toBeCloseTo(0.55);
+    expect(cylinderItem(1, 3).opacity).toBeCloseTo(0.55);
+    expect(cylinderItem(3, 3.5).opacity).toBeCloseTo(0.775);
+    expect(cylinderItem(0, 2.25).opacity).toBeCloseTo(0.275);
   });
   it("items more than 2.5 steps away are hidden (about five names visible)", () => {
     const r = cylinderItem(0, 3);
