@@ -46,7 +46,7 @@ All copy is being rewritten. New wording that implies a new factual claim will b
 
 ## Group companies
 
-The list is still to be confirmed with 99x, including whether "LeanOn" and "Digital Solutions" are current group companies and how they should be named on the site.
+The About "99x group" names cylinder (S.06) currently lists 11 companies, to be confirmed with 99x: 99x Technology, Seeds, Cleverti, LeanOn, Clave Consulting, Solvr, Nextly, Gture, Republic, Increo, Digital Solutions. "LeanOn" and "Digital Solutions" are the uncertain ones (confirm they are current group companies and their correct names).
 
 ## Image notes
 
