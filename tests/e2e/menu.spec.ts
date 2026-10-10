@@ -8,6 +8,8 @@ test.describe("menu", () => {
     await expect(button).toHaveAttribute("aria-expanded", "true");
     const nav = page.getByRole("navigation", { name: "Main" });
     await expect(nav).toBeVisible();
+    // Focus moves into the dialog on open
+    await expect(nav.getByRole("link").first()).toBeFocused();
     await expect(nav.getByRole("link", { name: "About us" })).toBeVisible();
     // Tab many times: focus must stay inside the menu dialog
     for (let i = 0; i < 25; i++) await page.keyboard.press("Tab");

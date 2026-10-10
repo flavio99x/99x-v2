@@ -25,7 +25,8 @@ export function Menu({ site }: { site: Site }) {
       if (menuOpen) {
         gsap.set(ref.current, { visibility: "visible" });
         if (desktop) gsap.to(page, { y: () => ref.current!.querySelector("[data-menu-inner]")!.clientHeight, scale: 0.96, borderRadius: "calc(var(--u) * 0.5)", duration: d, ease: HOUSE_EASE });
-        gsap.fromTo(ref.current!.querySelectorAll("[data-menu-item]"), { yPercent: 100, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, stagger: 0.03, duration: reduced ? 0 : 0.8, ease: HOUSE_EASE, delay: reduced ? 0 : 0.2 });
+        // opacity, not autoAlpha: items must stay focusable so focus can move into the dialog on open.
+        gsap.fromTo(ref.current!.querySelectorAll("[data-menu-item]"), { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.03, duration: reduced ? 0 : 0.8, ease: HOUSE_EASE, delay: reduced ? 0 : 0.2 });
       } else {
         gsap.to(page, { y: 0, scale: 1, borderRadius: 0, duration: d, ease: HOUSE_EASE, clearProps: "transform,borderRadius" });
         gsap.to(ref.current, { visibility: "hidden", delay: d });
