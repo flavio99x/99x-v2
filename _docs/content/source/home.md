@@ -1,0 +1,754 @@
+# Home
+
+Source: https://99x.io/
+
+## SEO / head metadata
+
+- title: Expert Teams for Digital Products, Tech Solutions and AI solutions
+- `<meta name="description" content="99x helps ambitious companies innovate and scale with expert teams, global delivery, and AI‑enhanced tools for digital products, web solutions, and software development.">`
+- `<meta property="og:title" content="Expert Teams for Digital Products, Tech Solutions and AI solutions">`
+- `<meta property="og:description" content="99x helps ambitious companies innovate and scale with expert teams, global delivery, and AI‑enhanced tools for digital products, web solutions, and software development.">`
+- `<meta property="og:site_name" content="Boost your digital potential">`
+- `<meta property="og:url" content="https://99x.io">`
+- `<meta property="og:type" content="website">`
+- `<meta property="og:locale" content="en">`
+- `<meta property="og:image" content="https://99x.io/_/media:image/english/3d8c6b23-33a4-4724-a359-2f57c66582c8:2c419a25f4404a44265c8f2b9fc1e970/block-1200-630/99x%20500px%20logo.png">`
+- `<meta property="og:image:width" content="1200">`
+- `<meta property="og:image:height" content="630">`
+- `<link rel="apple-touch-icon" sizes="57x57" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-57/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="60x60" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-60/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="72x72" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-72/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="76x76" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-76/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="114x114" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-114/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="120x120" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-120/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="144x144" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-144/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="152x152" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-152/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="apple-touch-icon" sizes="180x180" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-180/99xfavicon-512x512.png.jpg" type="image/jpg">`
+- `<link rel="icon" sizes="16x16" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-16/99xfavicon-512x512.png" type="image/png">`
+- `<link rel="icon" sizes="32x32" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-32/99xfavicon-512x512.png" type="image/png">`
+- `<link rel="icon" sizes="96x96" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-96/99xfavicon-512x512.png" type="image/png">`
+- `<link rel="icon" sizes="192x192" href="https://99x.io/_/media:image/english/f30e4600-246c-4f58-a9c9-a52687f8380c:dd8b9f5ad77350140d1bb1d0edbc62fb/square-192/99xfavicon-512x512.png" type="image/png">`
+- `<link rel="canonical" href="https://99x.io">`
+
+## Page content (from react4xp server props, in render order)
+
+### Section 1: `hero-interactive`
+
+- **title**: We build digital products, scale teams, and integrate AI
+- **intro**: so you can focus on growth
+- **primaryCta**:
+  - **label**: Contact us
+  - **href**: /about-us/contact-us
+  - **isExternal**: False
+- **secondaryCta**:
+  - **label**: AI in 99x
+  - **href**: /ai-99x
+  - **isExternal**: False
+- **stats**: (3 items)
+  - [1]
+    - **value**: 20+
+    - **label**: years experience
+  - [2]
+    - **value**: 600+
+    - **label**: employees
+  - [3]
+    - **value**: 5
+    - **label**: continents represented
+
+### Section 2: `expandable-link-list`
+
+- **overline**: What we do
+- **links**: (4 items)
+  - [1]
+    - **linkText**: Digital Product Engineering
+    - **description**: Create exceptional products through our facilitated teams. 
+    - **href**: https://99x.io/services/product-engineering
+    - **external**: False
+    - **expandable**: True
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/a870a6dc-dd93-4465-99c7-6d73808c6efa:071c7b5ed99a107d1820c19af2388c71/block-532-532/Increo_Wittrup_DSC0586_WEB.jpg
+      - **alt**: Man sitting infront of a computer screen
+  - [2]
+    - **linkText**: Web Solutions
+    - **description**: Building websites, apps, and integrations tailored to what actually fits your business.
+    - **href**: https://99x.io/services/web-solutions
+    - **external**: False
+    - **expandable**: True
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/c646f293-dce4-4312-a6f0-36534c334d7c:40f5919d2664f019b7d1557f647804cc/block-532-532/Increo_Wittrup_DSC0565_WEB.jpg
+      - **alt**: People sitting and talking
+  - [3]
+    - **linkText**: Tech Talent Europe
+    - **description**: Scale your team with top local and nearshore engineering talent. 
+    - **href**: https://99x.io/services/tech-experts-Europe
+    - **external**: False
+    - **expandable**: True
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/d5f8989f-d743-45a1-83ae-0297a13b1d33:9c5f67ef21f28d6ab6e0772263c4b0a3/block-532-532/Increo_Wittrup_DSC0597_WEB.jpg
+      - **alt**: Woman smiling infront of a computer screen
+  - [4]
+    - **linkText**: Tech Talent USA & Canada
+    - **description**: Scale your team with top-tier nearshore engineering talent.
+    - **href**: https://99x.io/services/nearshore-tech-talent-usa
+    - **external**: False
+    - **expandable**: True
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/8404173f-3d59-4c74-a1a9-a61d13975e0b:f6ae4759f48de108233b0ed7095c23c6/block-532-532/Increo_Wittrup_DSC0747_WEB.jpg
+      - **alt**: People sitting around a table and talking
+- **hasAnyImage**: True
+
+### Section 3: `featured-cards`
+
+- **overline**: Case studies
+- **title**: See how we've helped other businesses build solutions that actually work and last.
+- **cards**: (61 items)
+  - [1]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/e5e32f77-efb7-41aa-bd5d-5210c39455d1:dac413f6e2bda96f6eab3cdaefc5840e/block-580-435/last%20ned%20(3).png
+      - **alt**: Kavli_Q
+    - **title**: From four brand identities to one platform that grows with Kavli
+    - **href**: https://99x.io/case-studies/web-solutions/from-four-brand-identities-to-one-platform-that-grows-with-kavli
+    - **external**: False
+  - [2]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/2e1aafc8-1690-4136-8ae5-1ef537540668:4fb2034490b92c36d1275630dae0080b/block-580-435/ChatGPT%20Image%20Jun%2025,%202026,%2011_35_40%20AM.png
+      - **alt**: ChatGPT Image Jun 25, 2026, 11_35_40 AM
+    - **title**: Pilea Insights – Transforming Customer Feedback into AI-Ready Product Intelligence 
+    - **href**: https://99x.io/case-studies/product-engineering/Pilea-Insights-Transforming-Customer-Feedback-into-AI-Ready-Product-Intelligence
+    - **external**: False
+  - [3]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/75f79d3e-3ce9-454f-a052-870652461cd3:1b035c1c81c39ba1088e97c17d197068/block-580-435/image%20(3).png
+      - **alt**: image (3)
+    - **title**: Enabling Precision Engineering with Embedded Systems Innovation 
+    - **href**: https://99x.io/case-studies/product-engineering/enabling-precision-engineering-with-embedded-systems-innovation
+    - **external**: False
+  - [4]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/f0931737-0588-48ef-a62e-cc408c174e9e:7a8900e860772ed64f57d0fc913e99ff/block-580-435/Gemini_Generated_Image_49ducw49ducw49du.png
+      - **alt**: Gemini_Generated_Image_49ducw49ducw49du
+    - **title**: Unified Data Platform for Operational Insights
+    - **href**: https://99x.io/case-studies/product-engineering/Unified-Data-Platform-for-Operational-Insights
+    - **external**: False
+  - [5]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/8b284799-8eda-4b76-8583-54e1e4e5583b:12b51ccab9dc942ea3e23d2cb3b2b719/block-580-435/Cantor%20x%2099x%20case%20study.png
+      - **alt**: Cantor x 99x case study
+    - **title**: Cantor & 99x Collaborate to launch Cantor’s Cloud-based Product Offering
+    - **href**: https://99x.io/case-studies/product-engineering/Cantor-and-Collaborate-to-launch-Cantors-Cloud-based-Product-Offering
+    - **external**: False
+  - [6]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/8b3d162c-bc7c-44c9-9454-639a93a66216:11225394aee26c8bea38a1aa755ab10a/block-580-435/Copy%20of%20Website%20Graphics%20(5).jpg
+      - **alt**: Copy of Website Graphics (5)
+    - **title**: Democratizing Legal Security, Future Planning, and Data-Driven Preparedness with Agentic AI 
+    - **href**: https://99x.io/case-studies/product-engineering/Democratizing-Lega-Security-Future-Planning-and-Data-Driven-Preparedness-with-Agentic-AI
+    - **external**: False
+  - [7]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/cb2540a2-a47f-4ae1-8a57-660ef247b048:5d5dc8dc6131b11b350bb01fabc96d94/block-580-435/pengefix.jpg
+      - **alt**: pengefix
+    - **title**: Delivering Norway-Specific AI-Powered Personal Financial Guidance
+    - **href**: https://99x.io/case-studies/product-engineering/Delivering-Norway-Specific-AI-Powered-Personal-Finance
+    - **external**: False
+  - [8]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/d97281b9-0a8a-4a87-ba7b-ba4da8827aed:b34005e1b3c5caa0067cc8652c1017e2/block-580-435/hospital_lobby_1248607560.jpg
+      - **alt**: hospital_lobby_1248607560
+    - **title**: Transforming Therapy Practices with Advanced EHR and RCM Solutions
+    - **href**: https://99x.io/case-studies/product-engineering/Transforming-Therapy-Practices-with-Advanced-EHR-and-RCM-Solutions
+    - **external**: False
+  - [9]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/d00070dc-50ea-4e37-82a5-a12c296812c5:34bd1a582f825f20e7c2fa50432da273/block-580-435/99x_Modernizing-Hospitality-Operations-with-a-Unified-Digital-Platform.jpg
+      - **alt**: Modernizing Hospitality Operations
+    - **title**: Modernizing Hospitality Operations with a Unified Digital Platform
+    - **href**: https://99x.io/case-studies/tech-experts/modernizing-hospitality-operations-with-a-unified-digital-platform
+    - **external**: False
+  - [10]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/995b8b62-c432-4379-9bcd-899e4568c77b:fe4efc10671015f63f304d3443b0e922/block-580-435/Copy%20of%20Black%20and%20White%20Modern%20Artificial%20Intelligence%20Presentation.png
+      - **alt**: Copy of Black and White Modern Artificial Intelligence Presentation
+    - **title**: From Questions to Queries: Building an AI Agent That Speaks Database
+    - **href**: https://99x.io/case-studies/product-engineering/From-Questions-to-Queries-Building-an-AI%20Agent-That-Speaks-Database
+    - **external**: False
+  - [11]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/dc693731-d4ae-4a75-b458-113175d0c470:58b5c0dd60353e00b3e77c367974dce2/block-580-435/99x_Driving%20Efficiency%20in%20Energy%20Distribution%20through%20SAP%20Integration%20and%20Telemetry%20Automation2.jpg
+      - **alt**: Energy Distribution SAP Integration
+    - **title**: Driving Efficiency in Energy Distribution through SAP Integration and Telemetry Automation
+    - **href**: https://99x.io/case-studies/tech-experts/driving-efficiency-in-energy-distribution-through-sap-integration-and-telemetry-automation
+    - **external**: False
+  - [12]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/9abf9f84-baf3-4b00-9144-76b46786ac1b:4f0c88644251e7f29869d0bef14dd2ab/block-580-435/99x_Transforming-Customer-Due-Diligence-Profiling-into-a-Scalable,-AI-Powered-Compliance-Platform-_Blog.jpg
+      - **alt**: Customer Due Diligence AI-Powered Compliance Platform 
+    - **title**: Transforming Customer Due Diligence Profiling into a Scalable, AI-Powered Compliance Platform 
+    - **href**: https://99x.io/case-studies/tech-experts/transforming-customer-due-diligence-profiling-into-a-scalable-ai-powered-compliance-platform
+    - **external**: False
+  - [13]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/359df6f7-ea9b-4656-ae3a-b8103e2ef8f8:7331d00a91f871bff521587dca55edbf/block-580-435/99x_Helping-a-Leading-ERP-&-E-Commerce-Platform.jpg
+      - **alt**: Helping a Leading ERP & E-Commerce Platform to Modernize
+    - **title**: Helping a Leading ERP & E-Commerce Platform Modernize, Scale, and Innovate
+    - **href**: https://99x.io/case-studies/tech-experts/helping-a-leading-erp-e-commerce-platform-modernize-scale-and-innovate
+    - **external**: False
+  - [14]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/77febce9-ca49-47f4-9af5-ba3fda3680db:664a7509fac79c5eaaa5c831da28fe1a/block-580-435/representation-user-experience-interface-design-smartphone_23-2150165972.jpg
+      - **alt**: representation-user-experience-interface-design-smartphone_23-2150165972
+    - **title**: Visma Amili : Revolutionizing Credit Management with Automation
+    - **href**: https://99x.io/case-studies/product-engineering/visma-amili-revolutionizing-credit-management-with-automation
+    - **external**: False
+  - [15]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/380ae02e-f9bf-4915-bcd0-8c4a44473b22:83456ede63a7e406306f04e766b3b1ee/block-580-435/99x_Empowering-Scalability-and-Fault-Tolerance-through-Cloud-DevOps-Transformation_Website.jpg
+      - **alt**: Fault Tolerance Cloud/DevOps Transformation
+    - **title**: Empowering Scalability and Fault Tolerance through Cloud/DevOps Transformation
+    - **href**: https://99x.io/case-studies/tech-experts/empowering-scalability-and-fault-tolerance-through-cloud-devops-transformation
+    - **external**: False
+  - [16]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/672b234e-7876-4494-b86e-f15b4e754ceb:38e01b9962f7ebbb032849de289aae96/block-580-435/close-up-young-asia-business-lady-open-laptop-comp-2024-11-02-10-44-52-utc.jpg
+      - **alt**: Youtello by eDialog24: Integrating Communication and CRM with Cutting-Edge Technology
+    - **title**: Youtello by eDialog24: Integrating Communication and CRM with Cutting-Edge Technology
+    - **href**: https://99x.io/case-studies/product-engineering/youtello-by-edialog24-integrating-communication-and-crm-with-cutting-edge-technology
+    - **external**: False
+  - [17]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/e11aab48-791c-4789-83d5-30be82b5e14b:8a308c449b1c310e9f798220562a517d/block-580-435/senior-man-at-home-in-lounge-having-blood-pressure-2024-10-21-16-42-10-utc.jpg
+      - **alt**: Varda Care & 99x - Revolutionizing Healthcare with Advanced Monitoring Technologies
+    - **title**: Varda Care: Revolutionizing Healthcare with Advanced Monitoring Technologies
+    - **href**: https://99x.io/case-studies/product-engineering/varda-care-revolutionizing-healthcare-with-advanced-monitoring-technologies
+    - **external**: False
+  - [18]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/a458aef3-e209-4e6d-8809-a714c7609bae:d78a4ad06932d768202472487cf7da11/block-580-435/99x_SmartMobility.jpg
+      - **alt**: Big Data and Analytics Vehicle Development
+    - **title**: Enriching Vehicle Development with Big Data and Analytics
+    - **href**: https://99x.io/case-studies/tech-experts/enriching-vehicle-development-with-big-data-and-analytics
+    - **external**: False
+  - [19]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/aa718f81-1f1f-413b-acf9-0e460f42b5d6:51688eaa70fdbe921351cd774bc6320b/block-580-435/interflora_mac.jpg
+      - **alt**: interflora_mac
+    - **title**: A Flourishing E-commerce Solution for Interflora
+    - **href**: https://99x.io/case-studies/web-solutions/a-flourishing-e-commerce-solution-for-interflora
+    - **external**: False
+  - [20]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/df783d95-8681-4f64-9b92-dbd32577c03e:57a895231300880301d30f234ec4083b/block-580-435/99x_-Optimizing-Furniture-Platform-Stability-&-Performance-with-Manual-and-Automated-Testing_Website.jpg
+      - **alt**: Furniture Platform Manual and Automated Testing
+    - **title**: Optimizing Furniture Platform Stability & Performance with Manual and Automated Testing
+    - **href**: https://99x.io/case-studies/tech-experts/optimizing-furniture-platform-stability-performance-with-manual-and-automated-testing
+    - **external**: False
+  - [21]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/52690b07-4703-4745-950e-0030bed4c407:52cf6a79c62a796898e207ff6d946285/block-580-435/BagID_baglineup.jpg
+      - **alt**: BagID_baglineup
+    - **title**: BagID : Empowering Modern Air Travel with Innovative Baggage Solutions
+    - **href**: https://99x.io/case-studies/product-engineering/bagid
+    - **external**: False
+  - [22]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/5c7c8c17-f794-4950-a7e9-67b021045f01:b659d5d01d6b6e32991296b92c182db1/block-580-435/Chemical%20factory.jpg
+      - **alt**: Chemical factory
+    - **title**: Inamata: An IoT Platform for Process Automation, Monitoring and Compliance 
+    - **href**: https://99x.io/case-studies/product-engineering/inamata
+    - **external**: False
+  - [23]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/a78b8f73-ff41-484f-a61c-ee4040b23ac6:6eef479386a9cb845391a3f06b27beec/block-580-435/teacher-teaching-his-students-online-2023-11-27-05-18-04-utc.jpg
+      - **alt**: teacher-teaching-his-students-online-2023-11-27-05-18-04-utc
+    - **title**: Autotech: Simplifying digital learning through state-of-the-art technology
+    - **href**: https://99x.io/case-studies/product-engineering/autotech
+    - **external**: False
+  - [24]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/2d8caf0c-0a9a-4942-96ac-97ff395b7978:7a15c53b3da0a21904934e981a1d58a4/block-580-435/creative-people-working-in-the-office-2023-11-27-05-06-27-utc.jpg
+      - **alt**: creative-people-working-in-the-office-2023-11-27-05-06-27-utc
+    - **title**: Adline: Reimagining online advertising through automation and AI
+    - **href**: https://99x.io/case-studies/product-engineering/adline
+    - **external**: False
+  - [25]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/56968e67-2773-4a35-81d5-a789777a442f:c1f2ef14d57941c0b7a8ca1026e7c506/block-580-435/Task%20Analytics.jpg
+      - **alt**: Task Analytics
+    - **title**: Task Analytics: End-to-end project management for an intuitive analytics platform
+    - **href**: https://99x.io/case-studies/product-engineering/task-analytics
+    - **external**: False
+  - [26]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/cf43d70e-fe98-40d9-a81c-3b6db478b0f3:61f4049f836fd94f96d7f21285d5ac16/block-580-435/Sustainable%20facilty%20management.jpg
+      - **alt**: Sustainable facilty management
+    - **title**: Facilit: Enabling sustainable facility management to over 70% of Norway’s public sector
+    - **href**: https://99x.io/case-studies/product-engineering/facilit
+    - **external**: False
+  - [27]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/40fd2d1c-e8d3-4b80-83d6-49fa4630f3b3:7a91206de340e9a7f115258640b9f7b1/block-580-435/Norwegian%20Household.jpg
+      - **alt**: Norwegian Household
+    - **title**: Boligmappa: Handling the service booklet of 1.2 million Norwegian households
+    - **href**: https://99x.io/case-studies/product-engineering/boligmappa
+    - **external**: False
+  - [28]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/52909d72-3a6c-404f-bb21-b145c40f04bd:1e0c7e5afc67f3d724a17584000e199e/block-580-435/CPU%20-%20Payment%20solutions.jpg
+      - **alt**: CPU - Payment solutions
+    - **title**: CPU: Enhancing payment solutions through cutting-edge tech
+    - **href**: https://99x.io/case-studies/product-engineering/cpu
+    - **external**: False
+  - [29]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/28f1f894-c795-4e96-ab8c-d39b90b85805:58dcc84f9a4f8b9e969ee46a5afebdd7/block-580-435/increasing-efficiencies-by-over-60-for-norways-top-travel-curator
+      - **alt**: Increasing efficiencies by over 60% for Norway’s top travel curator
+    - **title**: Up Norway: Increasing efficiencies by over 60% for Norway’s top travel curator
+    - **href**: https://99x.io/case-studies/product-engineering/up-norway
+    - **external**: False
+  - [30]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/c7076240-b6fd-4c8e-a51c-86f8361b507d:9523ee1fea07acae3b5a6c75f7380af0/block-580-435/99x_Nearshore_CarManufacturing.jpg
+      - **alt**: Automotive Software Development Nearshore
+    - **title**: Accelerating Innovation in Automotive Software Development with Nearshore 
+    - **href**: https://99x.io/case-studies/tech-experts/accelerating-innovation-in-automotive-software-development-with-nearshore
+    - **external**: False
+  - [31]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/7c0fe6e0-9f4b-4c62-8e04-b79816fb8ec3:850bab304f5d5c447eed840d0ba1dc0c/block-580-435/Skjermbilde%202025-12-11%20kl.%2000.22.41.png
+      - **alt**: Norsk_toppfotball
+    - **title**: Norsk Toppfotball
+    - **href**: https://99x.io/case-studies/web-solutions/norsk-toppfotball
+    - **external**: False
+  - [32]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/90e02b42-ccec-4085-88b0-6eba0453b43c:c6687be29a4f32c30a7faeffe45d72c9/block-580-435/DIBK_nettside.jpg
+      - **alt**: DIBK_nettside
+    - **title**: The Norwegian Directorate for Building Quality
+    - **href**: https://99x.io/case-studies/web-solutions/the-norwegian-directorate-for-building-quality-hei
+    - **external**: False
+  - [33]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/c0b6426a-68a8-4e2a-acbf-f2e03a63e736:e116a0e607eb0a2562d9b71d2b8c08c6/block-580-435/Forskerforbundet-website.png
+      - **alt**: Forskerforbundet-website
+    - **title**: Forskerforbundet
+    - **href**: https://99x.io/case-studies/web-solutions/forskerforbundet
+    - **external**: False
+  - [34]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/90965d87-51c1-4111-9886-d9c1de9596b6:82bf7378d43e9385d1f567285dbb44bf/block-580-435/Top%20Blomqvist.jpg
+      - **alt**: Top Blomqvist
+    - **title**: A brand-new auction platform for Blomqvist
+    - **href**: https://99x.io/case-studies/web-solutions/blomqvist-new-digital-platform
+    - **external**: False
+  - [35]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/dd88a5d4-8052-4016-aff5-5290d4b8a368:b7cf3e3bcdde6c4e766f846aeab933f1/block-580-435/Superoffice.jpg
+      - **alt**: Superoffice
+    - **title**: SuperOffice: Reducing cycle time for Europe’s leading CRM provider through continuous quality assurance
+    - **href**: https://99x.io/case-studies/product-engineering/superoffice
+    - **external**: False
+  - [36]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/e57ee33e-f323-42f5-a756-be9f3dc2f368:9d4ad6447659ee7109c7878811724441/block-580-435/99x_GeospacialSolutions.jpg
+      - **alt**: Reliable Geospatial Solutions
+    - **title**: Powering Reliable Geospatial Solutions in Challenging Environments
+    - **href**: https://99x.io/case-studies/tech-experts/powering-reliable-geospatial-solutions-in-challenging-environments
+    - **external**: False
+  - [37]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/95b80a60-f56b-48e2-b00f-ba2afc2dd774:0c4dfcbbcd1cdd9ae17a8208f341e89a/block-580-435/Easy2You.jpg
+      - **alt**: Easy2You
+    - **title**: Easy2You: Technologically transforming traditional logistics
+    - **href**: https://99x.io/case-studies/product-engineering/easy2you
+    - **external**: False
+  - [38]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/48f61e5c-1aaa-4bd1-bd57-4802e9ee37c0:b22284186dcc1b83ab003e2f38a70c6f/block-580-435/Solwr.jpg
+      - **alt**: Solwr
+    - **title**: Solwr: Empowering Nordic retail and wholesale businesses with futuristic tech
+    - **href**: https://99x.io/case-studies/product-engineering/solwr
+    - **external**: False
+  - [39]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/81df33ab-6433-46f1-a0c2-462e1afc428d:8e0b2f4a7bd79771defe05f1316f6a78/block-580-435/Ice%20Fresh.jpg
+      - **alt**: Ice Fresh
+    - **title**: Ice Fresh: Digitally transforming the transportation of fresh fish
+    - **href**: https://99x.io/case-studies/product-engineering/ice-fresh
+    - **external**: False
+  - [40]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/866f921c-9098-46c2-8de4-3384a992317a:cbd7ff6aa2e613248ada4e5f4a9cd210/block-580-435/PACK%20&%20SEND.jpg
+      - **alt**: PACK & SEND
+    - **title**: PACK & SEND: Digitally enabling Australia’s most recognised logistics reseller
+    - **href**: https://99x.io/case-studies/product-engineering/pack-send
+    - **external**: False
+  - [41]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/3efc53e9-cea3-4b9a-babb-9a3990cfb2c1:9be447e0b48bca13b9b1f5d1fdbbf18b/block-580-435/Aspit.jpg
+      - **alt**: Aspit
+    - **title**: Aspit: Equipping a technologically advanced eHealth platform for the future
+    - **href**: https://99x.io/case-studies/product-engineering/aspit
+    - **external**: False
+  - [42]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/8831b9e1-1f86-46fc-ac65-0a4dee7702cb:3db72702a6418adce9878909483e73f6/block-580-435/Nordeca.jpg
+      - **alt**: Nordeca
+    - **title**: Nordeca: Revamping a legacy GIS platform
+    - **href**: https://99x.io/case-studies/product-engineering/nordeca
+    - **external**: False
+  - [43]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/8871d685-c6e0-40e5-ad70-9f33a6a59731:3d18f2bc386430b3a907e03e07889439/block-580-435/Norkart.jpg
+      - **alt**: Norkart
+    - **title**: Norkart: Creating smarter communities
+    - **href**: https://99x.io/case-studies/product-engineering/norkart
+    - **external**: False
+  - [44]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/7e8e56f3-123e-4e0c-b5e8-cfbec809ed78:70104745fc42fafb23f49f275961c8ba/block-580-435/Unimicro.jpg
+      - **alt**: Unimicro
+    - **title**: Unimicro: The journey from product to platform for Norway’s leading financial software vendors​
+    - **href**: https://99x.io/case-studies/product-engineering/unimicro
+    - **external**: False
+  - [45]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/15f105e3-8679-4cb6-9169-b74760fad9b3:ef145cd56eb46b38d55728a4dfb543cd/block-580-435/Adra%20by%20Trintech.jpg
+      - **alt**: Adra by Trintech
+    - **title**: Adra by Trintech: From legacy to cloud: The digital transformation of the Adra product suite
+    - **href**: https://99x.io/case-studies/product-engineering/adra-by-trintech
+    - **external**: False
+  - [46]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/b3ac283c-46af-4c0a-a3a1-47fc80717fac:68b1f5b76498e1f15b9f38a80a873689/block-580-435/Compello.jpg
+      - **alt**: Compello
+    - **title**: Compello: Enabling rapid innovation through a swift legacy-to-cloud migration
+    - **href**: https://99x.io/case-studies/product-engineering/compello
+    - **external**: False
+  - [47]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/d6b4ae91-4e9f-4027-b25a-e007f0bca823:ee501163af7958f08457b5c04f53157f/block-580-435/Ticombo.jpg
+      - **alt**: Ticombo
+    - **title**: Ticombo: Equipping a ticketing platform with cutting-edge tech
+    - **href**: https://99x.io/case-studies/product-engineering/ticombo
+    - **external**: False
+  - [48]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/0f1721a9-1db0-4769-9197-cb20f7f1309f:d6b7e2aa396133d477b1cb2d5759e694/block-580-435/Autonix-c.jpg
+      - **alt**: Mobile Phone with a QR code
+    - **title**: User-friendly QR code management platform
+    - **href**: https://99x.io/case-studies/tech-experts/user-friendly-qr-code-management-platform
+    - **external**: False
+  - [49]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/ddf23ca4-f8d9-4343-9bd4-dfa1f228e3fd:9a04252e58d0cbb4fa0b880a69b25f98/block-580-435/printly-c.jpg
+      - **alt**: printly-c
+    - **title**: Crafting a seamless printing experience
+    - **href**: https://99x.io/case-studies/tech-experts/crafting-a-seamless-printing-experience
+    - **external**: False
+  - [50]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/2bde8482-1f36-46a4-8411-9251d510fb79:2df84ad9dafdc334175615c94bb521c2/block-580-435/spotfund.jpg
+      - **alt**: spotfund
+    - **title**: Giving a crowdfunding platform a competitive edge 
+    - **href**: https://99x.io/case-studies/tech-experts/giving-a-crowdfunding-platform-a-competitive-edge
+    - **external**: False
+  - [51]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/eeaa2edb-c4bc-43a5-a383-759f7a9da83f:0131936df3f1adf381dd6f9e9ad23b23/block-580-435/office-buildings.jpg
+      - **alt**: office-buildings
+    - **title**: Operational intelligence platform for CRE
+    - **href**: https://99x.io/case-studies/tech-experts/operational-intelligence-platform-for-cre
+    - **external**: False
+  - [52]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/86da2f87-797c-4d34-9c1d-017b0890b32f:69743af65eee8ed9d2b478b4c987b2f3/block-580-435/CultureEngine.jpg
+      - **alt**: CultureEngine
+    - **title**: Culture Intelligence: Improving workplace cultures through cutting-edge tech
+    - **href**: https://99x.io/case-studies/product-engineering/Culture-Intelligence
+    - **external**: False
+  - [53]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/665183f9-8425-49ed-8942-24a20e72747a:cbf8250f86a0d8c6de445186cf449a60/block-580-435/PicaSix.jpg
+      - **alt**: PicaSix
+    - **title**: PicaSix:  Enhancing the adventure sports domain with a cutting-edge ERP system
+    - **href**: https://99x.io/case-studies/product-engineering/picasix
+    - **external**: False
+  - [54]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/d5539aac-cbfb-4f80-9e38-b8289439b9cc:6548847716cee073c789a1f17b594ffe/block-580-435/Kahoot.jpg
+      - **alt**: Kahoot
+    - **title**: Kahoot: Working towards becoming the world’s leading learning platform
+    - **href**: https://99x.io/case-studies/product-engineering/kahoot
+    - **external**: False
+  - [55]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/5e6951f6-d2d5-43e4-9671-5fa7d10b724a:3fba64ffbcbbd5460949a73c29e619dd/block-580-435/Samsvar.jpg
+      - **alt**: Samsvar
+    - **title**: Samsvar: Harnessing AWS to scalable digital products for an innovative startup
+    - **href**: https://99x.io/case-studies/product-engineering/samsvar
+    - **external**: False
+  - [56]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/c4699022-eae0-4856-a6e3-c61302e08ff6:1af29238fa8e37ec53cf303a44e9340d/block-580-435/RamBase%20by%20Hatteland.jpg
+      - **alt**: Tech team discussing a project
+    - **title**: RamBase by Hatteland: Defining the future for one of Norway’s most visionary ERPs
+    - **href**: https://99x.io/case-studies/product-engineering/rambase-by-hatteland
+    - **external**: False
+  - [57]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/185e1a56-c2ce-41d3-84e7-16bbf92c45ec:2c237db3c3eb6c14a303da83b772c595/block-580-435/Sureway.jpg
+      - **alt**: Sureway
+    - **title**: Sureway: Building an enterprise solution in a week, while under global lockdown
+    - **href**: https://99x.io/case-studies/product-engineering/sureway
+    - **external**: False
+  - [58]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/ff1e6ba3-af5f-42c3-a299-72df5b57c78c:28a12f5b4b0d935ce5dcf374f1afbaac/block-580-435/Carcare%20Revolutionizing%20the%20automobile%20industry.jpg
+      - **alt**: Carcare Revolutionizing the automobile industry
+    - **title**: Carcare: Revolutionizing the automobile industry
+    - **href**: https://99x.io/case-studies/product-engineering/carcare
+    - **external**: False
+  - [59]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/6c360595-223f-47b8-9c2b-ba49259e5ad2:c3b0b7221dee224fb638825f03c86675/block-580-435/Parkly.jpg
+      - **alt**: Parkly
+    - **title**: Parkly: Improving the accuracy of Automatic number-plate recognition through smart parking solutions
+    - **href**: https://99x.io/case-studies/product-engineering/parkly
+    - **external**: False
+  - [60]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/41372ad0-4d31-4f66-a9fa-4e8f00f2d046:40e16089af22edf427ca9d4522c91e96/block-580-435/BUSdata%20-%20Vehicle%20Inspection.jpg
+      - **alt**: BUSdata - Vehicle Inspection
+    - **title**: BUSdata: Enabling vehicle inspection through big data architecture
+    - **href**: https://99x.io/case-studies/product-engineering/busdata
+    - **external**: False
+  - [61]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/d43a9774-01b2-41ab-8877-bf3b55509457:2b7c79957f75b69a1f6460769a349f4d/block-580-435/BUS.jpg
+      - **alt**: BUS
+    - **title**: BUS: Driving over 75% of Norway’s vehicle inspection industry
+    - **href**: https://99x.io/case-studies/product-engineering/bus
+    - **external**: False
+- **prevLabel**: Previous slide
+- **nextLabel**: Next slide
+
+### Section 4: `content-block`
+
+- **overline**: How 99x works with AI
+- **heading**: Smarter teams, smarter products with AI
+- **body**:
+  - **processedHtml**: (rich text)
+    > We build Generative AI, agentic workflows, and MCP into every stage of the product lifecycle, from digital products and web platforms to e-commerce and engineering productivity. The result: smarter software, faster development, and higher quality throughout.
+- **video**:
+  - **src**: https://99x.io/_/media:attachment/english/ab202e9b-804d-4c3c-a3e2-791ffdd83f81:80c9015358822f52046f0a88531e5477/Keeping%20you%20at%20the%20forefront%20of%20the%20new%20Deep-Tech%20revolution.mp4
+- **imagePosition**: right
+- **link**:
+  - **label**: Learn more
+  - **url**: /ai-99x
+  - **isExternal**: False
+- **background**: beige
+
+### Section 5: `key-data`
+
+- **title**: Why work with us
+- **cards**: (3 items)
+  - [1]
+    - **value**: 90%
+    - **text**: of our clients say we have met and exceeded their expectations
+    - **colour**: beige
+  - [2]
+    - **value**: 1%
+    - **text**: Of top talent across 3 continents
+    - **colour**: red
+  - [3]
+    - **value**: 100+
+    - **text**: Global and Scandanavian companies transformed
+    - **colour**: beige
+
+### Section 6: `featured-cards`
+
+- **overline**: Insights
+- **title**: Shaping the future
+- **cards**: (4 items)
+  - [1]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/212f94fc-7c58-4f6d-a577-91d4c7dcfc72:344653ee1081b29387e6bdf73c388a8c/block-580-435/99x_Blog_What-is-data-science-and-why-is-it-critical-for-business-growth3.jpg
+      - **alt**: What is Data Science
+    - **label**: Blog
+    - **title**: What is data science and why is it critical for business growth?
+    - **href**: https://99x.io/Insights/blog/what-is-data-science-and-why-is-it-critical-for-business-growth
+    - **external**: False
+  - [2]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/04e4cf6a-b203-4421-a0ad-7c4ff67e4521:a49bb13f4c24ad4fdcbc3744fcbfa224/block-580-435/Webinar_Socail%20Media_Template_2025-31.jpg
+      - **alt**: Webinar_Socail Media_Template_2025-31
+    - **label**: Webinar
+    - **title**: Adapting MCP for Business Applications
+    - **href**: https://99x.io/events/2025/adapting-mcp-for-business-applications
+    - **external**: False
+  - [3]
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/11475243-5bcf-4705-a288-b5f04c0f3bd2:64907f494fcf9cbea3e13e7ccaff922c/block-580-435/DSC09085.JPG
+      - **alt**: DSC09085
+    - **label**: News
+    - **title**: 99x reports breakthrough market traction for new Agentic AI platform
+    - **href**: https://www.ft.lk/it-telecom-tech/99x-reports-breakthrough-market-traction-for-new-Agentic-AI-platform/50-779890
+    - **external**: True
+  - [4]
+    - **label**: Whitepaper
+    - **title**: How to tame your first agentic AI use case
+    - **href**: https://99x.io/Insights/whitepapers
+    - **external**: False
+- **viewAllLink**:
+  - **label**: Read more
+  - **url**: /Insights
+  - **isExternal**: False
+- **prevLabel**: Previous slide
+- **nextLabel**: Next slide
+
+### Section 7: `client-logo-bar`
+
+- **heading**: Trusted by
+- **logos**: (32 items)
+  - [1]
+    - **src**: https://99x.io/_/media:image/english/c19173a1-9276-448e-a339-e41d2eac1f25:c0ea7cbeafa9de87082ae9d51af1c32d/full/Adra.svg
+    - **alt**: Adra
+  - [2]
+    - **src**: https://99x.io/_/media:image/english/5e92a958-6c56-4ab1-ae44-d8f18035a6ce:70a2631a28e238d44d4d2dcb010214a3/full/compello_logotype_main%201%20-%20negative.svg
+    - **alt**: compello_logotype_main 1 - negative
+  - [3]
+    - **src**: https://99x.io/_/media:image/english/51771729-e5e8-40a0-9d24-3c834a3e3104:574978926d9b7ddc01968e5db87cd429/full/SuperOffice.svg
+    - **alt**: SuperOffice
+  - [4]
+    - **src**: https://99x.io/_/media:image/english/1c93c806-f0ea-44ba-b432-24c6979f9467:935e2a3221b1410f849c1d91f0e4aadc/full/BUS%20-%20negative.svg
+    - **alt**: BUS - negative
+  - [5]
+    - **src**: https://99x.io/_/media:image/english/c4a97f76-0e07-41c0-97d5-f522120ba4f3:15fe170fb31b0144403960675f53ddb4/full/Solwr.svg
+    - **alt**: Solwr
+  - [6]
+    - **src**: https://99x.io/_/media:image/english/b632a7f8-4899-4419-bce8-b7b714103cb3:e08917f62f88ea6df15b51243c781d22/full/Boligmappa-1.svg
+    - **alt**: Boligmappa-1
+  - [7]
+    - **src**: https://99x.io/_/media:image/english/48d14d9f-6c41-40ee-bc9e-d85b2e42ddab:0a3e740d588488b69b02dc93e1ef1de0/full/Kahoot!%20Go.svg
+    - **alt**: Kahoot! Go
+  - [8]
+    - **src**: https://99x.io/_/media:image/english/2ba57931-4924-4c37-8732-f30ec43e5780:4a8d2938137c0d6f9667c268ff969515/full/Interflora%20logo%20-%20negative.svg
+    - **alt**: Interflora logo - negative
+  - [9]
+    - **src**: https://99x.io/_/media:image/english/ae4229cd-78a3-4fe5-b191-7bee867d2a5c:95eb6afcc6cd4fb4f540eaa6fbb1be8e/full/Bygg%201%20Produkter%20AS%20-%20logo-1.svg
+    - **alt**: Bygg 1 Produkter AS - logo-1
+  - [10]
+    - **src**: https://99x.io/_/media:image/english/5ac7c4c5-e538-4085-bed2-d6183e8351a8:a2fb16df2a7f75d986b35e104b0da6a8/full/Helsebiblioteket%20-%20negative.svg
+    - **alt**: Helsebiblioteket - negative
+  - [11]
+    - **src**: https://99x.io/_/media:image/english/d1aa6dd5-4f02-4f59-b84c-717133380917:a9302b710052e32b902835e2fe05d8c3/full/OBOS_Hvit_Liggende-D2rlVyP6.png
+    - **alt**: OBOS_Hvit_Liggende-D2rlVyP6
+  - [12]
+    - **src**: https://99x.io/_/media:image/english/893f6fa0-abbc-48d7-96e1-f987e2fe5d0a:6f4f59e4d35bd5b35b9d6bf454518125/full/Patentstyret.no%202.svg
+    - **alt**: Patentstyret.no 2
+  - [13]
+    - **src**: https://99x.io/_/media:image/english/b0d7cc17-dcf9-41ef-80e8-7dd64ad72ccc:cd6c39b4e7f827aad54eed76164358fa/full/Q-Meieriene.svg
+    - **alt**: Q-Meieriene
+  - [14]
+    - **src**: https://99x.io/_/media:image/english/28016f96-813f-461e-a91f-9a7bdc71cee2:eead610c20aa702a745fdd8b075c24ad/full/Gilde-enkel-logo-sort%201%20-%20negative.svg
+    - **alt**: Gilde-enkel-logo-sort 1 - negative
+  - [15]
+    - **src**: https://99x.io/_/media:image/english/7419fa03-2a3d-4299-a181-efae89d4b7ad:23925f14fc0f220fc8f3f2b964dd7e6f/full/glava-negative-vector.svg
+    - **alt**: glava-negative-vector
+  - [16]
+    - **src**: https://99x.io/_/media:image/english/20bad669-c1eb-4b70-9f3e-21494f3ffaaf:8487d6f993e755cd06b7c7f698238838/full/NORCE%20logo.svg
+    - **alt**: NORCE logo
+  - [17]
+    - **src**: https://99x.io/_/media:image/english/f39c5095-4df3-4cf0-b881-d0e1a561fd02:723d6f43914864e6a424e6cda6b68558/full/Kavli%20AS%201%20-%20negative.svg
+    - **alt**: Kavli AS 1 - negative
+  - [18]
+    - **src**: https://99x.io/_/media:image/english/2a83f268-7b5e-4246-b84d-cb57ec01c6be:e9363680347806ee2311283cfb682680/full/elite-logo-white%201.svg
+    - **alt**: elite-logo-white 1
+  - [19]
+    - **src**: https://99x.io/_/media:image/english/4d8745ad-5879-4cf2-805e-b891e6ab3469:1db85431a5efce1ff34439a10058a0a9/full/Reitan%20Logo%20negativ.svg
+    - **alt**: Reitan Logo negativ
+  - [20]
+    - **src**: https://99x.io/_/media:image/english/43eef0e7-d978-4105-a068-b33beba24990:fe59fb0d162ca2a3b60b283409a976c5/full/Eplehuset%20negativ%20logo.svg
+    - **alt**: Eplehuset negativ logo
+  - [21]
+    - **src**: https://99x.io/_/media:image/english/a1d26576-7bdf-4711-9d6e-6436d5358a16:32ed2d21b865bfd90bb7693cf1182ef1/full/Urmaker%20Bjerke%20negativ%20logo.svg
+    - **alt**: Urmaker Bjerke negativ logo
+  - [22]
+    - **src**: https://99x.io/_/media:image/english/288ba43f-4c1f-4e11-abb0-607f976dfdef:f4d342dc1c220e44c09b4755b67d2929/full/Britannia%20negativ%20logo.svg
+    - **alt**: Britannia negativ logo
+  - [23]
+    - **src**: https://99x.io/_/media:image/english/92752249-ec4f-4220-8f6b-b848afcb1877:130c5abb85b9d82f5aba0683f95deab6/full/logo-republic-goteborgsvarvet.svg
+    - **alt**: logo-republic-goteborgsvarvet
+  - [24]
+    - **src**: https://99x.io/_/media:image/english/d6f106a8-a6dd-4326-ae56-04441e2c5c69:c046b4d08ac78e473feb36a495ad09d6/full/logo-republic-ifpa.svg
+    - **alt**: logo-republic-ifpa
+  - [25]
+    - **src**: https://99x.io/_/media:image/english/5f8be2c9-e5e7-4a05-ad9f-aae2f7dcf2d4:e794da00560165b0d7de202b20a3bc11/full/logo-republic-maurten.svg
+    - **alt**: logo-republic-maurten
+  - [26]
+    - **src**: https://99x.io/_/media:image/english/0fc7624a-ba85-45f2-8043-ff66fb2f5262:9cddc1f8439ed67d2767f3d6e7c4882b/full/logo-republic-skiguard.svg
+    - **alt**: logo-republic-skiguard
+  - [27]
+    - **src**: https://99x.io/_/media:image/english/30601817-1f13-44c1-818a-923d99496310:75507aaa95d7317608740df398f81996/full/logo-republic-wingardhs.svg
+    - **alt**: logo-republic-wingardhs
+  - [28]
+    - **src**: https://99x.io/_/media:image/english/a9bee57d-0e70-4c7d-b3a1-df6d35340063:dc8f0ac56b2bfab673878cdd93e37fc0/full/TechStep.png
+    - **alt**: TechStep
+  - [29]
+    - **src**: https://99x.io/_/media:image/english/153f5c5a-2439-4275-b231-64766e8ad73e:663a8ff8bb7fdf9ef24af580069fac92/full/DNK.png
+    - **alt**: DNK
+  - [30]
+    - **src**: https://99x.io/_/media:image/english/8ac5d051-be94-4214-b521-2e2d32e82091:abf999b162d84978fb718312962fa498/full/Wilhelmsen.png
+    - **alt**: Wilhelmsen
+  - [31]
+    - **src**: https://99x.io/_/media:image/english/7d778815-72d4-4a77-a139-0612a46ec981:1f42078909868fc910c540a3a97ad6ef/full/Peppes%20Pizza.png
+    - **alt**: Peppes Pizza
+  - [32]
+    - **src**: https://99x.io/_/media:image/english/576e5973-3c5f-42bb-a8b6-13c82b04f029:a7ead9c0b4c3cf2b5e3299c5f10aa1e1/full/Nettalliansen.png
+    - **alt**: Nettalliansen
+
+### Section 8: `upcoming-events`
+
+- **eventsFolderSet**: False
+- **folderResolved**: False
+- **matchedCount**: 0
+- **upcomingCount**: 0
+
+### Section 9: `upcoming-events`
+
+- **overline**: What's coming up
+- **title**: Events
+- **events**: (1 items)
+  - [1]
+    - **href**: https://99x.io/events/2026/connexions-oslo
+    - **title**: Connexions Oslo: AI Unfiltered: What matters, what works and what’s next
+    - **category**: In person
+    - **image**:
+      - **src**: https://99x.io/_/media:image/english/513bed08-aa36-4082-b2d3-f5f5cd7407b3:737e0dbfbb4ce1b4e6280fee5c464e9e/block-666-436/Screenshot%202026-09-23%20171850.png
+    - **location**: Norway
+    - **dateLabel**: 15 Oct, 2026
+- **viewAllLink**:
+  - **label**: Check all events
+  - **url**: /events
+  - **isExternal**: False
+
+### Section 10: `content-block`
+
+- **heading**: Build smarter teams & products, faster!
+- **body**:
+  - **processedHtml**: (rich text)
+    > Leverage 99x’s expertise, nearshore talent, and AI-accelerated workflows to design, develop, and scale digital products that deliver real impact.
+- **image**:
+  - **link**: https://99x.io/_/media:image/english/f03eebd2-3357-4b64-a054-2a274a1e194e:5a6eae4984f9cd83177a4eb6788c9647/block-910-682/happy-business-team-clapping-celebrating-success-a-2025-09-08-21-20-08-utc.jpg
+  - **alt**: happy-business-team-clapping-celebrating-success-a-2025-09-08-21-20-08-utc
+  - **title**: happy-business-team-clapping-celebrating-success-a-2025-09-08-21-20-08-utc
+- **imagePosition**: left
+- **link**:
+  - **label**: Contact us
+  - **url**: /about-us/contact-us
+  - **isExternal**: False
+- **background**: beige
+
+## Breadcrumb
+
+- **hasBreadcrumbs**: False
