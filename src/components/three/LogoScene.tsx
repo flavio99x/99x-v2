@@ -141,6 +141,7 @@ function LogoSceneImpl(props: Props) {
       gl={{ antialias: true, alpha: true }}
       aria-hidden="true"
       eventSource={props.eventSource}
+      eventPrefix="client"
     >
       <Environment resolution={256}>
         <Lightformer intensity={2} position={[0, 2, 3]} scale={[6, 2, 1]} />

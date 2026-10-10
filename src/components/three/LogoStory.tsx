@@ -8,6 +8,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionTag } from "@/components/ui/SectionTag";
 import { StaticLogoFallback } from "./StaticLogoFallback";
 import { storyStep } from "./storyMath";
+import { isLowPowerDevice } from "./lowPower";
 import { cn } from "@/lib/cn";
 
 const LogoScene = dynamic(() => import("./LogoScene"), { ssr: false });
@@ -44,7 +45,7 @@ export function LogoStory({ offices, tag }: { offices: Office[]; tag?: { index: 
   // Load the 3D chunk (and the logo SVG) ~1.5 screens before the section.
   useEffect(() => {
     const el = stage.current;
-    if (reduced || !el || !hasWebGL()) return;
+    if (reduced || !el || !hasWebGL() || isLowPowerDevice()) return;
     let cancelled = false;
     const io = new IntersectionObserver(
       ([e]) => {
