@@ -58,7 +58,7 @@ export const home: Page = {
     {
       type: "stickySplit",
       theme: "paper",
-      head: { index: "S.04", label: "AI" },
+      head: { index: "S.04", label: "AI", statement: "We integrate AI into every stage of the product lifecycle." },
       image: img("home/ai.jpg", "A team working together at laptops"),
       mediaSide: "left",
       heading: "Smarter teams, smarter products with AI",

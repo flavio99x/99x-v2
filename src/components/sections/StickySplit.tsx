@@ -6,8 +6,8 @@ import { cn } from "@/lib/cn";
 
 export function StickySplit({ section: s }: { section: T }) {
   return (
-    <SectionShell theme={s.theme} head={s.head} id={s.id}>
-      <div className={cn("grid-12 gap-y-12 border-t border-ink/20 pt-8", s.theme === "dark" && "border-paper/20")}>
+    <SectionShell theme={s.theme} head={s.head} id={s.id} rule>
+      <div className="grid-12 gap-y-12">
         <div className={cn("relative col-span-12 aspect-[4/5] overflow-hidden rounded-md lg:col-span-6", s.mediaSide === "right" && "lg:order-2 lg:col-start-7")}>
           <Image src={s.image.src} alt={s.image.alt} fill sizes="(min-width: 992px) 50vw, 100vw" className="object-cover" />
         </div>

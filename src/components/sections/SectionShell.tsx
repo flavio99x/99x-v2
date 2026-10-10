@@ -17,10 +17,12 @@ type Props = {
   bottom?: "lg" | "md" | "none";
   /** false: the section renders its own tag (e.g. inside a pinned stage so it stays visible). */
   tag?: boolean;
+  /** Hairline above the section tag (sticky-split sections). */
+  rule?: boolean;
   children?: React.ReactNode;
 };
 
-export function SectionShell({ theme, head, id, className, bottom = "lg", tag = true, children }: Props) {
+export function SectionShell({ theme, head, id, className, bottom = "lg", tag = true, rule = false, children }: Props) {
   return (
     <section
       id={id}
@@ -35,7 +37,7 @@ export function SectionShell({ theme, head, id, className, bottom = "lg", tag = 
       )}
     >
       {head && (
-        <div className="grid-12 mb-24 lg:mb-40">
+        <div className={cn("grid-12 mb-24 lg:mb-40", rule && "border-t pt-8", rule && (theme === "dark" ? "border-paper/20" : "border-ink/20"))}>
           <div className="col-span-12 lg:col-span-8">
             {tag && (
               <span className="float-left">

@@ -51,7 +51,7 @@ export const nearshoreUsa: Page = {
     {
       type: "stickySplit",
       theme: "paper",
-      head: { index: "S.03", label: "AI @ 99x Americas" },
+      head: { index: "S.03", label: "AI @ 99x Americas", statement: "A software company first — we use AI deliberately, not by default." },
       image: img("nearshore-usa/ai.jpg", "A team working together around a laptop"),
       mediaSide: "right",
       heading: "Future-proof engineering with AI",

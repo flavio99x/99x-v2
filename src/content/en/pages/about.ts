@@ -78,7 +78,7 @@ export const about: Page = {
     {
       type: "cardGrid",
       theme: "tint",
-      head: { index: "S.07", label: "Our divisions" },
+      head: { index: "S.07", label: "Our divisions", statement: "Product engineering, tech talent and web solutions — each built for the market it serves." },
       cards: [
         { title: "Product engineering", description: "Long-term product co-creation for companies across Scandinavia and global markets.", icon: "layers", link: { label: "Product engineering", href: "/services#product-engineering" } },
         { title: "Tech talent Europe", description: "Engineering teams from our European hubs for companies across Europe.", icon: "users", link: { label: "Tech talent Europe", href: "/services#nearshore-europe" } },

@@ -4,8 +4,9 @@ import { Parallax } from "@/components/motion/Parallax";
 import { TransitionLink } from "@/components/motion/TransitionLink";
 import { ButtonInner } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SectionTag } from "@/components/ui/SectionTag";
 
-export function NextPage({ next }: { next: Page["next"] }) {
+export function NextPage({ next, index }: { next: Page["next"]; index?: string }) {
   return (
     <section data-theme="dark" data-next-page aria-label={`Next: ${next.label}`} className="relative h-[150svh] bg-ink text-paper">
       <Parallax className="absolute inset-0" amount={10}>
@@ -13,6 +14,11 @@ export function NextPage({ next }: { next: Page["next"] }) {
       </Parallax>
       <div aria-hidden="true" className="absolute inset-0 bg-ink/40" />
       <div className="sticky top-0 flex h-svh flex-col items-center justify-center gap-6">
+        {index && (
+          <span className="absolute top-28 left-[var(--site-margin)]">
+            <SectionTag index={index} label="Next page" tone="light" />
+          </span>
+        )}
         <Eyebrow className="text-paper/70">{next.eyebrow}</Eyebrow>
         <TransitionLink href={next.href} variant="next" className="group/btn">
           <ButtonInner label={next.label} variant="next" size="xl" />
