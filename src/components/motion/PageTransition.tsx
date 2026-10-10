@@ -12,6 +12,26 @@ type Ctx = { navigate: (href: string, opts?: { variant?: Variant; from?: HTMLEle
 const TransitionContext = createContext<Ctx>({ navigate: async () => {}, arrivedVia: null });
 export const usePageTransition = () => useContext(TransitionContext);
 
+/** Scrolls to the element a URL hash points at, clear of the fixed header. Returns false if there is no target. */
+function scrollToHash(hash: string, lenis: ReturnType<typeof useLenis>): boolean {
+  if (!hash || hash === "#") return false;
+  let el: HTMLElement | null = null;
+  try {
+    el = document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {
+    return false;
+  }
+  if (!el) return false;
+  const offset = -(document.querySelector("header")?.getBoundingClientRect().bottom ?? 0);
+  if (lenis) {
+    lenis.resize(); // the new page's height may not be measured yet
+    lenis.scrollTo(el, { immediate: true, force: true, offset });
+  } else {
+    window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY + offset);
+  }
+  return true;
+}
+
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -27,8 +47,10 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       setMenuOpen(false); // also when the link points at the current page
       if (href === pathname) return;
       // Same path, different query/hash: the pathname effect below won't fire to reset busy/overlay, so skip the transition.
-      if (new URL(href, window.location.href).pathname === pathname) {
+      const target = new URL(href, window.location.href);
+      if (target.pathname === pathname) {
         router.push(href, { scroll: false });
+        if (target.hash) requestAnimationFrame(() => scrollToHash(target.hash, lenis));
         return;
       }
       busy.current = true;
@@ -58,11 +80,19 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     busy.current = false;
     setMenuOpen(false); // also covers browser back/forward, which bypasses navigate()
     setArrivedVia(variant);
-    if (!window.location.hash) {
+    // router.push(..., { scroll: false }) suppresses Next's own hash scrolling, so land on the target ourselves.
+    const hash = window.location.hash;
+    if (hash) {
+      ScrollTrigger.refresh(); // pin spacers must exist before the target's offset is measured
+      if (!scrollToHash(hash, lenis)) {
+        lenis?.scrollTo(0, { immediate: true, force: true });
+        window.scrollTo(0, 0);
+      }
+    } else {
       lenis?.scrollTo(0, { immediate: true, force: true });
       window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
     }
-    ScrollTrigger.refresh();
     if (!overlay.current) return;
     if (variant === "fade") gsap.to(overlay.current, { autoAlpha: 0, duration: 0.6, ease: HOUSE_EASE, delay: 0.05 });
     else gsap.set(overlay.current, { autoAlpha: 0 });

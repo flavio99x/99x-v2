@@ -36,3 +36,15 @@ test("browser back closes an open menu", async ({ page }) => {
   await expect(page).toHaveURL(/\/$/);
   await expect(button).toHaveAttribute("aria-expanded", "false");
 });
+
+test("cross-page hash links land on the target section", async ({ page }) => {
+  await page.goto("/");
+  const card = page.locator('a[href="/services#product-engineering"]').first();
+  await card.scrollIntoViewIfNeeded();
+  await card.click();
+  await expect(page).toHaveURL(/\/services#product-engineering$/);
+  const section = page.locator("#product-engineering");
+  await expect(section).toBeInViewport();
+  await expect.poll(async () => (await section.boundingBox())?.y ?? -9999).toBeGreaterThan(-5);
+  await expect.poll(async () => (await section.boundingBox())?.y ?? 9999).toBeLessThan(300);
+});
