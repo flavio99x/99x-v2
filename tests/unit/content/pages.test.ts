@@ -52,3 +52,7 @@ describe.each(pages.map((p) => [p.slug, p] as const))("page %s", (_slug, page) =
 describe("home", () => {
   it("is registered at /", () => expect(getPage("home").path).toBe("/"));
 });
+
+describe("about", () => {
+  it("is registered at /about-us", () => expect(getPage("about").path).toBe("/about-us"));
+});
