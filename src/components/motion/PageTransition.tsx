@@ -23,17 +23,17 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   const navigate = useCallback<Ctx["navigate"]>(
     async (href, opts) => {
-      if (busy.current || href === pathname) return;
+      if (busy.current) return;
+      setMenuOpen(false); // also when the link points at the current page
+      if (href === pathname) return;
       // Same path, different query/hash: the pathname effect below won't fire to reset busy/overlay, so skip the transition.
       if (new URL(href, window.location.href).pathname === pathname) {
-        setMenuOpen(false);
         router.push(href, { scroll: false });
         return;
       }
       busy.current = true;
       const variant = opts?.variant ?? "fade";
       pending.current = variant;
-      setMenuOpen(false);
       const reduced = prefersReducedMotion();
       if (!reduced) {
         if (variant === "next" && opts?.from) {

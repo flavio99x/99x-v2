@@ -4,11 +4,12 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/cn";
+import { whenNear } from "@/lib/near";
 
 export function PillWipe({ text, className }: { text: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
   useGSAP(
-    () => {
+    (context) => {
       const pills = ref.current?.querySelectorAll("[data-pill]");
       const words = ref.current?.querySelectorAll("[data-word]");
       if (!pills?.length || !words?.length) return;
@@ -16,10 +17,13 @@ export function PillWipe({ text, className }: { text: string; className?: string
         gsap.set(pills, { width: "0%" });
         return;
       }
-      const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: "top 75%", once: true } });
-      tl.fromTo(pills, { width: "0%" }, { width: "100%", duration: 1, stagger: 0.025 })
-        .set(words, { color: "var(--color-ink)" }, 1)
-        .to(pills, { width: "0%", left: "100%", duration: 1, stagger: 0.025 }, 1);
+      const el = ref.current!;
+      return whenNear(el, context, () => {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top 75%", once: true } });
+        tl.fromTo(pills, { width: "0%" }, { width: "100%", duration: 1, stagger: 0.025 })
+          .set(words, { color: "var(--color-ink)" }, 1)
+          .to(pills, { width: "0%", left: "100%", duration: 1, stagger: 0.025 }, 1);
+      });
     },
     { scope: ref },
   );

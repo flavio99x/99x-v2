@@ -4,18 +4,22 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/cn";
+import { whenNear } from "@/lib/near";
 
 export function Parallax({ children, className, amount = 10 }: { children: React.ReactNode; className?: string; amount?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   useGSAP(
-    () => {
-      const inner = ref.current?.firstElementChild;
-      if (!inner || prefersReducedMotion()) return;
-      gsap.fromTo(
-        inner,
-        { yPercent: -amount },
-        { yPercent: amount, ease: "none", scrollTrigger: { trigger: ref.current, start: "top bottom", end: "bottom top", scrub: true } },
-      );
+    (context) => {
+      const el = ref.current;
+      const inner = el?.firstElementChild;
+      if (!el || !inner || prefersReducedMotion()) return;
+      return whenNear(el, context, () => {
+        gsap.fromTo(
+          inner,
+          { yPercent: -amount },
+          { yPercent: amount, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true } },
+        );
+      });
     },
     { scope: ref },
   );

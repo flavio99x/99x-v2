@@ -7,18 +7,22 @@ import { Button } from "@/components/ui/Button";
 import { TickRuler } from "@/components/ui/TickRuler";
 import { gsap, useGSAP, ScrollTrigger, DUR } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
+import { whenNear } from "@/lib/near";
 
 export function NumberedList({ section: s }: { section: T }) {
   const ref = useRef<HTMLOListElement>(null);
   const [progress, setProgress] = useState(0);
 
-  useGSAP(() => {
-    if (!ref.current || prefersReducedMotion()) return;
-    // Reveal (hidden -> full contrast) rather than a dimmed scrub, so no text ever rests at low contrast.
-    ref.current.querySelectorAll("li").forEach((li) =>
-      gsap.fromTo(li, { autoAlpha: 0, y: "1em" }, { autoAlpha: 1, y: 0, duration: DUR.card, ease: "power2.out", scrollTrigger: { trigger: li, start: "top 85%", once: true } }),
-    );
-    ScrollTrigger.create({ trigger: ref.current, start: "top 80%", end: "bottom 55%", onUpdate: (self) => setProgress(self.progress) });
+  useGSAP((context) => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+    return whenNear(el, context, () => {
+      // Reveal (hidden -> full contrast) rather than a dimmed scrub, so no text ever rests at low contrast.
+      el.querySelectorAll("li").forEach((li) =>
+        gsap.fromTo(li, { autoAlpha: 0, y: "1em" }, { autoAlpha: 1, y: 0, duration: DUR.card, ease: "power2.out", scrollTrigger: { trigger: li, start: "top 85%", once: true } }),
+      );
+      ScrollTrigger.create({ trigger: el, start: "top 80%", end: "bottom 55%", onUpdate: (self) => setProgress(self.progress) });
+    });
   }, { scope: ref });
 
   return (

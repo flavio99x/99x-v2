@@ -36,3 +36,12 @@ test.describe("menu", () => {
     await expect(page.locator("#main")).toBeFocused();
   });
 });
+
+test("menu link to the current page closes the menu", async ({ page }) => {
+  await page.goto("/contact");
+  const button = page.getByRole("button", { name: /menu/i });
+  await button.click();
+  await expect(button).toHaveAttribute("aria-expanded", "true");
+  await page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Contact" }).click();
+  await expect(button).toHaveAttribute("aria-expanded", "false");
+});
