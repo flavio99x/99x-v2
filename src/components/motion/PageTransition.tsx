@@ -24,6 +24,12 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const navigate = useCallback<Ctx["navigate"]>(
     async (href, opts) => {
       if (busy.current || href === pathname) return;
+      // Same path, different query/hash: the pathname effect below won't fire to reset busy/overlay, so skip the transition.
+      if (new URL(href, window.location.href).pathname === pathname) {
+        setMenuOpen(false);
+        router.push(href, { scroll: false });
+        return;
+      }
       busy.current = true;
       const variant = opts?.variant ?? "fade";
       pending.current = variant;
@@ -50,6 +56,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     const variant = pending.current;
     pending.current = null;
     busy.current = false;
+    setMenuOpen(false); // also covers browser back/forward, which bypasses navigate()
     setArrivedVia(variant);
     if (!window.location.hash) {
       lenis?.scrollTo(0, { immediate: true, force: true });

@@ -29,7 +29,7 @@ export function Field({ name, label, hint, type = "text", required, error, autoC
         {label}
         {required && <span aria-hidden="true"> *</span>}
       </label>
-      {hint && <span id={`${id}-hint`} className="mt-1 text-body-s text-ink/50">{hint}</span>}
+      {hint && <span id={`${id}-hint`} className="mt-1 text-body-s text-ink/70">{hint}</span>}
       {type === "textarea" ? <textarea rows={4} {...common} /> : <input type={type} {...common} />}
       {error && <p id={`${id}-err`} className="mt-2 font-mono text-eyebrow-m font-light uppercase text-logo-red">{error}</p>}
     </div>

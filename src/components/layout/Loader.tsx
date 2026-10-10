@@ -5,6 +5,9 @@ import { markLoaderDone } from "@/lib/loader";
 import { prefersReducedMotion } from "@/lib/motion";
 
 const KEY = "99x-loaded";
+// The SSR loader covers the page until JS runs. If hydration arrives this late (slow network/CPU), the
+// visitor has already waited, so the intro is skipped in favour of a short fade.
+const LATE_MS = 1500;
 
 export function Loader() {
   const ref = useRef<HTMLDivElement>(null);
@@ -16,13 +19,19 @@ export function Loader() {
       markLoaderDone();
       return;
     }
+    const done = () => { try { sessionStorage.setItem(KEY, "1"); } catch {} markLoaderDone(); };
+    if (performance.now() > LATE_MS) {
+      done();
+      gsap.to(ref.current, { autoAlpha: 0, duration: 0.4, onComplete: () => { gsap.set(ref.current, { display: "none" }); } });
+      return;
+    }
     const tl = gsap.timeline({ onComplete: () => { gsap.set(ref.current, { display: "none" }); } });
     tl.from("[data-loader-tile]", { scale: 0.6, autoAlpha: 0, duration: 0.6, ease: HOUSE_EASE })
       .to("[data-loader-tile]", { width: "calc(var(--u) * 9)", duration: 0.8, ease: HOUSE_EASE })
       .from("[data-loader-mark]", { autoAlpha: 0, duration: 0.4 }, "<0.3")
       .to("[data-loader-square]", { scale: 40, duration: 1, ease: HOUSE_EASE })
       // Mark "seen" only once the intro has actually played (a mount-time write is lost to StrictMode's double effect run).
-      .add(() => { try { sessionStorage.setItem(KEY, "1"); } catch {} markLoaderDone(); }, "-=0.4")
+      .add(done, "-=0.4")
       .to(ref.current, { autoAlpha: 0, duration: 0.4 }, "-=0.2");
   }, { scope: ref });
 

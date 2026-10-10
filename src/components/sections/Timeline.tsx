@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { TimelineSection as T } from "@/content/schema";
 import { SectionShell } from "./SectionShell";
 import { SectionTag } from "@/components/ui/SectionTag";
@@ -12,6 +12,21 @@ export function Timeline({ section: s }: { section: T }) {
   const reduced = useReducedMotion();
   const stage = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  // Only the active year's image is rendered until the stage is near: the other full-bleed images are
+  // invisible (opacity 0) yet sit inside the browser's lazy-load margin, so they would compete with LCP.
+  const [near, setNear] = useState(false);
+
+  useEffect(() => {
+    const el = stage.current;
+    if (reduced || !el) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      setNear(true);
+      io.disconnect();
+    }, { rootMargin: "100% 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [reduced]);
 
   useGSAP(() => {
     if (reduced || !stage.current) return;
@@ -51,10 +66,10 @@ export function Timeline({ section: s }: { section: T }) {
       {/* Stable React-owned wrapper: GSAP's pin-spacer only wraps the inner stage, so switching to the
           reduced-motion branch removes this wrapper (parent untouched) instead of the re-parented stage. */}
       <div>
-        <div ref={stage} className="relative h-svh overflow-hidden">
+        <div ref={stage} data-pinned="" className="relative h-svh overflow-hidden">
           <h2 className="sr-only">{s.head.label}</h2>
           <div className="absolute left-[var(--site-margin)] top-28 z-10"><SectionTag index={s.head.index} label={s.head.label} tone="light" /></div>
-          {s.items.map((it, i) => (
+          {s.items.map((it, i) => (near || i === active) && (
             <Image key={it.image.src} src={it.image.src} alt={i === active ? it.image.alt : ""} fill sizes="100vw"
               className="object-cover transition-opacity duration-700 ease-house" style={{ opacity: i === active ? 0.55 : 0 }} />
           ))}

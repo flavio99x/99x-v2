@@ -24,7 +24,9 @@ export function PillWipe({ text, className }: { text: string; className?: string
     { scope: ref },
   );
   return (
-    <p ref={ref} className={cn("text-xxl text-center", className)} aria-label={text}>
+    // A <p> cannot carry aria-label (generic role), so the sentence is exposed as sr-only text instead.
+    <p ref={ref} className={cn("text-xxl text-center", className)}>
+      <span className="sr-only">{text}</span>
       {text.split(" ").map((w, i) => (
         <span key={i} aria-hidden="true" className="relative inline-block mr-[0.2em]">
           <span data-word className="relative z-10 text-ink">{w}</span>

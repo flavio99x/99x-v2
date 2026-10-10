@@ -10,10 +10,11 @@ describe("cylinderItem", () => {
     expect(r.visible).toBe(false);
     expect(r.opacity).toBe(0);
   });
-  it("opacity never drops below 0.08 while visible", () => {
-    const r = cylinderItem(0, 5, 18); // 90°
+  it("visible items keep at least 3:1 contrast (opacity floor 0.55); depth fades via foreshortening", () => {
+    const r = cylinderItem(0, 5, 18); // 90°: edge-on, so the floor is not perceived
     expect(r.visible).toBe(true);
-    expect(r.opacity).toBeCloseTo(0.08);
+    expect(r.opacity).toBeCloseTo(0.55);
+    expect(cylinderItem(0, 1, 18).opacity).toBeCloseTo(Math.cos(Math.PI / 10)); // 18°: cosine falloff above the floor
   });
 });
 

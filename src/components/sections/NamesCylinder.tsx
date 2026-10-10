@@ -55,7 +55,7 @@ export function NamesCylinder({ section: s }: { section: T }) {
       {/* Stable React-owned wrapper: GSAP's pin-spacer only wraps the inner stage, so switching to the
           reduced-motion branch removes this wrapper (parent untouched) instead of the re-parented stage. */}
       <div>
-        <div ref={stage} className="relative h-svh">
+        <div ref={stage} data-pinned="" className="relative h-svh">
           <div className="absolute inset-y-[15%] left-0 text-ink"><TickRuler count={40} /></div>
           <div className="absolute inset-y-[15%] right-0 flex text-ink [&>div]:items-end"><TickRuler count={40} /></div>
           <ul className="sr-only">

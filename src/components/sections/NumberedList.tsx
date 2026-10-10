@@ -5,7 +5,7 @@ import type { NumberedListSection as T } from "@/content/schema";
 import { SectionShell } from "./SectionShell";
 import { Button } from "@/components/ui/Button";
 import { TickRuler } from "@/components/ui/TickRuler";
-import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
+import { gsap, useGSAP, ScrollTrigger, DUR } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 
 export function NumberedList({ section: s }: { section: T }) {
@@ -14,8 +14,9 @@ export function NumberedList({ section: s }: { section: T }) {
 
   useGSAP(() => {
     if (!ref.current || prefersReducedMotion()) return;
+    // Reveal (hidden -> full contrast) rather than a dimmed scrub, so no text ever rests at low contrast.
     ref.current.querySelectorAll("li").forEach((li) =>
-      gsap.fromTo(li, { opacity: 0.2 }, { opacity: 1, ease: "none", scrollTrigger: { trigger: li, start: "top 80%", end: "top 55%", scrub: true } }),
+      gsap.fromTo(li, { autoAlpha: 0, y: "1em" }, { autoAlpha: 1, y: 0, duration: DUR.card, ease: "power2.out", scrollTrigger: { trigger: li, start: "top 85%", once: true } }),
     );
     ScrollTrigger.create({ trigger: ref.current, start: "top 80%", end: "bottom 55%", onUpdate: (self) => setProgress(self.progress) });
   }, { scope: ref });

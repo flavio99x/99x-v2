@@ -105,7 +105,7 @@ export function LogoStory({ offices }: { offices: Office[] }) {
           {offices.map((o, i) => (
             <li
               key={o.id}
-              className={cn("text-h2 transition-opacity duration-500", reduced || active === i ? "opacity-100" : "opacity-15")}
+              className={cn("text-h2 transition-opacity duration-500", reduced || active === i ? "opacity-100" : "opacity-50")}
               aria-current={active === i ? "true" : undefined}
             >
               {o.city}

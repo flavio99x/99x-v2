@@ -124,8 +124,11 @@
 @utility mask-line { overflow: hidden; display: block; }
 
 @media (prefers-reduced-motion: reduce) {
+  /* 0s, not 0.01ms: transition-property defaults to `all`, so a non-zero duration would make every
+     property (incl. `visibility`) transition and lag a frame — e.g. the menu stays unfocusable. */
   *, *::before, *::after {
-    transition-duration: 0.01ms !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
