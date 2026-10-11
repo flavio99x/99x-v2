@@ -4,6 +4,9 @@ Next.js 16 (App Router) + Tailwind v4 + GSAP/ScrollTrigger + Lenis + React Three
 
 Also read `AGENTS.md` (Next.js 16 has breaking changes: consult `node_modules/next/dist/docs/` before writing Next code). This file and AGENTS.md agree; AGENTS.md's block is managed by `next dev`.
 
+## Start here
+New session? Read `_docs/HANDOFF.md` first: current state, architecture map, gotchas, backlog and next steps.
+
 ## Rules
 - All docs and .md files live in `_docs/` (except this file / AGENTS.md).
 - Spec: `_docs/specs/2026-10-10-99x-website-phase1-design.md`. Design system: `_docs/DESIGN.md`. Product: `_docs/PRODUCT.md`.
