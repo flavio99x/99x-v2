@@ -100,7 +100,7 @@ tests/e2e/**                playwright: desktop / mobile / reduced-motion projec
   2. Run `pnpm images`.
   3. Use `img("folder/name.jpg", "real alt text")` in content.
 - **Swap in licensed fonts.** Edit only `src/lib/fonts.ts`: replace the `next/font/google` calls with `next/font/local`, keeping the variables `--font-inter-tight` and `--font-geist-mono`. The licensed faces are Helvetica Now Display 500/700 and PP Supply Mono 300.
-- **Contact delivery.** `src/lib/contact/provider.ts`: Resend is used whenever `RESEND_API_KEY` is set (or `CONTACT_PROVIDER=resend`); otherwise `LogProvider`, which writes personal data to the logs, is used. Playwright forces `CONTACT_PROVIDER=log`, so e2e runs never send email. For a CRM, add another provider there.
+- **Contact delivery.** `src/lib/contact/provider.ts`: Resend is used whenever `RESEND_API_KEY` is set (or `CONTACT_PROVIDER=resend`); otherwise `LogProvider`, which writes personal data to the logs, is used. Playwright forces `CONTACT_PROVIDER=log`, so e2e runs never send email. The notification email (subject, HTML and plain text) is built in `src/lib/contact/email.ts`. For a CRM, add another provider there.
 - **Check components visually.** Use `/dev/kitchen-sink` (dev only) and `pnpm dev`.
 - **Capture screenshots for review.** Full-page screenshots break on transform-pinned sections. Capture viewport by viewport instead: scroll one viewport, wait about 900ms, screenshot. Put captures in `.impeccable/review/`, which is gitignored.
 

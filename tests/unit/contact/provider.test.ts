@@ -37,7 +37,7 @@ describe("ResendProvider", () => {
     expect(url).toBe("https://api.resend.com/emails");
     expect(init.headers.Authorization).toBe("Bearer re_test");
     const body = JSON.parse(init.body);
-    expect(body).toMatchObject({ from: "Site <site@x.io>", to: ["a@x.io", "b@x.io"], reply_to: "ada@example.com", subject: "Website contact: Ada <Lovelace> (Analytical)" });
+    expect(body).toMatchObject({ from: "Site <site@x.io>", to: ["a@x.io", "b@x.io"], reply_to: "ada@example.com", subject: "New website enquiry: Ada <Lovelace>, Analytical" });
     expect(body.html).toContain("Ada &lt;Lovelace&gt;");
     expect(body.html).toContain("Hello &amp; welcome, &lt;b&gt;team&lt;/b&gt;.");
     expect(body.html).not.toContain("<b>team</b>");

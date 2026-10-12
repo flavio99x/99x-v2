@@ -1,4 +1,5 @@
 import type { ContactInput } from "./schema";
+import { renderContactEmail } from "./email";
 
 export type ContactMessage = ContactInput & { receivedAt: string };
 export interface ContactProvider {
@@ -12,9 +13,6 @@ class LogProvider implements ContactProvider {
   }
 }
 
-const escapeHtml = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
-
 /** Emails each submission to the team through Resend's REST API; replies go straight to the sender. */
 export class ResendProvider implements ContactProvider {
   constructor(
@@ -24,19 +22,7 @@ export class ResendProvider implements ContactProvider {
   ) {}
 
   async send(msg: ContactMessage) {
-    const rows: [string, string | undefined][] = [
-      ["Name", msg.name],
-      ["Email", msg.email],
-      ["Company", msg.company],
-      ["Phone", msg.phone],
-      ["Source", msg.source],
-      ["Received", msg.receivedAt],
-    ];
-    const filled = rows.filter((r): r is [string, string] => !!r[1]);
-    const text = `${filled.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\n${msg.message}`;
-    const html =
-      `<table>${filled.map(([k, v]) => `<tr><td><strong>${k}</strong></td><td>${escapeHtml(v)}</td></tr>`).join("")}</table>` +
-      `<p style="white-space:pre-wrap">${escapeHtml(msg.message)}</p>`;
+    const { subject, text, html } = renderContactEmail(msg);
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -45,7 +31,7 @@ export class ResendProvider implements ContactProvider {
         from: this.from,
         to: this.to,
         reply_to: msg.email,
-        subject: `Website contact: ${msg.name}${msg.company ? ` (${msg.company})` : ""}`,
+        subject,
         text,
         html,
       }),
