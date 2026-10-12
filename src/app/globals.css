@@ -129,10 +129,12 @@
   img, video { display: block; max-width: 100%; }
 }
 
-/* Failsafe: if JS never takes over the loader (slow or failed bundles), get it out of the way.
-   The intro timeline cancels this on start (Loader.tsx), so a slow-but-working intro is never cut off. */
-[data-loader] { animation: loader-failsafe 0.4s 3.5s forwards; }
-@keyframes loader-failsafe { to { opacity: 0; visibility: hidden; } }
+/* Masked line reveal (RevealLines). Pure CSS so it starts with first paint: no wait for hydration, no flash of
+   SSR text being hidden and re-shown, and no-JS visitors get it too. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-line { animation: reveal-line 1.2s var(--ease-house) calc(var(--delay, 0s) + var(--i, 0) * 0.03s) both; }
+}
+@keyframes reveal-line { from { transform: translateY(110%); } }
 
 @utility site-x { padding-inline: var(--site-margin); }
 @utility grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--u); }

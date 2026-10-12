@@ -64,11 +64,11 @@ src/content/index.ts        static registry; getSite / getPage / getAllPages
 src/content/img.ts          img(path, alt) → reads dims from images.json (generated)
 src/components/sections/    SectionRenderer (exhaustive switch) → one component per section type; PageView = Hero + sections + NextPage
 src/components/ui/          Button/ButtonSm/SectionTag/Eyebrow/Stat/Icon/TickRuler/Toggle/Field/SmartLink
-src/components/layout/      Header (Osmo-style bar: menu left, logo centre, contact CTA right; always visible; unfolds into the Menu panel, CSS-driven via [data-nav] in globals.css), Menu (panel contents), Footer, Loader, ui-store
+src/components/layout/      Header (Osmo-style bar: menu left, logo centre, contact CTA right; always visible; unfolds into the Menu panel, CSS-driven via [data-nav] in globals.css), Menu (panel contents), Footer, ui-store
 src/components/motion/      SmoothScroll (Lenis), PageTransition + TransitionLink, RevealLines, ScrubText, FadeUp, Parallax, PillWipe
 src/components/three/       LogoStory (pinned section), LogoScene (R3F, lazy), logoGeometry, storyMath, StaticLogoFallback, lowPower
 src/components/forms/       ContactForm, FormResult
-src/lib/                    gsap.ts (ONLY place plugins register; house ease), near.ts (whenNear), motion.ts, loader.ts, seo.ts, contact/*, cylinder.ts, geo.ts, fonts.ts
+src/lib/                    gsap.ts (ONLY place plugins register; house ease), near.ts (whenNear), motion.ts, seo.ts, contact/*, cylinder.ts, geo.ts, fonts.ts
 scripts/                    fetch-images.mjs + image-manifest.mjs (pnpm images)
 tests/unit/**               vitest (jsdom; route tests use node env pragma)
 tests/e2e/**                playwright: desktop / mobile / reduced-motion projects, port 3100
@@ -123,7 +123,7 @@ tests/e2e/**                playwright: desktop / mobile / reduced-motion projec
 None of these block merging. They were triaged in the final review and deferred.
 
 **Polish and correctness:**
-- Two `@next/next/no-img-element` lint warnings, for the SVG logos in `Footer` and `Loader` (Header has a scoped disable). Switch them to `next/image` or add a scoped disable.
+- One `@next/next/no-img-element` lint warning, for the SVG logo in `Footer` (Header has a scoped disable). Switch it to `next/image` or add a scoped disable.
 - Back/forward navigation always scrolls to the top; there is no scroll restoration. `TransitionLink` drops the query and hash when given a `UrlObject` href.
 - On arrival, the hash-link scroll offset is measured from the nav bar (`[data-nav-bar]`), which never hides.
 - `whenNear` can cause a one-frame flash on `FadeUp` and `NumberedList` blocks that are already in view right after a "next" transition.

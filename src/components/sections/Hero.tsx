@@ -13,7 +13,7 @@ export function Hero({ hero }: { hero: HeroT }) {
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/40" />
       <div className="relative grid-12 items-end gap-y-10">
         <div className="col-span-12 flex flex-col gap-6 lg:col-span-8">
-          <RevealLines as="h1" lines={hero.lines} className="text-hero" waitForLoader />
+          <RevealLines as="h1" lines={hero.lines} className="text-hero" />
         </div>
         <div className="col-span-12 flex flex-col items-start gap-8 lg:col-span-4 lg:items-end">
           {hero.metric && (

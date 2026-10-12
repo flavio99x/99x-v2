@@ -4,7 +4,6 @@ test.use({ javaScriptEnabled: false });
 for (const path of ["/", "/about-us", "/services", "/services/nearshore-tech-talent-usa", "/contact"]) {
   test(`${path} is readable without JS`, async ({ page }) => {
     await page.goto(path);
-    await expect(page.locator("[data-loader]")).toBeHidden();
     await expect(page.locator("h1")).toBeVisible();
     await expect(page.locator("footer")).toBeVisible();
   });

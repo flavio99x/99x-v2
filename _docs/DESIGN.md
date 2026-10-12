@@ -264,7 +264,7 @@ The logo is cut into five motion pieces: first "9" (ring Vector_2 + tail Vector_
 ### Motion
 - **House ease** `cubic-bezier(0.6, 0, 0, 1)` (GSAP "house", CSS `ease-house`) is the default for every tween.
 - **Durations:** reveal 1.2s, card 0.8s, hover 0.5s. Fade-up batches use `power2.out`, 0.8s, 80ms stagger, trigger at top 85%.
-- **Patterns:** masked line reveal (RevealLines, waits for loader), character-opacity scrub from 0.2 to 1 on statements (ScrubText), parallax photos (8-10%), pill wipe, once-only fade-up. NumberedList reveals each row once rather than scrubbing so text never rests dimmed.
+- **Patterns:** masked line reveal (RevealLines, pure CSS from first paint; there is no preloader, removed for LCP), character-opacity scrub from 0.2 to 1 on statements (ScrubText), parallax photos (8-10%), pill wipe, once-only fade-up. NumberedList reveals each row once rather than scrubbing so text never rests dimmed.
 - **Setup is deferred:** `whenNear` builds each section's motion only within one screen of the viewport.
 - **Reduced motion:** a global rule zeroes transition duration/delay and collapses animation to 0.01ms; JS branches (`prefersReducedMotion`) skip scrubs, render the names cylinder as a static 2-3 column list and the LogoStory as static.
 

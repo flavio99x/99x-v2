@@ -15,7 +15,7 @@ export function ContactMain({ section: s, offices }: { section: T; offices: Offi
           </div>
         </div>
         <div className="col-span-12 flex flex-col gap-12 lg:col-span-5 lg:col-start-8 lg:max-w-[28em]">
-          <RevealLines as="h1" lines={[s.heading]} className="text-statement" waitForLoader />
+          <RevealLines as="h1" lines={[s.heading]} className="text-statement" />
           <p className="text-body-m text-ink/70">{s.intro}</p>
           <ContactForm source={s.source} />
         </div>
