@@ -3,6 +3,7 @@ import "./globals.css";
 import { fontDisplay, fontMono } from "@/lib/fonts";
 import { getSite } from "@/content";
 import { organizationJsonLd } from "@/lib/seo";
+import { isIndexable } from "@/lib/indexable";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { Header } from "@/components/layout/Header";
@@ -13,6 +14,8 @@ import { SkipLink } from "@/components/layout/SkipLink";
 export const metadata: Metadata = {
   metadataBase: new URL("https://99x.io"),
   title: { default: "99x", template: "%s — 99x" },
+  // robots.txt alone still lets linked URLs be listed; noindex keeps them out until launch.
+  ...(isIndexable() ? {} : { robots: { index: false, follow: false } }),
 };
 export const viewport: Viewport = { themeColor: "#160f17" };
 
