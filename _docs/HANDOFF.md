@@ -9,7 +9,7 @@ Last updated: 2026-10-11.
 ## 1. Current state
 
 - **Branch:** all work is on `feat/phase1-website` (`git log main..feat/phase1-website`). Nothing has been merged into `main` yet.
-- **Remote:** the repo has no git remote, so pull requests aren't possible until one is added.
+- **Remote:** `origin` is https://github.com/flavio99x/99x-v2 (public; default branch `main`). `gh` is installed and logged in as flavio99x, so PRs are possible. The repo-local `http.postBuffer` is raised because the first HTTPS push of the ~34 MB history was dropped by the server.
 - **Built:** 5 pages, all statically generated:
   - `/`
   - `/about-us`
