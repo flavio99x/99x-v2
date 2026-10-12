@@ -10,6 +10,8 @@ export default defineConfig({
     url: "http://localhost:3100",
     reuseExistingServer: !process.env.CI,
     timeout: 240_000,
+    // `next start` reads .env; never let the suite send real contact emails through Resend.
+    env: { CONTACT_PROVIDER: "log" },
   },
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 900 } } },
