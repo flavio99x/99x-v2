@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T00:00:00Z",
+  "title": "Design System: 99x website (phase 1)",
+  "extensions": {
+    "colorMeta": {
+      "ink": {"role": "neutral", "displayName": "Plum Ink", "canonical": "#160f17"},
+      "paper": {"role": "neutral", "displayName": "Paper White", "canonical": "#ffffff"},
+      "tint": {"role": "neutral", "displayName": "Lilac Tint", "canonical": "#efe8f3"},
+      "accent": {"role": "primary", "displayName": "Lavender Accent", "canonical": "#c49fd5"},
+      "accent-deep": {"role": "primary", "displayName": "Deep Plum", "canonical": "#4a3255"}
+    },
+    "typographyMeta": {
+      "statement": {"displayName": "Statement", "purpose": "Section head statements, scrubbed per line."},
+      "mono-caption-m": {"displayName": "Mono caption", "purpose": "Data only: roles, countries, coordinates, figure labels."}
+    },
+    "shadows": [],
+    "motion": [
+      {"name": "house", "value": "cubic-bezier(0.6, 0, 0, 1)", "purpose": "Default ease for every tween and CSS transition (ease-house)."},
+      {"name": "dur-reveal", "value": "1.2s", "purpose": "Masked line reveals."},
+      {"name": "dur-card", "value": "0.8s", "purpose": "Fade-up batches, list rows."},
+      {"name": "dur-hover", "value": "0.5s", "purpose": "Button, card and toggle state changes."}
+    ],
+    "breakpoints": [
+      {"name": "sm", "value": "480px"}, {"name": "md", "value": "768px"}, {"name": "lg", "value": "992px"}, {"name": "xl", "value": "1440px"}
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button", "kind": "button", "refersTo": "button-dark",
+      "description": "Ink shell with sliding arrow chip.",
+      "html": "<span class=\"ds-btn\"><span class=\"ds-btn-label\">CONTACT US</span><span class=\"ds-btn-arrow\"></span></span>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;background:var(--color-ink,#160f17);color:#fff;border-radius:8px;padding:4px;min-height:44px;transition:background .5s cubic-bezier(.6,0,0,1)}.ds-btn-label{font-family:var(--font-mono),monospace;font-weight:300;text-transform:uppercase;font-size:13px;padding:0 24px}.ds-btn-arrow{width:32px;height:32px;border-radius:4px;background:#fff}.ds-btn:hover .ds-btn-arrow,.ds-btn:focus-visible .ds-btn-arrow{background:#c49fd5}"
+    },
+    {
+      "name": "Small Button", "kind": "button", "refersTo": "button-sm",
+      "description": "28px paper pill on photography; lavender on hover.",
+      "html": "<a class=\"ds-sm\" href=\"#\">EXPLORE</a>",
+      "css": ".ds-sm{display:inline-flex;align-items:center;height:28px;padding:0 8px;border-radius:2px;background:#fff;color:#160f17;font-family:var(--font-mono),monospace;font-weight:300;font-size:11px;text-transform:uppercase;transition:background .5s cubic-bezier(.6,0,0,1)}.ds-sm:hover,.ds-sm:focus-visible{background:#c49fd5}"
+    },
+    {
+      "name": "Card Tile", "kind": "card", "refersTo": "card-tile",
+      "description": "Square paper tile, lavender on hover, flat.",
+      "html": "<div class=\"ds-tile\"><h3>Product engineering</h3></div>",
+      "css": ".ds-tile{aspect-ratio:1;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;border-radius:8px;background:#fff;color:#160f17;font-weight:700;font-size:32px;line-height:1.1;letter-spacing:-.025em;transition:background .5s cubic-bezier(.6,0,0,1)}.ds-tile:hover{background:#c49fd5}"
+    },
+    {
+      "name": "Underline Field", "kind": "input", "refersTo": "field",
+      "description": "Underline-only input; plum border on focus.",
+      "html": "<input class=\"ds-field\" placeholder=\"Your name\">",
+      "css": ".ds-field{width:100%;border:0;border-bottom:1px solid #160f17;background:transparent;padding:24px 0;font-weight:700;font-size:16px;outline:none}.ds-field:focus-visible{border-bottom-color:#4a3255}"
+    },
+    {
+      "name": "Section Tag", "kind": "custom", "refersTo": "SectionTag",
+      "description": "Section label: mono uppercase text in a filled 4px-radius box.",
+      "html": "<span class=\"ds-tag\">About us</span>",
+      "css": ".ds-tag{display:inline-flex;font-family:var(--font-mono),monospace;font-weight:300;font-size:11px;text-transform:uppercase;border-radius:4px;padding:4px 6px;background:#160f17;color:#fff}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Numbered Dossier",
+    "overview": "Indexed-document site: ink, paper and tint grounds, lavender as the single live accent, the multicolour logo as the only spectrum, flat surfaces, one house ease.",
+    "keyCharacteristics": ["Three section grounds under a fixed charcoal nav bar", "One fluid unit --u drives everything", "700 sans for reading, 300 mono for data", "One house ease; reveals 1.2s, hovers 0.5s"],
+    "rules": [
+      {"name": "The Ink-Paper-Tint Rule", "body": "A section is exactly one of dark, paper or tint, declared through data-theme.", "section": "colors"},
+      {"name": "The Logo Owns The Spectrum Rule", "body": "Only lavender among logo colours does UI work; logo-red is the error colour.", "section": "colors"},
+      {"name": "The Opacity Contrast Rule", "body": "Secondary text is 60-70% of the ground colour; do not go below the recorded floors.", "section": "colors"},
+      {"name": "The Heavy-Light Pairing Rule", "body": "700 sans for reading, 300 mono uppercase for data.", "section": "typography"},
+      {"name": "The Flat Rule", "body": "Surfaces never lift; state change is colour, translate or opacity.", "section": "elevation"}
+    ],
+    "dos": ["Do express every size, gap and radius in --u multiples.", "Do use SectionShell and data-theme for every labelled section."],
+    "donts": ["Don't add box-shadows, glow or blur.", "Don't use non-lavender logo colours outside the logo."]
+  }
+}

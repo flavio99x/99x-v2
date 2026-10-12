@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/* Hover-driven reveals only where hover is real (mouse/trackpad), never on touch tablets. */
+@custom-variant hover-fine (@media (hover: hover) and (pointer: fine));
+
+/* ---------- Fluid scale (Osmo-style): 1u = 16px at the design width ---------- */
+:root {
+  --size-unit: 16;
+  --size-container-ideal: 1440;
+  --size-container-min: 992px;
+  --size-container-max: 1920px;
+  --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+  --u: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+  --site-margin: calc(var(--u) * 2);
+}
+@media (max-width: 991px) {
+  :root { --size-container-ideal: 834; --size-container-min: 768px; --size-container-max: 991px; --site-margin: var(--u); }
+}
+@media (max-width: 767px) {
+  :root { --size-container-ideal: 550; --size-container-min: 480px; --size-container-max: 767px; }
+}
+@media (max-width: 479px) {
+  :root { --size-container-ideal: 390; --size-container-min: 320px; --size-container-max: 479px; }
+}
+
+@theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: initial;
+
+  --color-*: initial;
+  --color-ink: #160f17;
+  --color-paper: #ffffff;
+  --color-tint: #efe8f3;
+  --color-charcoal: #201d1d;
+  --color-accent: #c49fd5;
+  --color-accent-deep: #4a3255;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-logo-sage: #a2b372;
+  --color-logo-lavender: #c49fd5;
+  --color-logo-sand: #ccb189;
+  --color-logo-bronze: #bc8e58;
+  --color-logo-brown: #905b54;
+  --color-logo-red: #b44b4b;
+  --color-logo-mauve: #7a6977;
+
+  /* next/font exposes --font-inter-tight / --font-geist-mono; Tailwind tokens wrap them (distinct names avoid a var() cycle) */
+  --font-display: var(--font-inter-tight), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --spacing: calc(var(--u) * 0.25);
+
+  --text-hero: calc(var(--u) * 3.5);
+  --text-hero--line-height: 1.1;
+  --text-xxl: calc(var(--u) * 7);
+  --text-xxl--line-height: 0.8;
+  --text-xxl--letter-spacing: -0.025em;
+  --text-statement: calc(var(--u) * 3);
+  --text-statement--line-height: 1;
+  --text-statement--letter-spacing: -0.0098em;
+  --text-next: calc(var(--u) * 3.5);
+  --text-next--line-height: 1;
+  --text-h2: calc(var(--u) * 2);
+  --text-h2--line-height: 1;
+  --text-card: calc(var(--u) * 2);
+  --text-card--line-height: 1.1;
+  --text-card--letter-spacing: -0.025em;
+  --text-stat: calc(var(--u) * 2.5);
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.0098em;
+  --text-body-m: calc(var(--u) * 1.25);
+  --text-body-m--line-height: 1.1;
+  --text-body-s: var(--u);
+  --text-body-s--line-height: 1.2;
+  --text-label: calc(var(--u) * 1.5);
+  --text-label--line-height: 1.1;
+  --text-eyebrow-m: calc(var(--u) * 0.75);
+  --text-eyebrow-m--line-height: 1;
+  --text-eyebrow-s: calc(var(--u) * 0.7);
+  --text-eyebrow-s--line-height: 0.9;
+  --text-button: calc(var(--u) * 0.813);
+  --text-button--line-height: 0.8;
+
+  --radius-xs: 2px;
+  --radius-sm: calc(var(--u) * 0.25);
+  --radius-md: calc(var(--u) * 0.5);
+
+  --ease-house: cubic-bezier(0.6, 0, 0, 1);
+  --ease-nav: cubic-bezier(0.625, 0.05, 0, 1);
+
+  --text-nav: calc(var(--u) * 1.5);
+  --text-nav--line-height: 1;
+  --text-nav--letter-spacing: -0.02em;
+}
+
+/* Mobile type steps down like cominvi */
+@media (max-width: 767px) {
+  :root {
+    --text-statement: calc(var(--u) * 2);
+    --text-xxl: calc(var(--u) * 4);
+    --text-hero: calc(var(--u) * 2.5);
+    --text-next: calc(var(--u) * 2.5);
+  }
+}
+
+@layer base {
+  /* scrollbar-gutter: opening the menu locks scroll (overflow hidden), which would drop the page scrollbar and shift the layout sideways. */
+  html { color-scheme: light; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scrollbar-gutter: stable; }
+  body {
+    font-size: var(--u);
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    background: var(--color-ink);
+    color: var(--color-ink);
+  }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: hidden; }
+  a { color: inherit; text-decoration: none; }
+  /* Every clickable control gets the hand cursor (Tailwind v4's preflight leaves buttons on the default arrow). */
+  a[href], button, [role="button"], [role="tab"], summary, label[for], select, input[type="checkbox"], input[type="radio"], input[type="submit"] { cursor: pointer; }
+  :disabled, [aria-disabled="true"] { cursor: not-allowed; }
+  :focus-visible { outline: 2px solid var(--color-accent-deep); outline-offset: 2px; }
+  [data-theme="dark"] :focus-visible { outline-color: var(--color-accent); }
+  img, video { display: block; max-width: 100%; }
+}
+
+/* Failsafe: if JS never takes over the loader (slow or failed bundles), get it out of the way.
+   The intro timeline cancels this on start (Loader.tsx), so a slow-but-working intro is never cut off. */
+[data-loader] { animation: loader-failsafe 0.4s 3.5s forwards; }
+@keyframes loader-failsafe { to { opacity: 0; visibility: hidden; } }
+
+@utility site-x { padding-inline: var(--site-margin); }
+@utility grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--u); }
+@utility mask-line { overflow: hidden; display: block; }
+
+/* ---------- Nav bar (Osmo pattern): state lives in [data-nav] on <header>, CSS drives every transition ----------
+   Open: bar widens first, then the panel unfolds and its columns rise in a stagger. Close runs it back, width last. */
+/* Visibility flips instantly on open (so an early click lands on the backdrop) and only after the fade on close. */
+.nav-backdrop { opacity: 0; visibility: hidden; transition: opacity 0.6s var(--ease-nav), visibility 0s linear 0.6s; }
+[data-nav="open"] .nav-backdrop { opacity: 1; visibility: visible; transition: opacity 0.6s var(--ease-nav), visibility 0s; }
+
+.nav-bar { max-width: calc(var(--u) * 38); transition: max-width 0.9s var(--ease-nav) 0.2s; }
+[data-nav="open"] .nav-bar { max-width: 100%; transition: max-width 0.6s var(--ease-nav) 0s; }
+@media (max-width: 767px) { .nav-bar { max-width: 100%; } }
+
+.nav-back { inset: 0; transition: inset 0.6s var(--ease-nav); }
+@media (min-width: 768px) { [data-scrolled="true"]:not([data-nav="open"]) .nav-back { inset: calc(var(--u) * 0.1875); } }
+
+
+.nav-line { left: calc(var(--u) * 0.5); right: calc(var(--u) * 0.5); opacity: 0; transition: all 0.6s var(--ease-nav) 0s; }
+[data-nav="open"] .nav-line { left: 0; right: 0; opacity: 1; transition: all 0.6s var(--ease-nav) 0.2s; }
+
+.nav-panel { grid-template-rows: 0fr; transform: translateY(calc(var(--u) * -0.625)); transition: grid-template-rows 0.6s var(--ease-nav) 0s, transform 0.6s var(--ease-nav) 0s; }
+[data-nav="open"] .nav-panel { grid-template-rows: 1fr; transform: none; transition: grid-template-rows 0.9s var(--ease-nav) 0.3s, transform 0.6s var(--ease-nav) 0.3s; }
+
+.nav-col { transform: translateY(calc(var(--u) * 2)); transition: transform 0.6s var(--ease-nav) calc(var(--i, 0) * 0.075s); }
+[data-nav="open"] .nav-col { transform: none; transition: transform 0.9s var(--ease-nav) calc(0.3s + var(--i, 0) * 0.075s); }
+
+.nav-burger > * { transition: transform 0.6s var(--ease-nav); transform: translateY(calc(var(--u) * 0.1875)) scaleX(1); }
+.nav-burger > :nth-child(2) { transform: translateY(calc(var(--u) * -0.1875)) scaleX(1); }
+[data-nav="open"] .nav-burger > :nth-child(1) { transform: rotate(-45deg) scaleX(0.75); }
+[data-nav="open"] .nav-burger > :nth-child(2) { transform: rotate(45deg) scaleX(0.75); }
+
+/* The panel scrolls (phones, short windows) but never shows a scrollbar: the columns' rise-in transform briefly
+   overflows it on every open, which would flash one. Wheel, trackpad, touch and keyboard scrolling still work. */
+.nav-scroll { scrollbar-width: none; }
+.nav-scroll::-webkit-scrollbar { display: none; }
+
+/* Underline draws in from the left on hover, retracts to the right. */
+.nav-underline { position: relative; }
+.nav-underline::before {
+  content: ""; position: absolute; left: 0; bottom: -0.175em; width: 100%; height: 1px; background: currentColor;
+  transform-origin: right; transform: scaleX(0); transition: transform 0.6s var(--ease-nav);
+}
+@media (hover: hover) and (pointer: fine) { :hover > .nav-underline::before { transform-origin: left; transform: scaleX(1); } }
+:focus-visible > .nav-underline::before { transform-origin: left; transform: scaleX(1); }
+
+/* Rotating label (Osmo button hover): copies sit on a wheel whose centre is far below the button. */
+.rotate-label { transform-origin: 50% var(--y, 1100%); }
+.rotate-label:not(:first-child) { position: absolute; inset: 0; transform: rotate(-20deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* 0s, not 0.01ms: transition-property defaults to `all`, so a non-zero duration would make every
+     property (incl. `visibility`) transition and lag a frame — e.g. the menu stays unfocusable. */
+  *, *::before, *::after {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

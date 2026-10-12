@@ -1,0 +1,182 @@
+{
+  "home/hero.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "home/about-portrait.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "home/services-tile.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "home/ai.jpg": {
+    "width": 2400,
+    "height": 1602
+  },
+  "home/case-interflora.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "home/case-boligmappa.jpg": {
+    "width": 2400,
+    "height": 1536
+  },
+  "home/case-bagid.jpg": {
+    "width": 2000,
+    "height": 1049
+  },
+  "home/insight-data-science.jpg": {
+    "width": 2400,
+    "height": 1350
+  },
+  "home/insight-mcp.jpg": {
+    "width": 1998,
+    "height": 1125
+  },
+  "home/insight-agentic.jpg": {
+    "width": 2400,
+    "height": 1350
+  },
+  "about/hero.jpg": {
+    "width": 2400,
+    "height": 1271
+  },
+  "about/management.jpg": {
+    "width": 1600,
+    "height": 1067
+  },
+  "about/office.jpg": {
+    "width": 2400,
+    "height": 1350
+  },
+  "about/t-2000.jpg": {
+    "width": 1000,
+    "height": 667
+  },
+  "about/t-2006.jpg": {
+    "width": 2400,
+    "height": 1681
+  },
+  "about/t-2012.jpg": {
+    "width": 960,
+    "height": 664
+  },
+  "about/t-2021.jpg": {
+    "width": 1513,
+    "height": 896
+  },
+  "about/t-2023.jpg": {
+    "width": 1200,
+    "height": 800
+  },
+  "about/t-2025.jpg": {
+    "width": 678,
+    "height": 452
+  },
+  "about/t-2026.jpg": {
+    "width": 2400,
+    "height": 1350
+  },
+  "about/tab-partner.jpg": {
+    "width": 960,
+    "height": 765
+  },
+  "about/tab-work.jpg": {
+    "width": 900,
+    "height": 562
+  },
+  "about/tab-culture.jpg": {
+    "width": 1440,
+    "height": 960
+  },
+  "people/odd-sverre-ostlie.jpg": {
+    "width": 2000,
+    "height": 2000
+  },
+  "people/trygve-moe.jpg": {
+    "width": 2000,
+    "height": 2000
+  },
+  "people/stein-eric-moe.jpg": {
+    "width": 1080,
+    "height": 1080
+  },
+  "people/carlos-coutinho-silva.jpg": {
+    "width": 2000,
+    "height": 2000
+  },
+  "people/hasith-yaggahavita.jpg": {
+    "width": 735,
+    "height": 735
+  },
+  "people/eiliv-liljevik.jpg": {
+    "width": 2000,
+    "height": 2000
+  },
+  "people/thiers-santos.jpg": {
+    "width": 1600,
+    "height": 1600
+  },
+  "people/terje-aasgaard.jpg": {
+    "width": 1080,
+    "height": 1080
+  },
+  "people/guilherme-ramos-pereira.jpg": {
+    "width": 1958,
+    "height": 1311
+  },
+  "people/steinar-magnussen.jpg": {
+    "width": 2400,
+    "height": 1585
+  },
+  "people/chrishan-de-mel.jpg": {
+    "width": 500,
+    "height": 625
+  },
+  "people/dag-honningsvag.jpg": {
+    "width": 500,
+    "height": 625
+  },
+  "services/hero.jpg": {
+    "width": 2400,
+    "height": 1602
+  },
+  "services/web-solutions.jpg": {
+    "width": 2400,
+    "height": 1810
+  },
+  "services/product-engineering.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "nearshore-usa/hero.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "nearshore-usa/partners.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "nearshore-usa/ai.jpg": {
+    "width": 2400,
+    "height": 1602
+  },
+  "nearshore-usa/case-crowdfunding.jpg": {
+    "width": 2400,
+    "height": 1600
+  },
+  "nearshore-usa/case-cre.jpg": {
+    "width": 2400,
+    "height": 1602
+  },
+  "nearshore-usa/case-printly.jpg": {
+    "width": 1920,
+    "height": 1277
+  },
+  "nearshore-usa/case-qr.jpg": {
+    "width": 1920,
+    "height": 1280
+  }
+}

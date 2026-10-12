@@ -80,7 +80,7 @@
 ```
 src/
   app/
-    layout.tsx               root layout: fonts, Header, Menu, Footer, SmoothScroll, PageTransition, Loader
+    layout.tsx               root layout: fonts, Header (renders Menu inside), Footer, SmoothScroll, PageTransition, Loader
     page.tsx                 Home
     about-us/page.tsx
     services/page.tsx
@@ -185,6 +185,8 @@ Headings sentence case; only mono labels uppercase. Long-form paragraphs (rare) 
 - Links: no underline; hover via opacity/slide; visible `:focus-visible` ring (2px accent-deep offset 2px).
 
 ### 5.5 Header, menu, footer
+> Header and menu superseded on 2026-10-11 by the Osmo-style nav bar; see §17.
+
 - **Header**: fixed, 1.5em from top, 2em side insets. Left: logo pill (logo tile + wordmark box). Right: "Menu" label + 48px circle button (1px border, two bars). Hides on scroll down (logo slides left, menu slides right, 0.5s); returns on scroll up. Theme switches per section under it via `data-theme` on sections (`dark | paper | tint`).
 - **Menu (desktop)**: page container translates down (~470px) and insets into a rounded card revealing the ink layer: three columns of 2em links + language + socials. Icon becomes accent circle with ×. Link hover slides in an arrow. Focus trap, Esc closes, `aria-expanded`, body scroll lock (Lenis stop).
 - **Menu (mobile)**: full-screen ink layer, stacked links, same motion vocabulary.
@@ -365,3 +367,23 @@ WCAG 2.2 AA: landmarks (`header`, `nav`, `main`, `footer`), one `h1` per page, l
 ## 16. Out of scope (phase 1)
 
 Remaining ~300 pages (case studies, insights, careers, events, other service pages, AI page, legal), Norwegian locale, CMS, email/CRM provider wiring, analytics/consent banner (add with first tracking tool), search, reCAPTCHA.
+
+---
+
+## 17. Deviations (as built)
+
+- Insights own Home section (7th; Trusted by moves to 8th); About divisions own section (7th; Leadership moves to 8th).
+- No mono kicker on heroes.
+- The 3D fallback is an inline exploded SVG, not a pre-rendered raster.
+- The permanent redirect returns 308.
+- Names-cylinder neighbour opacity is .55 and LogoStory inactive is .5, for contrast.
+- NumberedList reveals once.
+- Below-the-fold motion setup is deferred via `whenNear` (`src/lib/near.ts`) for performance.
+- `cacheComponents` is disabled.
+- Logo pieces keep their original per-path colours.
+- About LCP was measured with Lighthouse `--preset=perf`.
+- OG images reuse each page's hero photo (no bespoke 1200×630 artwork yet).
+- Toggle tabs are ~33px tall at 375px (WCAG 2.2 AA 24px target size met; the spec's 44px target is deferred).
+- Contact posts without JavaScript redirect to static `/contact/sent` and `/contact/error` pages (noindex, not in the sitemap), so `/contact` stays static; with JS the form uses the JSON API and shows inline feedback.
+- **Header and menu (2026-10-11, user request):** replaced by an Osmo-style (osmo.supply) nav bar. A charcoal (`#201d1d`) bar with the menu button left, the colour logo once in the centre and an always-visible "Contact us" CTA right; no hide on scroll, no section-theme recolouring. Opening widens the bar to full width and unfolds the menu panel beneath it (three link columns plus a lavender contact card); the page behind dims to 30% charcoal instead of the page-shell push-down. Timings and easing (`cubic-bezier(0.625,0.05,0,1)`, 0.6s/0.9s) copy Osmo's. The CTA uses Osmo's rotating-label hover.
+- **Section index removed (2026-10-11, user request):** sections no longer carry S.01/S.02 numbering; the SectionTag is the label alone in a black block, and `head.index` is gone from the schema.
