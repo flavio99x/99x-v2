@@ -26,7 +26,7 @@ export const nearshoreUsa: Page = {
     {
       type: "stats",
       theme: "paper",
-      head: { index: "S.01", label: "Engineering partners", statement: "A curated Brazilian engineering partner that works as an extension of your team — in your timezone, so you spend less time managing and more time shipping." },
+      head: { label: "Engineering partners", statement: "A curated Brazilian engineering partner that works as an extension of your team — in your timezone, so you spend less time managing and more time shipping." },
       image: img("nearshore-usa/partners.jpg", "An engineer working at a large screen"),
       items: [
         { value: "60+", label: "Senior engineers, designers & product leaders", icon: "people" },
@@ -40,7 +40,7 @@ export const nearshoreUsa: Page = {
       type: "cardGrid",
       theme: "tint",
       id: "engagement",
-      head: { index: "S.02", label: "Engagement models", statement: "Flexible engagement models, shaped around what you need to ship." },
+      head: { label: "Engagement models", statement: "Flexible engagement models, shaped around what you need to ship." },
       cards: [
         { title: "IT staff augmentation", description: "Extend your team with vetted engineers who feel in-house, communicate in real time and ship with quality and speed.", icon: "users" },
         { title: "Web application development", description: "Secure, scalable, user-friendly web apps built on React, Vue, Node.js and Django.", icon: "code" },
@@ -51,7 +51,7 @@ export const nearshoreUsa: Page = {
     {
       type: "stickySplit",
       theme: "paper",
-      head: { index: "S.03", label: "AI @ 99x Americas", statement: "A software company first — we use AI deliberately, not by default." },
+      head: { label: "AI @ 99x Americas", statement: "A software company first — we use AI deliberately, not by default." },
       image: img("nearshore-usa/ai.jpg", "A team working together around a laptop"),
       mediaSide: "right",
       heading: "Future-proof engineering with AI",
@@ -61,7 +61,7 @@ export const nearshoreUsa: Page = {
     {
       type: "numberedList",
       theme: "tint",
-      head: { index: "S.04", label: "Why choose us", statement: "More than a tech vendor: experts who think strategically, challenge assumptions and help you ship better products, faster." },
+      head: { label: "Why choose us", statement: "More than a tech vendor: experts who think strategically, challenge assumptions and help you ship better products, faster." },
       items: [
         { title: "Selective, senior talent", description: "Every expert is vetted for technical mastery, communication and an ownership mindset." },
         { title: "Seamless team integration", description: "Culturally aligned teams in your timezone." },
@@ -72,7 +72,7 @@ export const nearshoreUsa: Page = {
     {
       type: "caseCards",
       theme: "paper",
-      head: { index: "S.05", label: "Customer stories", statement: "Products we've helped US and global companies build." },
+      head: { label: "Customer stories", statement: "Products we've helped US and global companies build." },
       cards: [
         { title: "Giving a crowdfunding platform a competitive edge", tag: "Tech talent", image: img("nearshore-usa/case-crowdfunding.jpg", "Crowdfunding platform on a phone"), link: { label: "Crowdfunding", href: X("/case-studies/tech-experts/giving-a-crowdfunding-platform-a-competitive-edge"), external: true } },
         { title: "An operational intelligence platform for commercial real estate", tag: "Tech talent", image: img("nearshore-usa/case-cre.jpg", "Office buildings in a city centre"), link: { label: "CRE platform", href: X("/case-studies/tech-experts/operational-intelligence-platform-for-cre"), external: true } },
@@ -84,7 +84,7 @@ export const nearshoreUsa: Page = {
       type: "contactBlock",
       theme: "tint",
       id: "talk",
-      head: { index: "S.06", label: "Talk to us", statement: "Ready to discuss your needs? Talk to Thiers." },
+      head: { label: "Talk to us", statement: "Ready to discuss your needs? Talk to Thiers." },
       person: { name: "Thiers Santos", role: "EVP, 99x Americas", email: "ThiersS@99x.io", photo: img("people/thiers-santos.jpg", "Portrait of Thiers Santos") },
       source: "nearshore-usa",
     },

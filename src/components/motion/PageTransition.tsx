@@ -22,7 +22,7 @@ function scrollToHash(hash: string, lenis: ReturnType<typeof useLenis>): boolean
     return false;
   }
   if (!el) return false;
-  const offset = -(document.querySelector("header")?.getBoundingClientRect().bottom ?? 0);
+  const offset = -(document.querySelector("[data-nav-bar]")?.getBoundingClientRect().bottom ?? 0);
   if (lenis) {
     lenis.resize(); // the new page's height may not be measured yet
     lenis.scrollTo(el, { immediate: true, force: true, offset });
@@ -90,7 +90,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       }
     } else {
       lenis?.scrollTo(0, { immediate: true, force: true });
-      window.scrollTo(0, 0);
+      // Through ScrollTrigger's setter, not window.scrollTo: its cached position only updates on "scroll" events, and
+      // the swap's clamp event already cached the old page's offset, which refresh() would record and restore.
+      ScrollTrigger.getScrollFunc(window)(0);
       ScrollTrigger.refresh();
     }
     if (!overlay.current) return;

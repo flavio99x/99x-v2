@@ -1,7 +1,7 @@
 import type { IconName } from "@/content/schema";
 import { cn } from "@/lib/cn";
 
-type Name = IconName | "linkedin" | "youtube" | "play" | "close" | "plus";
+type Name = IconName | "play" | "close" | "plus";
 
 const paths: Record<Name, React.ReactNode> = {
   calendar: <><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" /></>,
@@ -23,8 +23,6 @@ const paths: Record<Name, React.ReactNode> = {
   play: <><path d="M8 5v14l11-7L8 5Z" /></>,
   close: <><path d="M6 6l12 12M18 6 6 18" /></>,
   plus: <><path d="M12 5v14M5 12h14" /></>,
-  linkedin: <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" /></>,
-  youtube: <><rect x="2.5" y="5.5" width="19" height="13" rx="3.5" /><path d="m10 9 5 3-5 3V9Z" /></>,
 };
 
 export function Icon({ name, className }: { name: Name; className?: string }) {

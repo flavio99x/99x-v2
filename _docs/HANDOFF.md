@@ -62,7 +62,7 @@ src/content/index.ts        static registry; getSite / getPage / getAllPages
 src/content/img.ts          img(path, alt) → reads dims from images.json (generated)
 src/components/sections/    SectionRenderer (exhaustive switch) → one component per section type; PageView = Hero + sections + NextPage
 src/components/ui/          Button/ButtonSm/SectionTag/Eyebrow/Stat/Icon/TickRuler/Toggle/Field/SmartLink
-src/components/layout/      Header (hide on scroll, theme from section data-theme), Menu (push-down page shell), Footer, Loader, ui-store
+src/components/layout/      Header (Osmo-style bar: menu left, logo centre, contact CTA right; always visible; unfolds into the Menu panel, CSS-driven via [data-nav] in globals.css), Menu (panel contents), Footer, Loader, ui-store
 src/components/motion/      SmoothScroll (Lenis), PageTransition + TransitionLink, RevealLines, ScrubText, FadeUp, Parallax, PillWipe
 src/components/three/       LogoStory (pinned section), LogoScene (R3F, lazy), logoGeometry, storyMath, StaticLogoFallback, lowPower
 src/components/forms/       ContactForm, FormResult
@@ -76,7 +76,6 @@ tests/e2e/**                playwright: desktop / mobile / reduced-motion projec
 
 **Content contract tests** (`tests/unit/content/pages.test.ts`):
 - Every internal link and `#anchor` must resolve to a real route or section.
-- Section tags must run S.01, S.02, … in order.
 - Each `next` link must point to a built route and reuse that page's hero image.
 - Alt text that looks like a filename is rejected by the schema.
 
@@ -108,7 +107,7 @@ tests/e2e/**                playwright: desktop / mobile / reduced-motion projec
 - **Never kill a process with `pkill`, or by any PID listed on a port.** The Claude desktop app's network helper shows up as connected to dev ports, and one session killed it. Stop only processes that are actually *listening* on the port: `kill $(lsof -ti:<port> -sTCP:LISTEN)`.
 - **Stale builds.** Incremental `pnpm build` and the dev server have both served stale CSS. Run `rm -rf .next` before e2e runs and before any performance measurement. Make sure nothing is already running on port 3100, because Playwright will reuse an existing server.
 - **GSAP and CSS values.** GSAP silently drops `calc()` and `var()` values for transforms such as `z` and `transformOrigin`. Convert `--u` to pixels instead; `NamesCylinder` measures a probe element and re-reads it on refresh.
-- **Pinning and React.** ScrollTrigger pins use `pinType: "transform"`, set as the default in `lib/gsap.ts`, because the menu transforms the page shell. Always pin an inner element inside a wrapper element that React owns. If React has to remove a node that GSAP wrapped in `.pin-spacer`, it throws a `removeChild` error, for example when reduced motion is toggled.
+- **Pinning and React.** ScrollTrigger pins use `pinType: "transform"`, set as the default in `lib/gsap.ts`. The old menu's page-shell transform that required it is gone, but every pinned section was verified on transform pins, so re-test them all before switching. Always pin an inner element inside a wrapper element that React owns. If React has to remove a node that GSAP wrapped in `.pin-spacer`, it throws a `removeChild` error, for example when reduced motion is toggled.
 - **`whenNear` and `useGSAP`.** Setup for below-the-fold motion is deferred until about one screen away. This keeps first-load hydration light, and Home's performance score rose from 84 to 95 because of it. Hero reveals and pinned sections are not deferred. Use the same pattern for new motion.
 - **axe checks `aria-hidden` text for contrast too.** Faded decorative text still has to reach 3:1 (large text) unless it is truly invisible. That is why the cylinder's neighbouring names sit at 0.55 opacity and LogoStory's inactive offices at 0.5.
 - **React Compiler is on and the `react-hooks` lint rules are strict.** Intentional `setState` calls in effects get a narrowly scoped `eslint-disable` with a reason. `cacheComponents` is off on purpose (Ruling 3).
@@ -122,9 +121,9 @@ tests/e2e/**                playwright: desktop / mobile / reduced-motion projec
 None of these block merging. They were triaged in the final review and deferred.
 
 **Polish and correctness:**
-- Three `@next/next/no-img-element` lint warnings, for the SVG logos in `Header`, `Footer` and `Loader`. Switch them to `next/image` or add a scoped disable.
+- Two `@next/next/no-img-element` lint warnings, for the SVG logos in `Footer` and `Loader` (Header has a scoped disable). Switch them to `next/image` or add a scoped disable.
 - Back/forward navigation always scrolls to the top; there is no scroll restoration. `TransitionLink` drops the query and hash when given a `UrlObject` href.
-- On arrival, the hash-link scroll offset is measured from the header. If the header happens to be hidden at that moment, the section can end up under it.
+- On arrival, the hash-link scroll offset is measured from the nav bar (`[data-nav-bar]`), which never hides.
 - `whenNear` can cause a one-frame flash on `FadeUp` and `NumberedList` blocks that are already in view right after a "next" transition.
 - `DisplayLine` with `fill: "image"` and no `image` renders invisible text. The schema needs a refine to prevent that.
 - `NumberedList` updates state on every scroll frame. Drive the ruler through a ref instead.
@@ -147,7 +146,6 @@ None of these block merging. They were triaged in the final review and deferred.
 **Design follow-ups** (needs user or design sign-off):
 - Contrast-driven values: cylinder neighbours at 0.55, LogoStory inactive offices at 0.5, and NumberedList revealing once instead of scrubbing.
 - The Hero gradient is darkened for legibility.
-- The header logo pill's wordmark box repeats "99x". A real wordmark asset is needed.
 - Weak or reused photos are listed in `open-questions.md`.
 - Per-page 1200×630 Open Graph images; the hero photos are reused for now.
 - The spec targets 44px toggle tabs; they are about 33px at 375px wide (WCAG AA is met).
@@ -176,8 +174,10 @@ None of these block merging. They were triaged in the final review and deferred.
 10. The active logo piece swings at most about 35° and never goes edge-on.
 11. All pinned sections use the wrapper pattern so React can unmount them safely.
 12. About's LCP is judged with `--preset=perf`.
-13. Insights is its own section on Home (S.07), and Divisions is its own section on About (S.07).
+13. Insights is its own section on Home (7th), and Divisions is its own section on About (7th).
 14. Heroes have no small mono label above the H1.
+15. Section tags show only the section title in the black block; the S.01/S.02 numbering was removed (2026-10-11).
+16. Header and menu follow osmo.supply (charcoal bar, logo centred, contact CTA always visible, unfolding panel), not cominvi (2026-10-11).
 
 ## 9. What to do next
 

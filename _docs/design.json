@@ -17,8 +17,8 @@
     "shadows": [],
     "motion": [
       {"name": "house", "value": "cubic-bezier(0.6, 0, 0, 1)", "purpose": "Default ease for every tween and CSS transition (ease-house)."},
-      {"name": "dur-reveal", "value": "1.2s", "purpose": "Masked line reveals, menu shell."},
-      {"name": "dur-card", "value": "0.8s", "purpose": "Fade-up batches, list rows, menu items."},
+      {"name": "dur-reveal", "value": "1.2s", "purpose": "Masked line reveals."},
+      {"name": "dur-card", "value": "0.8s", "purpose": "Fade-up batches, list rows."},
       {"name": "dur-hover", "value": "0.5s", "purpose": "Button, card and toggle state changes."}
     ],
     "breakpoints": [
@@ -52,15 +52,15 @@
     },
     {
       "name": "Section Tag", "kind": "custom", "refersTo": "SectionTag",
-      "description": "Two-box index tab: index above, label below.",
-      "html": "<span class=\"ds-tag\"><span class=\"ds-tag-i\">S.01</span><span class=\"ds-tag-l\">About</span></span>",
-      "css": ".ds-tag{display:inline-flex;flex-direction:column;font-family:var(--font-mono),monospace;font-weight:300;font-size:11px;text-transform:uppercase}.ds-tag-i{align-self:flex-start;border:1px solid #160f17;border-radius:4px 4px 0 0;padding:4px 6px}.ds-tag-l{border:1px solid #160f17;border-radius:0 4px 4px 4px;padding:4px 6px;background:#160f17;color:#fff}"
+      "description": "Section label: mono uppercase text in a filled 4px-radius box.",
+      "html": "<span class=\"ds-tag\">About us</span>",
+      "css": ".ds-tag{display:inline-flex;font-family:var(--font-mono),monospace;font-weight:300;font-size:11px;text-transform:uppercase;border-radius:4px;padding:4px 6px;background:#160f17;color:#fff}"
     }
   ],
   "narrative": {
     "northStar": "The Numbered Dossier",
     "overview": "Indexed-document site: ink, paper and tint grounds, lavender as the single live accent, the multicolour logo as the only spectrum, flat surfaces, one house ease.",
-    "keyCharacteristics": ["Three section grounds; header follows data-theme", "One fluid unit --u drives everything", "700 sans for reading, 300 mono for data", "One house ease; reveals 1.2s, hovers 0.5s"],
+    "keyCharacteristics": ["Three section grounds under a fixed charcoal nav bar", "One fluid unit --u drives everything", "700 sans for reading, 300 mono for data", "One house ease; reveals 1.2s, hovers 0.5s"],
     "rules": [
       {"name": "The Ink-Paper-Tint Rule", "body": "A section is exactly one of dark, paper or tint, declared through data-theme.", "section": "colors"},
       {"name": "The Logo Owns The Spectrum Rule", "body": "Only lavender among logo colours does UI work; logo-red is the error colour.", "section": "colors"},
@@ -68,7 +68,7 @@
       {"name": "The Heavy-Light Pairing Rule", "body": "700 sans for reading, 300 mono uppercase for data.", "section": "typography"},
       {"name": "The Flat Rule", "body": "Surfaces never lift; state change is colour, translate or opacity.", "section": "elevation"}
     ],
-    "dos": ["Do express every size, gap and radius in --u multiples.", "Do use SectionShell and data-theme for every indexed section."],
+    "dos": ["Do express every size, gap and radius in --u multiples.", "Do use SectionShell and data-theme for every labelled section."],
     "donts": ["Don't add box-shadows, glow or blur.", "Don't use non-lavender logo colours outside the logo."]
   }
 }

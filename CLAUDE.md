@@ -16,6 +16,8 @@ New session? Read `_docs/HANDOFF.md` first: current state, architecture map, got
 - Defer below-the-fold motion setup with `whenNear` from `src/lib/near.ts` (keeps main-thread work off first load).
 - Images: add to `scripts/image-manifest.mjs`, run `pnpm images`, reference via `img(path, alt)` with real alt text.
 - Unbuilt pages link to https://99x.io (external flag).
+- Every button and link shows `cursor: pointer`. A global base rule in `globals.css` covers `a[href]`, `button`, `[role=button|tab]` and friends; anything clickable that is not one of those (e.g. a `div` with `onClick`) needs `cursor-pointer` explicitly. Check this when reviewing UI.
+- `cn` has no tailwind-merge: a component's default class does not lose to a conflicting caller class (e.g. `size-6` vs `size-4`). Apply defaults only when the caller passes none.
 - E2E must run on a clean `.next` (`rm -rf .next` first) to avoid stale-build flakiness.
 
 ## Commands

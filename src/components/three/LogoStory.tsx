@@ -34,7 +34,7 @@ const TICK_LINES = Array.from({ length: TICKS }, (_, i) => {
 
 type Scene = { svg: string; pointer: boolean };
 
-export function LogoStory({ offices, tag }: { offices: Office[]; tag?: { index: string; label: string } }) {
+export function LogoStory({ offices, tag }: { offices: Office[]; tag?: { label: string } }) {
   const reduced = useReducedMotion();
   const stage = useRef<HTMLDivElement>(null);
   const progress = useRef(0);
@@ -104,7 +104,7 @@ export function LogoStory({ offices, tag }: { offices: Office[]; tag?: { index: 
         className={cn("relative grid-12 items-center", reduced ? "gap-y-12" : "h-svh max-md:content-center max-md:gap-y-6 max-md:pt-20")}
       >
         <div className="col-span-12 flex flex-col gap-6 md:col-span-3">
-          {tag && <span className="-mb-2"><SectionTag index={tag.index} label={tag.label} /></span>}
+          {tag && <span className="-mb-2"><SectionTag label={tag.label} /></span>}
           <Eyebrow as="h3">Offices</Eyebrow>
         <ol className="flex flex-col gap-2">
           {offices.map((o, i) => (

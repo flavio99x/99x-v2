@@ -23,7 +23,7 @@ export const about: Page = {
     {
       type: "mediaStatement",
       theme: "paper",
-      head: { index: "S.01", label: "This is 99x", statement: "We help businesses build digital solutions that work — for users, for the organisation and for the bottom line." },
+      head: { label: "This is 99x", statement: "We help businesses build digital solutions that work — for users, for the organisation and for the bottom line." },
       body: "Our clients range from ambitious startups to leading players in the private and public sector, healthcare, education, retail and culture. What they share: they want a long-term partner, not a vendor. Lately that means more AI — in testing, in data and in how we build teams.",
       images: [img("about/management.jpg", "99x group leadership in conversation"), img("about/office.jpg", "Engineers at work in a 99x office")],
       video: { youtubeId: "0O8WkFGaLw4", label: "Watch: This is 99x" },
@@ -31,7 +31,7 @@ export const about: Page = {
     {
       type: "displayLine",
       theme: "tint",
-      head: { index: "S.02", label: "Our values" },
+      head: { label: "Our values" },
       text: "Norwegian values, global capacity",
       fill: "image",
       image: img("about/tab-culture.jpg", "Two 99x colleagues outside a timber-clad office entrance"),
@@ -41,7 +41,7 @@ export const about: Page = {
     {
       type: "timeline",
       theme: "dark",
-      head: { index: "S.03", label: "Our journey" },
+      head: { label: "Our journey" },
       items: [
         { year: "2000", title: "Eurocenter DDC is founded in Sri Lanka", image: img("about/t-2000.jpg", "Early days of Eurocenter in Sri Lanka") },
         { year: "2006", title: "Seeds Consulting is founded in Norway", image: img("about/t-2006.jpg", "Seeds Consulting founders") },
@@ -56,7 +56,7 @@ export const about: Page = {
       type: "tabs",
       theme: "tint",
       id: "how-we-work",
-      head: { index: "S.04", label: "How we work", statement: "A partner that stays for the long run." },
+      head: { label: "How we work", statement: "A partner that stays for the long run." },
       items: [
         { label: "Trusted partner", heading: "Long-term, not transactional", body: "We work as an extension of your organisation: shared goals, shared accountability and teams that stay with your product as it grows.", image: img("about/tab-partner.jpg", "A client workshop with the 99x team") },
         { label: "Ways of working", heading: "Facilitated teams", body: "Cross-functional teams combine strategy, design and engineering, with the capacity, competence and compliance to deliver — and AI built into how we work.", image: img("about/tab-work.jpg", "A cross-functional team planning a sprint") },
@@ -67,19 +67,19 @@ export const about: Page = {
       type: "officeRows",
       theme: "paper",
       id: "offices",
-      head: { index: "S.05", label: "Global presence", statement: "Specialised units serving different markets under one global umbrella." },
+      head: { label: "Global presence", statement: "Specialised units serving different markets under one global umbrella." },
       body: "Full-service web and e-commerce across the Nordics, product engineering for Scandinavia and beyond, and technology teams building for European and American companies.",
     },
     {
       type: "namesCylinder",
       theme: "paper",
-      head: { index: "S.06", label: "The 99x group", statement: "A network of specialised tech companies, united by one culture." },
+      head: { label: "The 99x group", statement: "A network of specialised tech companies, united by one culture." },
       names: ["99x Technology", "Seeds", "Cleverti", "LeanOn", "Clave Consulting", "Solvr", "Nextly", "Gture", "Republic", "Increo", "Digital Solutions"],
     },
     {
       type: "cardGrid",
       theme: "tint",
-      head: { index: "S.07", label: "Our divisions", statement: "Product engineering, tech talent and web solutions — each built for the market it serves." },
+      head: { label: "Our divisions", statement: "Product engineering, tech talent and web solutions — each built for the market it serves." },
       cards: [
         { title: "Product engineering", description: "Long-term product co-creation for companies across Scandinavia and global markets.", icon: "layers", link: { label: "Product engineering", href: "/services#product-engineering" } },
         { title: "Tech talent Europe", description: "Engineering teams from our European hubs for companies across Europe.", icon: "users", link: { label: "Tech talent Europe", href: "/services#nearshore-europe" } },
@@ -90,7 +90,7 @@ export const about: Page = {
     {
       type: "peopleGrid",
       theme: "paper",
-      head: { index: "S.08", label: "Leadership", statement: "The group leadership team guiding the 99x ecosystem." },
+      head: { label: "Leadership", statement: "The group leadership team guiding the 99x ecosystem." },
       people: [
         person("Odd Sverre Østlie", "Group CEO, 99x", "odd-sverre-ostlie"),
         person("Trygve Moe", "Group CFO, 99x", "trygve-moe"),

@@ -40,9 +40,9 @@ export function SectionShell({ theme, head, id, className, bottom = "lg", tag = 
         <div className={cn("grid-12 mb-24 lg:mb-40", rule && "border-t pt-8", rule && (theme === "dark" ? "border-paper/20" : "border-ink/20"))}>
           <div className="col-span-12 lg:col-span-8">
             {tag && (
-              <span className="float-left">
-                <SectionTag index={head.index} label={head.label} tone={theme === "dark" ? "light" : "dark"} />
-              </span>
+              <div className="mb-6">
+                <SectionTag label={head.label} tone={theme === "dark" ? "light" : "dark"} />
+              </div>
             )}
             {head.statement && <ScrubText as="h2" className="text-statement" text={head.statement} />}
             {!head.statement && <h2 className="sr-only">{head.label}</h2>}

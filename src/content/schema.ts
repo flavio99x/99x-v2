@@ -19,7 +19,6 @@ export const ThemeSchema = z.enum(["dark", "paper", "tint"]);
 export type Theme = z.infer<typeof ThemeSchema>;
 
 export const SectionHeadSchema = z.object({
-  index: z.string().regex(/^S\.\d{2}$/),
   label: z.string().min(1),
   statement: z.string().optional(),
 });

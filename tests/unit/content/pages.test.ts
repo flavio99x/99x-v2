@@ -37,11 +37,6 @@ describe.each(pages.map((p) => [p.slug, p] as const))("page %s", (_slug, page) =
     }
   });
 
-  it("section indices run S.01, S.02, … in order", () => {
-    const idx = page.sections.flatMap((s) => ("head" in s && s.head ? [s.head.index] : []));
-    idx.forEach((v, i) => expect(v).toBe(`S.${String(i + 1).padStart(2, "0")}`));
-  });
-
   it("next page points at a built route and reuses its hero image", () => {
     expect(BUILT_ROUTES as readonly string[]).toContain(page.next.href);
     const target = byPath.get(page.next.href);

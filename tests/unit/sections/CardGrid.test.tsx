@@ -10,7 +10,7 @@ describe("CardGrid", () => {
     render(
       <CardGrid
         section={{
-          type: "cardGrid", theme: "tint", head: { index: "S.02", label: "What we do", statement: "Ways we help." },
+          type: "cardGrid", theme: "tint", head: { label: "What we do", statement: "Ways we help." },
           cards: [
             { title: "Linked", description: "Has a link.", icon: "layers", link: { label: "Linked", href: "/services#product-engineering" } },
             { title: "Plain", description: "No link.", icon: "browser" },

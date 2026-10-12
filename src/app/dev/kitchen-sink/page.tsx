@@ -36,7 +36,7 @@ export default function KitchenSink() {
         <ButtonAction type="button">Send</ButtonAction>
         <ButtonSm link={{ label: "Our services", href: "/services" }} />
       </div>
-      <p className="grid-12"><span className="col-span-8 text-statement"><SectionTag index="S.01" label="About us" />For more than two decades, companies have trusted 99x to shape their products.</span></p>
+      <div className="grid-12"><div className="col-span-8"><div className="mb-6"><SectionTag label="About us" /></div><p className="text-statement">For more than two decades, companies have trusted 99x to shape their products.</p></div></div>
       <ScrubText className="w-[57em] text-statement" text="Grey text that fills in as you scroll, line by line, character by character." />
       <FadeUp className="grid grid-cols-2 gap-4 w-[42em]">
         <Stat value="20+" label="Years building software" icon="calendar" />
@@ -48,10 +48,10 @@ export default function KitchenSink() {
       <form className="flex w-[28em] flex-col gap-8"><Field name="name" label="Name" hint="Who should we reply to?" required /><Field name="email" type="email" label="Email" error="Enter a valid email address" required /></form>
       <Eyebrow>Eyebrow M</Eyebrow>
     </main>
-      <ProofToggle section={{ type: "proofToggle", theme: "paper", head: { index: "S.06", label: "Why 99x" }, subline: "Why work with us", items: [{ value: "90%", text: "of clients say we met or exceeded expectations" }, { value: "100+", text: "companies transformed" }] }} />
-      <NamesCylinder section={{ type: "namesCylinder", theme: "paper", head: { index: "S.07", label: "Names" }, names: NAMES }} />
-      <Timeline section={{ type: "timeline", theme: "dark", head: { index: "S.03", label: "Timeline" }, items: TL }} />
-      <LogoStorySection section={{ type: "logoStory", theme: "paper", head: { index: "S.03", label: "Locations", statement: "One company, five countries." } }} offices={getSite().offices} />
+      <ProofToggle section={{ type: "proofToggle", theme: "paper", head: { label: "Why 99x" }, subline: "Why work with us", items: [{ value: "90%", text: "of clients say we met or exceeded expectations" }, { value: "100+", text: "companies transformed" }] }} />
+      <NamesCylinder section={{ type: "namesCylinder", theme: "paper", head: { label: "Names" }, names: NAMES }} />
+      <Timeline section={{ type: "timeline", theme: "dark", head: { label: "Timeline" }, items: TL }} />
+      <LogoStorySection section={{ type: "logoStory", theme: "paper", head: { label: "Locations", statement: "One company, five countries." } }} offices={getSite().offices} />
       <div className="h-[50vh]" />
     </>
   );

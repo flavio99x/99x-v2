@@ -35,7 +35,7 @@ describe("SectionSchema", () => {
     const r = SectionSchema.safeParse({
       type: "namesCylinder",
       theme: "paper",
-      head: { index: "S.07", label: "Trusted by", statement: "Companies that build with us." },
+      head: { label: "Trusted by", statement: "Companies that build with us." },
       names: ["Adra", "Kavli", "OBOS"],
     });
     expect(r.success).toBe(true);

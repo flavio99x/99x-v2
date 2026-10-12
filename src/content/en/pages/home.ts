@@ -25,7 +25,7 @@ export const home: Page = {
     {
       type: "stats",
       theme: "paper",
-      head: { index: "S.01", label: "About us", statement: "For more than two decades, companies across the Nordics and beyond have trusted 99x to shape their products and scale their teams." },
+      head: { label: "About us", statement: "For more than two decades, companies across the Nordics and beyond have trusted 99x to shape their products and scale their teams." },
       image: img("home/about-portrait.jpg", "A 99x engineer at work"),
       items: [
         { value: "20+", label: "Years building software", icon: "calendar" },
@@ -39,7 +39,7 @@ export const home: Page = {
     {
       type: "cardGrid",
       theme: "tint",
-      head: { index: "S.02", label: "What we do", statement: "Four ways we help you build, scale and modernise — with AI where it makes the product better." },
+      head: { label: "What we do", statement: "Four ways we help you build, scale and modernise — with AI where it makes the product better." },
       cards: [
         { title: "Product engineering", description: "Long-term product co-creation with facilitated teams that own outcomes, not just tickets.", icon: "layers", link: { label: "Product engineering", href: "/services#product-engineering" } },
         { title: "Web solutions", description: "Websites, e-commerce and integrations — designed, built, hosted and run end to end.", icon: "browser", link: { label: "Web solutions", href: "/services#web-solutions" } },
@@ -53,12 +53,12 @@ export const home: Page = {
     {
       type: "logoStory",
       theme: "paper",
-      head: { index: "S.03", label: "Locations", statement: "One company, five countries. Each office brings its own strengths to the same team." },
+      head: { label: "Locations", statement: "One company, five countries. Each office brings its own strengths to the same team." },
     },
     {
       type: "stickySplit",
       theme: "paper",
-      head: { index: "S.04", label: "AI", statement: "We integrate AI into every stage of the product lifecycle." },
+      head: { label: "AI", statement: "We integrate AI into every stage of the product lifecycle." },
       image: img("home/ai.jpg", "A team working together at laptops"),
       mediaSide: "left",
       heading: "Smarter teams, smarter products with AI",
@@ -68,7 +68,7 @@ export const home: Page = {
     {
       type: "caseCards",
       theme: "tint",
-      head: { index: "S.05", label: "Case studies", statement: "Solutions that work, and last." },
+      head: { label: "Case studies", statement: "Solutions that work, and last." },
       display: { text: "100+ companies transformed", subline: "Global and Scandinavian companies" },
       cards: [
         { title: "A flourishing e-commerce solution for Interflora", tag: "Web solutions", image: img("home/case-interflora.jpg", "Interflora's online shop on a laptop"), link: { label: "Interflora", href: X("/case-studies/web-solutions/a-flourishing-e-commerce-solution-for-interflora"), external: true } },
@@ -80,7 +80,7 @@ export const home: Page = {
     {
       type: "proofToggle",
       theme: "paper",
-      head: { index: "S.06", label: "Why 99x" },
+      head: { label: "Why 99x" },
       subline: "Why work with us",
       items: [
         { value: "90%", text: "of our clients say we met or exceeded their expectations." },
@@ -91,7 +91,7 @@ export const home: Page = {
     {
       type: "insightCards",
       theme: "paper",
-      head: { index: "S.07", label: "Insights" },
+      head: { label: "Insights" },
       cards: [
         { kind: "Blog", title: "What is data science and why is it critical for business growth?", image: img("home/insight-data-science.jpg", "Data visualisation on a screen"), link: { label: "Read", href: X("/Insights/blog/what-is-data-science-and-why-is-it-critical-for-business-growth"), external: true } },
         { kind: "Webinar", title: "Adapting MCP for business applications", image: img("home/insight-mcp.jpg", "Webinar speakers discussing MCP"), imageFit: "contain", link: { label: "Watch", href: X("/events/2025/adapting-mcp-for-business-applications"), external: true } },
@@ -102,7 +102,7 @@ export const home: Page = {
     {
       type: "namesCylinder",
       theme: "paper",
-      head: { index: "S.08", label: "Trusted by", statement: "Companies that build with us." },
+      head: { label: "Trusted by", statement: "Companies that build with us." },
       names: [
         "Adra", "Compello", "SuperOffice", "BUS", "Solwr", "Boligmappa", "Kahoot!", "Interflora", "Bygg 1", "Helsebiblioteket",
         "OBOS", "Patentstyret", "Q-Meieriene", "Gilde", "Glava", "NORCE", "Kavli", "Elite", "Reitan", "Eplehuset", "Urmaker Bjerke",

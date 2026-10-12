@@ -24,7 +24,7 @@ export const contact: Page = {
     {
       type: "divisionContacts",
       theme: "tint",
-      head: { index: "S.01", label: "Direct lines", statement: "Prefer email? Reach the team that fits your question." },
+      head: { label: "Direct lines", statement: "Prefer email? Reach the team that fits your question." },
       divisions: [
         { label: "Product engineering", heading: "Let's talk about your product.", email: "productengineering@99x.io" },
         { label: "Tech talent Europe", heading: "Let's discuss your tech needs in Europe.", email: "techexperts.europe@99x.io" },
@@ -43,7 +43,7 @@ export const contact: Page = {
     {
       type: "officeRows",
       theme: "paper",
-      head: { index: "S.02", label: "Offices", statement: "Five offices, one team." },
+      head: { label: "Offices", statement: "Five offices, one team." },
     },
   ],
   next: { label: "Back to home", eyebrow: "Start over", href: "/", image: img("home/hero.jpg", "99x team members collaborating in the Oslo office") },

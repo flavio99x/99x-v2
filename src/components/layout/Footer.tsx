@@ -1,6 +1,6 @@
 import type { Site } from "@/content/schema";
 import { SmartLink } from "@/components/ui/SmartLink";
-import { Icon } from "@/components/ui/Icon";
+import { SocialIcon } from "@/components/ui/SocialIcon";
 
 function Tag({ children }: { children: string }) {
   return <span className="inline-block w-fit rounded-sm border border-ink px-1.5 py-1 font-mono text-eyebrow-s font-light uppercase">{children}</span>;
@@ -15,7 +15,7 @@ export function Footer({ site }: { site: Site }) {
           <img src="/brand/99x-logo.svg" alt="99x" width={96} height={49} className="w-24" />
           <div className="flex gap-4 text-accent-deep">
             {site.socials.map((s) => (
-              <a key={s.href} href={s.href} rel="noopener" aria-label={s.label}><Icon name={s.icon} /></a>
+              <a key={s.href} href={s.href} rel="noopener" aria-label={s.label} className="transition-opacity duration-200 hover:opacity-70"><SocialIcon name={s.icon} className="size-4" /></a>
             ))}
           </div>
         </div>

@@ -5,7 +5,7 @@ import { ProofToggle } from "@/components/sections/ProofToggle";
 
 const section = {
   type: "proofToggle" as const, theme: "paper" as const,
-  head: { index: "S.06", label: "Why 99x" }, subline: "Why work with us",
+  head: { label: "Why 99x" }, subline: "Why work with us",
   items: [{ value: "90%", text: "of clients say we met or exceeded expectations" }, { value: "100+", text: "companies transformed" }],
 };
 

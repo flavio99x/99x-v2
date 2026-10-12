@@ -68,7 +68,7 @@ export function Timeline({ section: s }: { section: T }) {
       <div>
         <div ref={stage} data-pinned="" className="relative h-svh overflow-hidden">
           <h2 className="sr-only">{s.head.label}</h2>
-          <div className="absolute left-[var(--site-margin)] top-28 z-10"><SectionTag index={s.head.index} label={s.head.label} tone="light" /></div>
+          <div className="absolute left-[var(--site-margin)] top-28 z-10"><SectionTag label={s.head.label} tone="light" /></div>
           {s.items.map((it, i) => (near || i === active) && (
             <Image key={it.image.src} src={it.image.src} alt={i === active ? it.image.alt : ""} fill sizes="100vw"
               className="object-cover transition-opacity duration-700 ease-house" style={{ opacity: i === active ? 0.55 : 0 }} />

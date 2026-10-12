@@ -6,7 +6,6 @@ import { organizationJsonLd } from "@/lib/seo";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { Header } from "@/components/layout/Header";
-import { Menu } from "@/components/layout/Menu";
 import { Footer } from "@/components/layout/Footer";
 import { Loader } from "@/components/layout/Loader";
 import { SkipLink } from "@/components/layout/SkipLink";
@@ -35,9 +34,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <PageTransition>
             <SkipLink />
             <Loader />
-            <Header />
-            <Menu site={site} />
-            <div id="page" className="relative z-[1] origin-top overflow-clip bg-paper">
+            <Header site={site} />
+            <div id="page" className="relative z-[1] overflow-clip bg-paper">
               <main id="main" tabIndex={-1} className="outline-none">{children}</main>
               <Footer site={site} />
             </div>
