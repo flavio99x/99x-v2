@@ -2,13 +2,15 @@
 
 Read this first when starting a new Claude session on this repo. It covers where the project stands, how it fits together, what was learned the hard way, and what is left to do.
 
-Last updated: 2026-10-11.
+Last updated: 2026-10-12.
 
 ---
 
 ## 1. Current state
 
-- **Branch:** all work is on `feat/phase1-website` (`git log main..feat/phase1-website`). Nothing has been merged into `main` yet.
+- **Branch:** `main` is production. Phase 1 was merged from `feat/phase1-website` in PR flavio99x/99x-v2#1. Work on feature branches and open PRs into `main`.
+- **Hosting:** Vercel project `99x-v2` in the team *Flávio's projects* (Hobby plan; move to a 99x Pro team before the real launch, since Hobby is non-commercial). It is Git-connected: every push to `main` deploys https://99x-v2.vercel.app, and other branches get preview URLs. The framework is pinned in `vercel.json`.
+- **Production env vars:** `RESEND_API_KEY` (sensitive) and `CONTACT_TO` (flavio.troszczanczuk@99x.io). `CONTACT_FROM` is unset, so Resend's test sender `onboarding@resend.dev` is used, which only delivers to the Resend account owner. Verify the 99x.io domain in Resend, then set `CONTACT_FROM` and `CONTACT_TO` to the real inbox. `SITE_INDEXABLE` is unset, so the site is noindex everywhere; set it to `true` only at launch on 99x.io. See `.env.example`.
 - **Remote:** `origin` is https://github.com/flavio99x/99x-v2 (public; default branch `main`). `gh` is installed and logged in as flavio99x, so PRs are possible. The repo-local `http.postBuffer` is raised because the first HTTPS push of the ~34 MB history was dropped by the server.
 - **Built:** 5 pages, all statically generated:
   - `/`
@@ -47,7 +49,7 @@ Last updated: 2026-10-11.
 - Copy may be rewritten freely, but never invent clients, numbers, awards or testimonials. Any new claim goes into `open-questions.md` for approval.
 - Content lives in typed TypeScript files. A headless CMS comes later, so components never import content directly.
 - English only for now, but the structure must stay ready for a `/no` locale.
-- Hosting is Vercel. The contact form goes through a route handler with a pluggable provider, which has not been wired up yet.
+- Hosting is Vercel. The contact form goes through a route handler with a pluggable provider; production emails submissions through Resend (`ResendProvider`).
 - Unbuilt pages link out to the matching page on `https://99x.io`.
 - The user likes the `/superpowers:*` workflow (brainstorm, spec, plan, execute) and `/impeccable` for design work.
 
@@ -98,7 +100,7 @@ tests/e2e/**                playwright: desktop / mobile / reduced-motion projec
   2. Run `pnpm images`.
   3. Use `img("folder/name.jpg", "real alt text")` in content.
 - **Swap in licensed fonts.** Edit only `src/lib/fonts.ts`: replace the `next/font/google` calls with `next/font/local`, keeping the variables `--font-inter-tight` and `--font-geist-mono`. The licensed faces are Helvetica Now Display 500/700 and PP Supply Mono 300.
-- **Wire up email or CRM.** Add a provider in `src/lib/contact/provider.ts` and select it with the `CONTACT_PROVIDER` environment variable. Replace `LogProvider`, which writes personal data to the logs.
+- **Contact delivery.** `src/lib/contact/provider.ts`: Resend is used whenever `RESEND_API_KEY` is set (or `CONTACT_PROVIDER=resend`); otherwise `LogProvider`, which writes personal data to the logs, is used. Playwright forces `CONTACT_PROVIDER=log`, so e2e runs never send email. For a CRM, add another provider there.
 - **Check components visually.** Use `/dev/kitchen-sink` (dev only) and `pnpm dev`.
 - **Capture screenshots for review.** Full-page screenshots break on transform-pinned sections. Capture viewport by viewport instead: scroll one viewport, wait about 900ms, screenshot. Put captures in `.impeccable/review/`, which is gitignored.
 
@@ -152,7 +154,7 @@ None of these block merging. They were triaged in the final review and deferred.
 
 **Launch checklist:** in `open-questions.md`, covering:
 - domain and DNS
-- connecting the contact provider
+- the contact provider is connected (Resend), but still uses the test sender and a personal inbox; switch to a verified 99x.io sender and the team inbox
 - the `x-forwarded-for` and proxy caveat
 - analytics and a consent banner
 - font licences
@@ -183,7 +185,11 @@ None of these block merging. They were triaged in the final review and deferred.
 
 Ask the user which of these they want; don't start on your own.
 
-1. **Integrate phase 1.** Merge `feat/phase1-website` into `main`, or add a remote and open a PR. Then set up the Vercel project.
+1. **Launch prep.** Phase 1 is merged and deployed to https://99x-v2.vercel.app (noindex). For the real launch:
+   - move the project to a 99x Pro team;
+   - add the 99x.io domain;
+   - verify the Resend domain and switch `CONTACT_FROM`/`CONTACT_TO`;
+   - set `SITE_INDEXABLE=true`.
 2. **Content confirmations.** Work through `open-questions.md` with 99x: facts, new claims, group companies and photos.
 3. **Adjustments and enhancements to the 5 pages.** These include visual tuning against cominvi with `/impeccable` (polish, critique, animate), the design follow-ups in §7, and items from the backlog.
 4. **Phase 2 pages.** The full inventory is in `_docs/content/sitemap-current.md`. A suggested order:
