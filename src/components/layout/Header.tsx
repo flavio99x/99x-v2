@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, useGSAP, NAV_EASE } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 import { useLenis } from "@/components/motion/SmoothScroll";
@@ -19,15 +19,6 @@ export function Header({ site }: { site: Site }) {
   const lenis = useLenis();
   const barRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Past the first 50px the bar tucks in slightly (Osmo's "scrolling started" state).
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Lock page scroll while open. Lenis isn't running under reduced motion, so fall back to overflow on <html>.
   useEffect(() => {
@@ -73,7 +64,6 @@ export function Header({ site }: { site: Site }) {
   return (
     <header
       data-nav={menuOpen ? "open" : "closed"}
-      data-scrolled={scrolled}
       className="pointer-events-none fixed inset-0 z-[60]"
     >
       <div aria-hidden="true" onClick={close} className="nav-backdrop pointer-events-auto absolute inset-0 bg-charcoal/30" />

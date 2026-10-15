@@ -14,7 +14,8 @@ type Props = {
   head?: SectionHead;
   id?: string;
   className?: string;
-  bottom?: "lg" | "md" | "none";
+  /** Full-bleed stage that draws its own edges (e.g. the pinned timeline): no section padding. */
+  flush?: boolean;
   /** false: the section renders its own tag (e.g. inside a pinned stage so it stays visible). */
   tag?: boolean;
   /** Hairline above the section tag (sticky-split sections). */
@@ -22,17 +23,16 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export function SectionShell({ theme, head, id, className, bottom = "lg", tag = true, rule = false, children }: Props) {
+export function SectionShell({ theme, head, id, className, flush = false, tag = true, rule = false, children }: Props) {
   return (
     <section
       id={id}
       data-theme={theme}
       aria-label={head?.label}
       className={cn(
-        "relative site-x pt-8",
+        "relative",
+        !flush && "site-x section-y",
         themeClass[theme],
-        bottom === "lg" && "pb-40 lg:pb-64",
-        bottom === "md" && "pb-32 lg:pb-48",
         className,
       )}
     >

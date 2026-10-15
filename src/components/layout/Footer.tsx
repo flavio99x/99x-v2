@@ -9,7 +9,7 @@ function Tag({ children }: { children: string }) {
 export function Footer({ site }: { site: Site }) {
   const year = new Date().getFullYear();
   return (
-    <footer data-theme="paper" className="bg-paper text-ink site-x pt-24 pb-8">
+    <footer data-theme="paper" className="bg-paper text-ink site-x pt-[var(--section-space)] pb-8">
       <div className="grid-12 gap-y-16">
         <div className="col-span-12 flex flex-col gap-8 lg:col-span-4">
           <img src="/brand/99x-logo.svg" alt="99x" width={96} height={49} className="w-24" />

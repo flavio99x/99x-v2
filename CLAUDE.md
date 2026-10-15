@@ -12,6 +12,7 @@ New session? Read `_docs/HANDOFF.md` first: current state, architecture map, got
 - Spec: `_docs/specs/2026-10-10-99x-website-phase1-design.md`. Design system: `_docs/DESIGN.md`. Product: `_docs/PRODUCT.md`.
 - Content lives in `src/content/en/**` and is validated by `src/content/schema.ts`. Components never import content; pages pass it in.
 - Size with the fluid unit (`--u`; Tailwind spacing/type tokens). No raw px except 1px hairlines.
+- Space between sections is one constant, `--section-space` (`section-y`, applied by SectionShell). Never give a section its own vertical padding; every page section goes through SectionShell or uses `section-y`.
 - Register GSAP plugins only in `src/lib/gsap.ts`; use `useGSAP` for every animation; respect `useReducedMotion`.
 - Defer below-the-fold motion setup with `whenNear` from `src/lib/near.ts` (keeps main-thread work off first load).
 - Images: add to `scripts/image-manifest.mjs`, run `pnpm images`, reference via `img(path, alt)` with real alt text.

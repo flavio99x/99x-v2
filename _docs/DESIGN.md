@@ -155,7 +155,7 @@ components:
 
 The site reads as a labelled document: sections carry a black label tag, long statements are read line by line as the page scrolls, and every claim sits on flat ink, paper or pale-lilac ground. The structure, type, palette and motion follow the cominvi.com.mx reference pinned by the user, re-skinned with the 99x lavender and plum. Colour is nearly absent from the layout; it arrives through the multicolour line-work logo (the 3D piece, the logo in the nav bar) and the single lavender accent that answers hover and focus.
 
-Density is airy and tall: sections separate by 160-256px of bottom padding, headlines are large and tightly leaded, and body copy is small. The surface is flat. Hierarchy comes from scale, ink/paper inversion between sections, hairlines and mono captions, never from shadows or gradients (the only gradient is a legibility scrim over hero photography).
+Density is airy and tall: sections separate by one constant `--section-space` above and below, headlines are large and tightly leaded, and body copy is small. The surface is flat. Hierarchy comes from scale, ink/paper inversion between sections, hairlines and mono captions, never from shadows or gradients (the only gradient is a legibility scrim over hero photography).
 
 **Key Characteristics:**
 - Three section grounds (ink, paper, tint) alternate under a fixed charcoal nav bar that never hides.
@@ -216,7 +216,7 @@ All sizes are multiples of `--u` (16px at 1440 wide). Mobile (<=767px) steps sta
 
 A 12-column grid (`grid-12`, column gap 1u) inside `site-x` side padding (2u at desktop, 1u at <=991px). Section heads occupy 8 of 12 columns. Breakpoints: 480 / 768 / 992 / 1440. The fluid scale clamps the container between 992 and 1920px on desktop and re-bases at 834 (tablet), 550 (large phone) and 390 (phone) design widths, so a layout scales proportionally inside each band rather than reflowing continuously. Tailwind's spacing step is 0.25u (4px at design width).
 
-Sections open with 2u top padding and close with 160px/256px (large) or 128px/192px (medium) at mobile/desktop; heads sit 96px/160px above content. Card grids go 1 column, 2 at tablet, and 3 or 4 at desktop (4 when exactly four tiles). Hero is full `svh` with content bottom-aligned. Pinned stages (names cylinder, logo story) use transform pinning (built and verified that way; the old menu's page-shell transform that required it is gone).
+One vertical rhythm: every section gets `--section-space` (8u = 128px desktop/tablet, 5u = 80px under 768px) above and below (`section-y` utility via SectionShell), so the gap between any two sections is the same whether or not the ground changes. Sections holding a pinned full-screen stage drop the bottom half, because the stage carries its own empty space; full-bleed stages (hero, timeline, next page) use `flush`. The footer opens with the same space. Heads sit 96px/160px above content. Card grids go 1 column, 2 at tablet, and 3 or 4 at desktop (4 when exactly four tiles). Hero is full `svh` with content bottom-aligned. Pinned stages (names cylinder, logo story) use transform pinning (built and verified that way; the old menu's page-shell transform that required it is gone).
 
 Home runs: hero, then the labelled sections, with Insights as its own section (7th) and Trusted by 8th; About places divisions as its own 7th section. Tags are content-driven (`head.label`).
 
@@ -249,7 +249,7 @@ Small, even rounding derived from the unit: 2px (`rounded-xs`, small buttons and
 - **Focus:** border becomes Deep Plum. **Error:** border and mono uppercase message in logo red; `aria-invalid` and `aria-describedby` are wired.
 
 ### Navigation
-- **Header (Osmo pattern):** a fixed charcoal bar (`#201d1d`, 6px radius, no border), 20px from the top, 38u wide on desktop and full width below 768px; always visible. Menu button left (two bars that cross into an X; the label stays "Menu"), colour logo once in the centre, lavender "Contact us" CTA right with Osmo's rotating-label hover. Past 50px of scroll the bar tucks in by 3px (desktop).
+- **Header (Osmo pattern):** a fixed charcoal bar (`#201d1d`, 6px radius, no border), 20px from the top, 38u wide on desktop and full width below 768px; always visible. Menu button left (two bars that cross into an X; the label stays "Menu"), colour logo once in the centre, lavender "Contact us" CTA right with Osmo's rotating-label hover. The bar keeps the same size while scrolling.
 - **Menu:** opening widens the bar to full width (0.6s), then the panel unfolds beneath it via `grid-template-rows` 0fr to 1fr (0.9s, 0.3s delay) and its columns rise 2u with a 75ms stagger; the page dims to 30% charcoal. Closing reverses, width last. Easing `ease-nav` = `cubic-bezier(0.625,0.05,0,1)`; all CSS, keyed off `data-nav` on `<header>`. Columns: one per nav group (the first on a `paper/5` card) and a lavender contact card (email, phone, socials, languages); 2x2 at tablet, stacked and scrollable on phones. Links are `text-nav` with an underline that draws in on hover. Escape or a backdrop click closes and returns focus to the menu button; focus is trapped in the bar; page scroll locks. The panel scrolls when it does not fit but never shows a scrollbar (the rise-in briefly overflows it), and `html` reserves its scrollbar gutter so locking scroll does not shift the page.
 
 ### Toggle / Tabs

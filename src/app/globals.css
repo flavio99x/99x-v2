@@ -12,12 +12,14 @@
   --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
   --u: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
   --site-margin: calc(var(--u) * 2);
+  /* The one vertical rhythm between sections: every section gets it above and below, whatever its theme. */
+  --section-space: calc(var(--u) * 8);
 }
 @media (max-width: 991px) {
   :root { --size-container-ideal: 834; --size-container-min: 768px; --size-container-max: 991px; --site-margin: var(--u); }
 }
 @media (max-width: 767px) {
-  :root { --size-container-ideal: 550; --size-container-min: 480px; --size-container-max: 767px; }
+  :root { --size-container-ideal: 550; --size-container-min: 480px; --size-container-max: 767px; --section-space: calc(var(--u) * 5); }
 }
 @media (max-width: 479px) {
   :root { --size-container-ideal: 390; --size-container-min: 320px; --size-container-max: 479px; }
@@ -137,6 +139,11 @@
 @keyframes reveal-line { from { transform: translateY(110%); } }
 
 @utility site-x { padding-inline: var(--site-margin); }
+@utility section-y {
+  padding-block: var(--section-space);
+  /* A pinned full-screen stage already carries its own empty space below its content. */
+  &:has([data-pinned]) { padding-bottom: 0; }
+}
 @utility grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--u); }
 @utility mask-line { overflow: hidden; display: block; }
 
@@ -151,7 +158,6 @@
 @media (max-width: 767px) { .nav-bar { max-width: 100%; } }
 
 .nav-back { inset: 0; transition: inset 0.6s var(--ease-nav); }
-@media (min-width: 768px) { [data-scrolled="true"]:not([data-nav="open"]) .nav-back { inset: calc(var(--u) * 0.1875); } }
 
 
 .nav-line { left: calc(var(--u) * 0.5); right: calc(var(--u) * 0.5); opacity: 0; transition: all 0.6s var(--ease-nav) 0s; }

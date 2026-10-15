@@ -51,7 +51,7 @@ export function NamesCylinder({ section: s }: { section: T }) {
   }
 
   return (
-    <SectionShell theme={s.theme} head={s.head} id={s.id} bottom="md">
+    <SectionShell theme={s.theme} head={s.head} id={s.id}>
       {/* Stable React-owned wrapper: GSAP's pin-spacer only wraps the inner stage, so switching to the
           reduced-motion branch removes this wrapper (parent untouched) instead of the re-parented stage. */}
       <div>

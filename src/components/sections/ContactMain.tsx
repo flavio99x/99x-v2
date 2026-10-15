@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 
 export function ContactMain({ section: s, offices }: { section: T; offices: Office[] }) {
   return (
-    <section data-theme={s.theme} id={s.id} className={cn("site-x pt-32 pb-40 lg:pb-64", s.theme === "tint" ? "bg-tint" : "bg-paper")}>
+    <section data-theme={s.theme} id={s.id} className={cn("site-x section-y", s.theme === "tint" ? "bg-tint" : "bg-paper")}>
       <div className="grid-12 gap-y-16">
         <div className="col-span-12 lg:col-span-6">
           {/* Sticky map panel below the header on desktop; a plain band on mobile. */}

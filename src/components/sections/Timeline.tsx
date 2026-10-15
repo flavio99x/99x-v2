@@ -62,7 +62,7 @@ export function Timeline({ section: s }: { section: T }) {
   }
 
   return (
-    <SectionShell theme="dark" id={s.id} bottom="none" className="px-0! pt-0!">
+    <SectionShell theme="dark" id={s.id} flush>
       {/* Stable React-owned wrapper: GSAP's pin-spacer only wraps the inner stage, so switching to the
           reduced-motion branch removes this wrapper (parent untouched) instead of the re-parented stage. */}
       <div>
