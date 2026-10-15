@@ -1,0 +1,15 @@
+.git
+.next
+node_modules
+.env*
+!.env.example
+.vercel
+.impeccable
+.superpowers
+test-results
+playwright-report
+coverage
+tsconfig.tsbuildinfo
+_docs
+Dockerfile
+.dockerignore

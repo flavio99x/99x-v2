@@ -1,0 +1,59 @@
+# Helm values for chart-repo/simple-container-app (seeds/helm-charts), deployed by .gitlab-ci.yml.
+# image.repository and image.tag are set by the pipeline.
+
+replicaCount: 1
+
+image:
+  pullPolicy: IfNotPresent
+
+# Created once with https://git.seeds.no/seeds/docker-registry-secret-creator
+# (PROJECT_NAME=website-99x-v2, NAMESPACE=website-99x-v2).
+imagePullSecrets:
+  - name: website-99x-v2-registry
+
+# Contact-form settings come from the Secret written by the main_secrets job.
+envVars:
+  - name: RESEND_API_KEY
+    valueFrom: { secretKeyRef: { name: website-99x-v2-env, key: RESEND_API_KEY, optional: true } }
+  - name: CONTACT_TO
+    valueFrom: { secretKeyRef: { name: website-99x-v2-env, key: CONTACT_TO, optional: true } }
+  - name: CONTACT_FROM
+    valueFrom: { secretKeyRef: { name: website-99x-v2-env, key: CONTACT_FROM, optional: true } }
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  sslIssuer: "letsencrypt-prod"
+  ssl: true
+  # Presentation phase: noindex header + blocking robots.txt at the ingress.
+  preventIndexing: true
+  maxBodySize: 10m
+  hosts:
+    - host: website-99x-v2.k8s.seeds.no
+
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+
+nodeSelector:
+  node: workloads
+
+tolerations:
+  - key: "dedicated"
+    operator: "Equal"
+    value: "workloads"
+    effect: "NoSchedule"
+
+keda:
+  enabled: false
+  defaultPrometheusURL: "http://prometheus.lens-metrics.svc.cluster.local"
+
+livenessProbe:
+  timeoutSeconds: 5
+
+readinessProbe:
+  timeoutSeconds: 5
